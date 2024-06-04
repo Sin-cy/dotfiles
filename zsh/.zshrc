@@ -9,6 +9,12 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #echo source ~/.bash_profile
 
+# NVM 
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
 # Path to your oh-my-zsh installation.
 # NOTE : Disabled : Currently using Starship
 #export ZSH="$HOME/.oh-my-zsh"
@@ -27,7 +33,6 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     web-search
-    vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -37,6 +42,7 @@ eval "$(starship init zsh)"
 # set Starship PATH
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 
+# FZF
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
 #export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
