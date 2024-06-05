@@ -8,12 +8,23 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #echo source ~/.bash_profile
+#
+
+# Set CLICOLOR if you want Ansi Colors in iTerm2 
+export CLICOLOR=1
+# Set colors to match iTerm2 Terminal Colors
+export TERM=xterm-256color
+
+
 
 # NVM 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+# Go Path
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 # NOTE : Disabled : Currently using Starship
@@ -100,6 +111,7 @@ alias e="exit"
 alias t="tmux"
 alias tn="(){tmux new -s $1}"
 alias f="fzf"
+alias fman="compgen -c | fzf | xargs man"
 
 # aliases for git
 alias ga="git add ."
