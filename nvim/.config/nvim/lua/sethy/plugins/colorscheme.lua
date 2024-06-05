@@ -27,7 +27,7 @@ return {
 
             require("tokyonight").setup({
                 style = "night",
-                transparent = false,
+
                 on_colors = function(colors)
                     colors.bg = bg
                     colors.bg_dark = bg_dark
@@ -63,7 +63,7 @@ return {
                 variant = "auto", -- auto, main, moon, or dawn
                 dark_variant = "main", -- main, moon, or dawn
                 dim_inactive_windows = false,
-                disable_background = true,
+                disable_background = false,
                 disable_nc_background = true,
                 disable_float_background = false,
                 extend_background_behind_borders = true,
