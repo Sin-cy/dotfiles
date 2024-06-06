@@ -16,3 +16,13 @@ decorations = "Buttonless"
 normal.family = "JetBrainsMonoNL Nerd Font" 
 
 size = 16
+
+[keyboard]
+bindings = [
+  { key = "Left",  mods = "Alt",     chars = "\u001bB"   },# Skip word left
+  { key = "Right", mods = "Alt",     chars = "\u001bF"   },# Skip word right
+  { key = "Left",  mods = "Command", chars = "\u001bOH"  },# jump word start
+  { key = "Right", mods = "Command", chars =  "\u001bOF" },# jump word end
+  { key = "Back",  mods = "Command", chars = "\u0015"    },# Delete line
+  { key = "Back",  mods = "Command", chars = "\u0017"    },# Delete word
+]
