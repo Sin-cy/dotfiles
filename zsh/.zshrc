@@ -11,9 +11,9 @@
 #
 
 # Set CLICOLOR if you want Ansi Colors in iTerm2 
-export CLICOLOR=1
+#export CLICOLOR=1
 # Set colors to match iTerm2 Terminal Colors
-export TERM=xterm-256color
+#export TERM=xterm-256color
 
 
 
@@ -28,7 +28,7 @@ export PATH=$GOPATH/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 # NOTE : Disabled : Currently using Starship
-#export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 
 # NOTE: Disabled : Currently trying out Warp Terminal for now 
@@ -69,10 +69,7 @@ export FZF_TMUX_OPTS=" -p80%,60%"
 #export FZF_ALT_C_OPTS ="--preview 'tree -C {}'"
 
 
-
-
 #User configuration
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -112,6 +109,7 @@ alias t="tmux"
 alias tn="(){tmux new -s $1}"
 alias f="fzf"
 alias fman="compgen -c | fzf | xargs man"
+alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
 
 # aliases for git
 alias ga="git add ."
@@ -121,8 +119,6 @@ alias gc="(){git commit -m $1}"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # NOTE: I disabled the line below to try out Warp Terminal 
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
 
 
 
