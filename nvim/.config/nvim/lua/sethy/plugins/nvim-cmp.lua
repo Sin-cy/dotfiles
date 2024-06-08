@@ -13,6 +13,8 @@ return {
         },
         "saadparwaiz1/cmp_luasnip", -- for autocompletion
         "rafamadriz/friendly-snippets", -- useful snippets
+        "nvim-treesitter/nvim-treesitter",
+        "luckasRanarison/tailwind-tools.nvim",
         "onsails/lspkind.nvim", -- vs-code like pictograms
     },
     config = function()
@@ -22,8 +24,11 @@ return {
 
         local lspkind = require("lspkind")
 
+
         -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
         require("luasnip.loaders.from_vscode").lazy_load()
+
+        
 
         cmp.setup({
             completion = {
@@ -57,9 +62,10 @@ return {
                 format = lspkind.cmp_format({
                     maxwidth = 50,
                     ellipsis_char = "...",
+                    before = require("tailwind-tools.cmp").lspkind_format,
                 }),
             },
-        }) 
+        })
     end,
 
 
