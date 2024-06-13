@@ -25,6 +25,7 @@ export NVM_DIR="$HOME/.nvm"
 # Go Path
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
+export PATH=$PATH:$(go env GOPATH)/bin
 
 # Path to your oh-my-zsh installation.
 # NOTE : Disabled : Currently using Starship
@@ -56,12 +57,24 @@ export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 # FZF
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
-#export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-#export FZF_CTRL_T_COMMAND= "$FZF_DEFAULT_COMMAND"
-#export FZF_ALT_C_COMMAND ="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
 export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --color=hl:#2dd4bf"
 export FZF_TMUX_OPTS=" -p80%,60%"
+
+_fzf_compgen_path() {
+    fd --hidden --exclude .git . "$1"
+}
+
+_fzf_compgen_dir() {
+    fd --type=d --hidden --exclude .git . "$1"
+}
+
+# FZF with git right in the shell
+# Keymaps for this is available in fzf-git.sh github repo
+source ~/fzf-git.sh/fzf-git.sh
 
 
 
