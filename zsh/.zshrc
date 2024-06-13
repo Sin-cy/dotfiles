@@ -62,7 +62,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
 export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --color=hl:#2dd4bf"
-export FZF_TMUX_OPTS=" -p80%,60%"
+export FZF_TMUX_OPTS=" -p80%,70%"
 
 _fzf_compgen_path() {
     fd --hidden --exclude .git . "$1"
@@ -76,10 +76,21 @@ _fzf_compgen_dir() {
 # Keymaps for this is available in fzf-git.sh github repo
 source ~/fzf-git.sh/fzf-git.sh
 
+# Setup fzf previews
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
+_fzf_comprun() {
+  local command=$1
+  shift
 
-#export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :50 {}'"
-#export FZF_ALT_C_OPTS ="--preview 'tree -C {}'"
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
+  esac
+}
 
 
 #User configuration
@@ -122,6 +133,9 @@ alias t="tmux"
 alias tn="(){tmux new -s $1}"
 alias f="fzf"
 alias fman="compgen -c | fzf | xargs man"
+
+# Eza a better ls 
+# brew install eza
 alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
 
 # aliases for git
