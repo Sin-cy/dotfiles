@@ -1,6 +1,11 @@
 # My dotfiles
 
 This directory contains the dotfiles for my system
+## Repository and brew installations needed
+
+`brew install eza fzf fd stow bat`
+`git clone https://github.com/junegunn/fzf-git.sh.git`
+
 
 ## Requirements 
 
