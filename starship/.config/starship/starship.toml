@@ -9,6 +9,8 @@ $git_status\
 $line_break\
 $character"""
 
+right_format = """$all"""
+
 palette = "catppuccin_mocha"
 
 [palettes.catppuccin_mocha]
@@ -137,7 +139,7 @@ format = ' [($all_status$ahead_behind )]($style)'
 
 [nodejs]
 symbol = ""
-format = '[[ $symbol( $version) ]]($style)'
+format = '[ $symbol( $version) ]($style)'
 
 [c]
 symbol = " "
@@ -149,7 +151,7 @@ format = '[[ $symbol( $version) ]]($style)'
 
 [golang]
 symbol = ""
-format = '[[ $symbol( $version) ]]($style)'
+format = '[ $symbol( $version) ]($style)'
 detect_files = ["go.mod"]
 
 [php]
@@ -158,7 +160,6 @@ format = '[[ $symbol( $version) ]]($style)'
 
 [java]
 symbol = " "
-
 format = '[[ $symbol( $version) ]]($style)'
 
 [kotlin]
