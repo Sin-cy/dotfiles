@@ -116,6 +116,8 @@ export LANG=en_US.UTF-8
 # Console Ninja
 PATH=~/.console-ninja/.bin:$PATH
 
+
+
 # These alias need to have the same exact space as written here
 # For Running Go Server using Air
 alias air='$(go env GOPATH)/bin/air'

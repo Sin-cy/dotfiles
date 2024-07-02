@@ -1,13 +1,16 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+add_newline = false 
 
 format = """
- 󰣚 \
+ ➜\
 $directory\
+${custom.giturl}\
 $git_branch\
 $git_status\
 $line_break\
-$character"""
+$character
+"""
 
 right_format = """$all"""
 
@@ -114,7 +117,7 @@ RedHatEnterprise = "󱄛"
 #format = '[ $user ]($style)'
 
 [directory]
-#style = "fg:mantle bg:peach"
+style = "sapphire"
 format = "[ $path ]($style)"
 #truncation_length = 4
 #truncation_symbol = "…/"
@@ -130,9 +133,32 @@ format = "[ $path ]($style)"
 disabled = true
 #style = "bg:surface0 fg:text"
 
+[custom.giturl]
+# disabled = true
+description = "Display symbol for remote Git server"
+command = """
+GIT_REMOTE=$(command git ls-remote --get-url 2> /dev/null)
+if [[ "$GIT_REMOTE" =~ "github" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "gitlab" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "bitbucket" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "git" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+else
+    GIT_REMOTE_SYMBOL=" "
+fi
+echo "$GIT_REMOTE_SYMBOL "
+"""
+when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
+format = "at $output"
+
 [git_branch]
-symbol = " "
-format =  ' [$symbol$branch(:$remote_branch)]($style)'
+symbol = "[](black) "
+# format =  ' [$symbol$branch(:$remote_branch)]($style)[]'
+style = "fg:lavender bg:black"
+format =  '  on [$symbol$branch]($style)[](black)'
 
 [git_status]
 format = ' [($all_status$ahead_behind )]($style)'
@@ -180,7 +206,7 @@ format = '[[ $symbol( $version) ]]($style)'
 
 [docker_context]
 symbol = ""
-format = '[[ $symbol( $context) ]]($style)'
+format = '[ $symbol( $context) ]($style)'
 
 
 [time]
