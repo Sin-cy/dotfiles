@@ -59,9 +59,9 @@ vim.keymap.set(
 )
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)
+-- vim.keymap.set("n", "<leader><leader>", function()
+--     vim.cmd("so")
+-- end)
 
 -- Hightlight when yanking
 vim.api.nvim_create_autocmd("TextYankPost", {
