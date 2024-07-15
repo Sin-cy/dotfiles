@@ -7,6 +7,7 @@ format = """
 $directory\
 ${custom.giturl}\
 $git_branch\
+$git_state\
 $git_status\
 $line_break\
 $character
