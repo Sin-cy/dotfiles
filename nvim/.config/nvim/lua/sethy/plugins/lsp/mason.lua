@@ -37,8 +37,7 @@ return {
                 "lua_ls",
                 "graphql",
                 "emmet_ls",
-                "prismals",
-                "pyright",
+                "emmet_language_server",
             },
         })
         mason_tool_installer.setup({
@@ -46,7 +45,6 @@ return {
                 "prettier", -- prettier formatter
                 "stylua", -- lua formatter
                 "isort", -- python formatter
-                "black", -- python formatter
                 "pylint",
                 "eslint_d",
             },
