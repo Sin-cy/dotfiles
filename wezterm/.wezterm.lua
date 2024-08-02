@@ -23,22 +23,33 @@ config.keys = {
         mods = "CMD",
         action = wezterm.action.DecreaseFontSize,
     },
+    {
+        key="LeftArrow",
+        mods="OPT",
+        action=wezterm.action{SendString="\x1bb"
+    }},
+    {
+        key="RightArrow",
+        mods="OPT",
+        action=wezterm.action{SendString="\x1bf"
+    }},
 }
 
 -- Keep adding configuration options here
 -- Adding custom color scheme config
 --
+config.color_scheme = "rose-pine"
 -- NOTE: cool night colorscheme by josean but my background
 config.colors = {
     background = "#1a1a1c",
-    foreground = "#CBE0F0",
-    cursor_bg = "#47FF9C",
-    cursor_border = "#47FF9C",
-    cursor_fg = "#011423",
-    -- selection_bg = "#033259",
-    selection_fg = "#CBE0F0",
-    ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
-    brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
+    -- foreground = "#CBE0F0",
+    -- cursor_bg = "#47FF9C",
+    -- cursor_border = "#47FF9C",
+    -- cursor_fg = "#011423",
+    -- -- selection_bg = "#033259",
+    -- selection_fg = "#CBE0F0",
+    -- ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
+    -- brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
 }
 
 return config
