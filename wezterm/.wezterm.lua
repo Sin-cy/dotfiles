@@ -2,14 +2,25 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
-config.font = wezterm.font("JetBrains Mono")
-config.font_size = 15
-config.automatically_reload_config = true
-config.enable_tab_bar = false
-config.window_decorations = "RESIZE"
-config.adjust_window_size_when_changing_font_size = false
+-- config.font = wezterm.font("JetBrains Mono")
+-- config.font_size = 15
+-- config.automatically_reload_config = true
+-- config.enable_tab_bar = false
+-- config.window_decorations = "RESIZE"
+-- config.adjust_window_size_when_changing_font_size = false
 -- config.window_background_opacity = 0.75
 -- config.macos_window_background_blur = 10
+config = {
+    font = wezterm.font("JetBrains Mono"),
+    font_size = 15,
+    automatically_reload_config = true,
+    enable_tab_bar = false,
+    window_decorations = "RESIZE",
+    adjust_window_size_when_changing_font_size = false,
+    window_padding = {
+        top = 30,
+    }
+}
 
 -- Key bindings for command-delete and option-delete
 config.keys = {
