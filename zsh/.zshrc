@@ -132,7 +132,8 @@ alias fman="compgen -c | fzf | xargs man"
 
 # Eza a better ls 
 # brew install eza
-alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
+# available no options : --no-filesize --no-time --no-permissions
+alias ls="eza --color=always --long --icons=always --no-user" 
 
 # aliases for git
 alias ga="git add ."

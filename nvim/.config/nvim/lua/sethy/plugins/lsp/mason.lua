@@ -32,10 +32,8 @@ return {
                 "cssls",
                 "tailwindcss",
                 "gopls",
-                "clangd",
                 "svelte",
                 "lua_ls",
-                "graphql",
                 "emmet_ls",
                 "emmet_language_server",
             },
@@ -46,7 +44,7 @@ return {
                 "stylua", -- lua formatter
                 "isort", -- python formatter
                 "pylint",
-                "eslint_d",
+                -- "eslint_d",
             },
         })
     end,
