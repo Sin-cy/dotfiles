@@ -140,10 +140,6 @@ alias ga="git add ."
 alias gs="git status -s"
 alias gc="(){git commit -m $1}"
 
-# logitech g hub fix
-alias ghub-kill="sudo kill \$(ps aux | grep lghub | grep -v grep | awk '{print \$2}');"
-alias ghub='open /Applications/lghub.app/Contents/MacOS/lghub_agent.app; open /Applications/lghub.app/Contents/MacOS/lghub_updater.app; open /Applications/lghub.app;'
-
 
 
 # Generated for envman. Do not edit.
