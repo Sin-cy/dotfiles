@@ -7,7 +7,6 @@ return {
     config = function()
         -- import mason
         local mason = require("mason")
-
         -- import mason-lspconfig
         local mason_lspconfig = require("mason-lspconfig")
 
@@ -27,23 +26,24 @@ return {
         mason_lspconfig.setup({
             -- list of servers for mason to install
             ensure_installed = {
+                "lua_ls",
                 "tsserver",
                 "html",
                 "cssls",
                 "tailwindcss",
                 "gopls",
-                "svelte",
-                "lua_ls",
                 "emmet_ls",
-                "emmet_language_server",
+                "emmet_language_server"
             },
         })
+
         mason_tool_installer.setup({
             ensure_installed = {
                 "prettier", -- prettier formatter
                 "stylua", -- lua formatter
                 "isort", -- python formatter
                 "pylint",
+                "clangd",
                 -- "eslint_d",
             },
         })

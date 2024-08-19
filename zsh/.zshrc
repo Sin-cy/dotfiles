@@ -9,7 +9,7 @@
 # Set colors to match iTerm2 Terminal Colors
 #export TERM=xterm-256color
 
-
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
 # NVM 
 export NVM_DIR="$HOME/.nvm"
