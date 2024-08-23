@@ -4,15 +4,20 @@ return {
     config = function()
         local conform = require("conform")
 
+        local prettier_config = {
+            "prettier",
+            args = { "--tab-width","4", "--no-config" }
+        }
+
         conform.setup({
             formatters_by_ft = {
-                javascript = { "prettier" },
+                javascript = prettier_config,
                 typescript = { "prettier" },
                 javascriptreact = { "prettier" },
                 typescriptreact = { "prettier" },
                 svelte = { "prettier" },
-                css = { "prettier" },
-                html = { "prettier" },
+                css = prettier_config,
+                html = prettier_config,
                 json = { "prettier" },
                 yaml = { "prettier" },
                 markdown = { "prettier" },
