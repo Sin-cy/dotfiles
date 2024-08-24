@@ -1,11 +1,11 @@
--- function ColorMyPencils(color)
--- 	color = color or "rose-pine" or "tokyonight"
--- 	vim.cmd.colorscheme(color)
---
--- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
---
--- end
+local function ColorMyPencils(color)
+	color = color or "rose-pine" or "tokyonight"
+	vim.cmd.colorscheme(color)
+
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
+end
 
 return {
     -- NOTE: Tokyo night
@@ -73,9 +73,8 @@ return {
                 dim_inactive_windows = false,
                 disable_background = true,
                 disable_nc_background = false,
-                disable_float_background = false,
+                disable_float_background = true,
                 extend_background_behind_borders = true,
-                
 
                 enable = {
                     terminal = true,
@@ -86,7 +85,7 @@ return {
                 styles = {
                     bold = true,
                     italic = false,
-                    transparency = false,
+                    transparency = true,
                 },
 
                 groups = {
@@ -123,10 +122,10 @@ return {
 
             -- NOTE: set this on the color you want to be persistent
             -- when quit and reopening nvim
-            vim.cmd("colorscheme rose-pine")
-            --
-            -- ColorMyPencils("rose-pine")
-            --
+            -- vim.cmd("colorscheme rose-pine")
+
+            ColorMyPencils("rose-pine")
+
 
         end
     },

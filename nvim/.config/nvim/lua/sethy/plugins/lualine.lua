@@ -6,46 +6,37 @@ return {
         local lazy_status = require("lazy.status") -- to configure lazy pending updates count
 
         local colors = {
-            blue = "#65D1FF",
-            green = "#3EFFDC",
-            violet = "#FF61EF",
-            yellow = "#FFDA7B",
-            red = "#FF4A4A",
-            fg = "#c3ccdc",
-            bg = "#112638",
-            inactive_bg = "#2c3043",
+            color3   = '#2c3043',
+            color6   = '#a1aab8',
+            color7   = '#82aaff',
+            color8   = '#ae81ff',
+            color0   = '#092236',
+            color1   = '#ff5874',
+            color2   = '#c3ccdc',
         }
 
         local my_lualine_theme = {
-            normal = {
-                a = { bg = colors.blue, fg = colors.bg, gui = "bold" },
-                b = { bg = colors.bg, fg = colors.fg },
-                c = { bg = colors.bg, fg = colors.fg },
-            },
-            insert = {
-                a = { bg = colors.green, fg = colors.bg, gui = "bold" },
-                b = { bg = colors.bg, fg = colors.fg },
-                c = { bg = colors.bg, fg = colors.fg },
-            },
-            visual = {
-                a = { bg = colors.violet, fg = colors.bg, gui = "bold" },
-                b = { bg = colors.bg, fg = colors.fg },
-                c = { bg = colors.bg, fg = colors.fg },
-            },
-            command = {
-                a = { bg = colors.yellow, fg = colors.bg, gui = "bold" },
-                b = { bg = colors.bg, fg = colors.fg },
-                c = { bg = colors.bg, fg = colors.fg },
-            },
             replace = {
-                a = { bg = colors.red, fg = colors.bg, gui = "bold" },
-                b = { bg = colors.bg, fg = colors.fg },
-                c = { bg = colors.bg, fg = colors.fg },
+                a = { fg = colors.color0, bg = colors.color1, gui = 'bold' },
+                b = { fg = colors.color2, bg = colors.color3 },
             },
             inactive = {
-                a = { bg = colors.inactive_bg, fg = colors.semilightgray, gui = "bold" },
-                b = { bg = colors.inactive_bg, fg = colors.semilightgray },
-                c = { bg = colors.inactive_bg, fg = colors.semilightgray },
+                a = { fg = colors.color6, bg = colors.color3, gui = 'bold' },
+                b = { fg = colors.color6, bg = colors.color3 },
+                c = { fg = colors.color6, bg = colors.color3 },
+            },
+            normal = {
+                a = { fg = colors.color0, bg = colors.color7, gui = 'bold' },
+                b = { fg = colors.color2, bg = colors.color3 },
+                c = { fg = colors.color2, bg = colors.color3 },
+            },
+            visual = {
+                a = { fg = colors.color0, bg = colors.color8, gui = 'bold' },
+                b = { fg = colors.color2, bg = colors.color3 },
+            },
+            insert = {
+                a = { fg = colors.color0, bg = colors.color2, gui = 'bold' },
+                b = { fg = colors.color2, bg = colors.color3 },
             },
         }
 
@@ -67,7 +58,7 @@ return {
                     { "filetype" },
                 },
             },
-     })
+        })
     end,
 
 }
