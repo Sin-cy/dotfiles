@@ -21,6 +21,7 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
 vim.opt.incsearch = true
+vim.opt.inccommand = "split"
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -32,7 +33,7 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 
 -- backspace
-vim.opt.backspace = "indent,eol,start"
+-- vim.opt.backspace = {"start", "eol" , "indent"}
 
 -- clipboard
 
