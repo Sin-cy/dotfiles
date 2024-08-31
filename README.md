@@ -3,9 +3,13 @@
 This directory contains the dotfiles for my system
 ## Repository and brew installations needed
 
-`brew install eza fzf fd stow bat`
+`brew install eza fzf fd stow bat zoxide`
 `git clone https://github.com/junegunn/fzf-git.sh.git`
 
+### for Tmux
+`brew install tmux`
+tmux plugins manager
+`git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
 ## Requirements 
 
@@ -49,7 +53,7 @@ brew install stow
 ```
 
 
-## Installation of this repo
+## Installation of this repo using stow
 
 First, check out dotfiles repo in your $HOME directory using git 
 
