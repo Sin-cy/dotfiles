@@ -1,4 +1,3 @@
-
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
@@ -11,18 +10,12 @@ config.adjust_window_size_when_changing_font_size = false
 config.harfbuzz_features = { 'calt=0' }
 -- config.window_background_opacity = 0.75
 -- config.macos_window_background_blur = 10
---
--- config = {
---     font = wezterm.font("JetBrains Mono"),
---     font_size = 15,
---     automatically_reload_config = true,
---     enable_tab_bar = false,
---     window_decorations = "RESIZE",
---     adjust_window_size_when_changing_font_size = false,
---     window_padding = {
---         top = 30,
---     }
--- }
+config.window_padding = {
+  left = 20,
+  right = 15,
+  top = 30,
+  bottom = 20,
+}
 
 -- Key bindings for zoom and delete word
 config.keys = {
@@ -48,10 +41,10 @@ config.keys = {
     },
 }
 
--- Keep adding configuration options here
--- Adding custom color scheme config
---
+-- Configs
+-- Add Custom Color Scheme
 config.color_scheme = "rose-pine"
+
 config.colors = {
     background = "#1a1a1c",
 }
