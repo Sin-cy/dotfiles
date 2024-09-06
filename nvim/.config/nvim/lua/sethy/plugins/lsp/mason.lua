@@ -42,6 +42,7 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "tsserver",
+                -- "ts_ls",
                 "html",
                 "cssls",
                 "tailwindcss",
@@ -70,6 +71,10 @@ return {
         mason_lspconfig.setup_handlers({
             -- default handler for installed servers
             function(server_name)
+                if server_name == "tsserver" then
+                    server_name = "ts_ls"
+                end
+
                 lspconfig[server_name].setup({
                     capabilities = capabilities,
                 })
