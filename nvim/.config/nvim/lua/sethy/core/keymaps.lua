@@ -9,20 +9,19 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
---
--- vim.keymap.set("n", "<leader>vwm", function()
---     require("vim-with-me").StartVimWithMe()
--- end)
--- vim.keymap.set("n", "<leader>svwm", function()
---     require("vim-with-me").StopVimWithMe()
--- end)
---
---
+
+vim.keymap.set("v", "<", "<gv", {noremap = true , silent = true})
+vim.keymap.set("v", ">", ">gv", {noremap = true , silent = true})
+
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
+-- remember yanked 
+-- vim.keymap.set("v", "p", '"_dp', {noremap = true , silent = true} )
+
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+
 -- Copies or Yank to system clipboard
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank to system clipboard" })
 
@@ -34,6 +33,9 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+
+-- prevent x delete from registering when next paste
+vim.keymap.set("n", "x", '"_x', {noremap = true , silent = true} )
 
 --vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 --vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -53,11 +55,6 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
 --)
 
-vim.keymap.set(
-    "n",
-    "<leader>vpp",
-    "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>"
-)
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 -- vim.keymap.set("n", "<leader><leader>", function()
@@ -76,8 +73,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
---josean useful keymaps
-
+-- clear search highlights
 vim.keymap.set(
     "n",
     "<leader>nh",
@@ -91,7 +87,7 @@ vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>") --go to next
 vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>") --go to pre
 vim.keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>") --open current tab in new tab
 
---josean window split management
+--split management
 vim.keymap.set(
     "n",
     "<leader>sv",

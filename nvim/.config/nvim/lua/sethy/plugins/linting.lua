@@ -8,9 +8,9 @@ return {
 
         lint.linters_by_ft = {
             javascript = { "eslint" },
-            typescript = { "eslint_d" },
-            javascriptreact = { "eslint_d" },
-            typescriptreact = { "eslint_d" },
+            typescript = { "eslint" },
+            javascriptreact = { "eslint" },
+            typescriptreact = { "eslint" },
             svelte = { "eslint_d" },
             -- python = { "pylint" },
         }
