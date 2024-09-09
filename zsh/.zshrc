@@ -139,7 +139,11 @@ alias ls="eza --color=always --long --icons=always --no-user"
 # aliases for git
 alias ga="git add ."
 alias gs="git status -s"
-alias gc="(){git commit -m $1}"
+alias gc='git commit -m'
+alias gplog='git log --oneline --graph --all'
+
+#lazygit
+alias lg="lazygit"
 
 
 
