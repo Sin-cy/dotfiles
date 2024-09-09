@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.g.maplocalleader = " "
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -10,8 +10,13 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("v", "<", "<gv", {noremap = true , silent = true})
-vim.keymap.set("v", ">", ">gv", {noremap = true , silent = true})
+local opts = { noremap = true , silent = true }
+
+vim.keymap.set("v", "<", "<gv", opts )
+vim.keymap.set("v", ">", ">gv", opts )
+
+-- save file easier (experimenting)
+vim.keymap.set("n", "<leader>w", "<cmd>w<CR><esc>", opts )
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -93,17 +98,21 @@ vim.keymap.set(
     "<leader>sv",
     "<C-w>v",
     { desc = "Split window vertically" }
-) -- split window vertically
+)
+-- split window vertically
 vim.keymap.set(
     "n",
     "<leader>sh",
     "<C-w>s",
     { desc = "Split window horizontally" }
-) -- split window horizontally
+)
+-- split window horizontally
 vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
+
+-- close current split window
 vim.keymap.set(
     "n",
     "<leader>sx",
     "<cmd>close<CR>",
     { desc = "Close current split" }
-) -- close current split window
+)

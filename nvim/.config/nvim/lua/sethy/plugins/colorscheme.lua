@@ -67,13 +67,17 @@ return {
         "rose-pine/neovim",
         name = "rose-pine",
         config = function ()
+
+            local transparent = false
+
             require("rose-pine").setup({
                 variant = "auto", -- auto, main, moon, or dawn
                 dark_variant = "main", -- main, moon, or dawn
+                transparent = transparent,
                 dim_inactive_windows = false,
                 disable_background = true,
                 disable_nc_background = false,
-                disable_float_background = true,
+                disable_float_background = false,
                 extend_background_behind_borders = true,
 
                 enable = {
