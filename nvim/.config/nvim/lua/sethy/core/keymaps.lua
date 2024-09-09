@@ -10,19 +10,19 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-local opts = { noremap = true , silent = true }
+local opts = { noremap = true, silent = true }
 
-vim.keymap.set("v", "<", "<gv", opts )
-vim.keymap.set("v", ">", ">gv", opts )
+vim.keymap.set("v", "<", "<gv", opts)
+vim.keymap.set("v", ">", ">gv", opts)
 
 -- save file easier (experimenting)
-vim.keymap.set("n", "<leader>w", "<cmd>w<CR><esc>", opts )
+vim.keymap.set("n", "<leader>w", "<cmd>w<CR><esc>", opts)
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
--- remember yanked 
--- vim.keymap.set("v", "p", '"_dp', {noremap = true , silent = true} )
+-- remember yanked
+vim.keymap.set("v", "p", '"_dp', { noremap = true, silent = true })
 
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
@@ -40,18 +40,14 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- prevent x delete from registering when next paste
-vim.keymap.set("n", "x", '"_x', {noremap = true , silent = true} )
+vim.keymap.set("n", "x", '"_x', { noremap = true, silent = true })
 
 --vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 --vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-vim.keymap.set(
-    "n",
-    "<leader>s",
-    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]
-)
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 --vim.keymap.set(
@@ -68,23 +64,15 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 -- Hightlight when yanking
 vim.api.nvim_create_autocmd("TextYankPost", {
-    desc = "Highlight when yanking (copying) text",
-    group = vim.api.nvim_create_augroup(
-        "kickstart-highlight-yank",
-        { clear = true }
-    ),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
 
 -- clear search highlights
-vim.keymap.set(
-    "n",
-    "<leader>nh",
-    ":nohl<CR>",
-    { desc = "Clear Search Highlights" }
-)
+vim.keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear Search Highlights" })
 
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>") --open new tab
 vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>") --close current tab
@@ -93,26 +81,11 @@ vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>") --go to pre
 vim.keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>") --open current tab in new tab
 
 --split management
-vim.keymap.set(
-    "n",
-    "<leader>sv",
-    "<C-w>v",
-    { desc = "Split window vertically" }
-)
+vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 -- split window vertically
-vim.keymap.set(
-    "n",
-    "<leader>sh",
-    "<C-w>s",
-    { desc = "Split window horizontally" }
-)
+vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 -- split window horizontally
 vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 
 -- close current split window
-vim.keymap.set(
-    "n",
-    "<leader>sx",
-    "<cmd>close<CR>",
-    { desc = "Close current split" }
-)
+vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
