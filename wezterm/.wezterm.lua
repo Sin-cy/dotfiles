@@ -47,7 +47,9 @@ config.keys = {
 config.color_scheme = "rose-pine"
 
 config.colors = {
-	background = "#1a1a1c",
+	-- background = "#0D0D0D",
+	background = "#181A21",
+	-- background = "#1a1a1f",
 	-- background = "#191919",
 }
 
