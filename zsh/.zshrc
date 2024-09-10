@@ -137,6 +137,7 @@ alias fman="compgen -c | fzf | xargs man"
 alias ls="eza --color=always --long --icons=always --no-user" 
 
 # aliases for git
+alias gt="git"
 alias ga="git add ."
 alias gs="git status -s"
 alias gc='git commit -m'
