@@ -47,10 +47,10 @@ config.keys = {
 config.color_scheme = "rose-pine"
 
 config.colors = {
-	-- background = "#12151B",
+	-- background = "#12151B", -- fav
+	background = "#1a1a1e", -- fav
 	-- background = "#181A21",
 	-- background = "#0D0D0D",
-	background = "#1a1a1e",
 	-- background = "#202124",
 }
 
