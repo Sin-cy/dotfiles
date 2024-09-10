@@ -68,9 +68,9 @@ return {
 
 				variant = "main", -- auto, main, moon, or dawn
 				dark_variant = "main", -- main, moon, or dawn
-				dim_inactive_windows = false,
+				dim_inactive_windows = true,
 				disable_background = true,
-				disable_nc_background = false,
+				disable_nc_background = true,
 				disable_float_background = false,
 				extend_background_behind_borders = false,
 
@@ -83,7 +83,7 @@ return {
 				styles = {
 					bold = true,
 					italic = false,
-					transparency = true,
+					transparency = false,
 				},
 
 				groups = {
