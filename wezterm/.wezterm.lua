@@ -8,14 +8,14 @@ config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 config.adjust_window_size_when_changing_font_size = false
 config.harfbuzz_features = { "calt=0" }
-config.window_background_opacity = 0.75
-config.macos_window_background_blur = 50
+-- config.window_background_opacity = 0.75
+-- config.macos_window_background_blur = 50
 
 config.window_padding = {
-	left = 10,
-	right = 5,
+	left = 5,
+	right = 0,
 	top = 30,
-	bottom = 10,
+	bottom = 0,
 }
 
 -- Key bindings for zoom and delete word
