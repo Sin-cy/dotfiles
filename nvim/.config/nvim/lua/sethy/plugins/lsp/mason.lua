@@ -60,7 +60,7 @@ return {
 				"isort", -- python formatter
 				"pylint",
 				"clangd",
-				"eslint_d",
+				-- "eslint_d",
 			},
 		})
 
