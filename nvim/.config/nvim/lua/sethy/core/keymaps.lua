@@ -15,9 +15,6 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 
--- save file easier (experimenting)
-vim.keymap.set("n", "<leader>w", "<cmd>w<CR><esc>", opts)
-
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
