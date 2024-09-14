@@ -33,9 +33,7 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 
 -- backspace
--- vim.opt.backspace = {"start", "eol" , "indent"}
-
--- clipboard
+vim.opt.backspace = { "start", "eol", "indent" }
 
 --split windows
 vim.opt.splitright = true --split vertical window to the right

@@ -15,18 +15,19 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 
--- greatest remap ever
+-- (the how it should be paste)
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- remember yanked
-vim.keymap.set("v", "p", '"_dp', { noremap = true, silent = true })
+vim.keymap.set("v", "p", '"_dp', opts)
 
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 
 -- Copies or Yank to system clipboard
-vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank to system clipboard" })
+vim.keymap.set("n", "<leader>Y", [["+Y]], opts)
 
+-- leader d delete wont remember as yanked/clipboard when repasting
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- This is going to get me cancelled
@@ -47,19 +48,7 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
---vim.keymap.set(
--- "n",
--- "<leader>ee",
--- "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
---)
-
-vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
-
--- vim.keymap.set("n", "<leader><leader>", function()
---     vim.cmd("so")
--- end)
-
--- Hightlight when yanking
+-- Hightlight yanking
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
@@ -83,6 +72,5 @@ vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }
 vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 -- split window horizontally
 vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
-
 -- close current split window
 vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
