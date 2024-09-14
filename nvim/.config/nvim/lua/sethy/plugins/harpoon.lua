@@ -87,8 +87,8 @@ return {
 		end)
 
 		-- Telescope inside Harpoon Window
-		vim.keymap.set("n", "<C-f>", function()
-			toggle_telescope(harpoon:list())
-		end)
+		-- vim.keymap.set("n", "<C-f>", function()
+		-- 	toggle_telescope(harpoon:list())
+		-- end)
 	end,
 }
