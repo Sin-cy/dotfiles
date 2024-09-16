@@ -21,7 +21,7 @@ return {
 			},
 		})
 
-		--
+		-- NOTE: Experimenting
 		-- Telescope into Harpoon function
 		-- comment this function if you don't like it
 		local function toggle_telescope(harpoon_files)

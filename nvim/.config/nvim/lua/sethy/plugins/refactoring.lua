@@ -1,6 +1,6 @@
 return {
-    -- Incremental rename
-    -- Disabled this, went back to lspconfig incremental rename
+	-- Incremental rename
+	-- Disabled this, if going back to lspconfig incremental rename
 	{
 		"smjonas/inc-rename.nvim",
 		cmd = "IncRename",
