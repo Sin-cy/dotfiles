@@ -7,7 +7,7 @@ local function ColorMyPencils(color)
 end
 
 return {
-	-- NOTE: Tokyo night
+	-- NOTE: Tokyo night borrowed custom theme from Josean
 	{
 		"folke/tokyonight.nvim",
 		name = "folkeTokyonight",
