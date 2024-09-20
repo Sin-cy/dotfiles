@@ -82,13 +82,17 @@ return {
 				styles = {
 					bold = true,
 					italic = false,
-					transparency = true,
+					transparency = false,
 				},
+
+                highlight_groups = {
+                    ColorColumn = { bg = '#1C1C21' },
+                },
 
 				groups = {
 					border = "muted",
 					link = "iris",
-					panel = "surface",
+					-- panel = "surface",
 
 					error = "love",
 					hint = "iris",
