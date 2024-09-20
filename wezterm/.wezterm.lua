@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
-config.force_reverse_video_cursor = true
+-- config.force_reverse_video_cursor = true
 config.font_size = 16
 config.font = wezterm.font("JetBrainsMonoNL Nerd Font")
 config.automatically_reload_config = true
@@ -46,13 +46,15 @@ config.keys = {
 -- Configs
 -- Add Custom Color Scheme
 config.color_scheme = "rose-pine"
-
 config.colors = {
 	-- background = "#12151B", -- fav
 	background = "#1a1a1e", -- fav
 	-- background = "#181A21",
 	-- background = "#0D0D0D",
 	-- background = "#202124",
+    cursor_bg = "#9B96B5",
+	cursor_fg = "#1a1a1e",
+	cursor_border = "#9B96B5",
 }
 
 return config
