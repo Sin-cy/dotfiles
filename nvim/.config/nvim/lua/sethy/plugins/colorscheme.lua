@@ -69,8 +69,9 @@ return {
 				dim_inactive_windows = false,
 				disable_background = true,
 				disable_nc_background = false,
-				disable_float_background = true,
+				disable_float_background = false,
 				extend_background_behind_borders = false,
+
 
 				enable = {
 					terminal = true,
