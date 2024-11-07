@@ -1436,12 +1436,12 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast://extensions/raycast/floating-notes/toggle-floating-notes-window",
+                                "description": "Open raycast://extensions/raycast/raycast-notes/raycast-notes",
                                 "from": {
                                     "key_code": "n",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open raycast://extensions/raycast/floating-notes/toggle-floating-notes-window" }],
+                                "to": [{ "shell_command": "open raycast://extensions/raycast/raycast-notes/raycast-notes" }],
                                 "type": "basic"
                             },
                             {
