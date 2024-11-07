@@ -9,6 +9,9 @@ config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 config.adjust_window_size_when_changing_font_size = false
 config.harfbuzz_features = { "calt=0" }
+config.max_fps = 120
+config.window_close_confirmation = "NeverPrompt"
+config.enable_kitty_graphics = true
 -- config.window_background_opacity = 0.75
 -- config.macos_window_background_blur = 50
 
@@ -48,10 +51,9 @@ config.keys = {
 config.color_scheme = "rose-pine"
 config.colors = {
 	-- background = "#12151B", -- fav
+    -- background = "#0D0D0D", -- darker gray
+    background = "#000", -- pure black
 	-- background = "#1a1a1e", -- fav
-    background = "#0D0D0D",
-	-- background = "#181A21",
-	-- background = "#202124",
     cursor_bg = "#9B96B5",
 	cursor_fg = "#1a1a1e",
 	cursor_border = "#9B96B5",
