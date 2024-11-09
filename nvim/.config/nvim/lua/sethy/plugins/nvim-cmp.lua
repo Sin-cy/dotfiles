@@ -19,16 +19,11 @@ return {
     },
     config = function()
         local cmp = require("cmp")
-
         local luasnip = require("luasnip")
-
         local lspkind = require("lspkind")
-
 
         -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
         require("luasnip.loaders.from_vscode").lazy_load()
-
-        
 
         cmp.setup({
             completion = {
@@ -48,7 +43,6 @@ return {
                 ["<C-e>"] = cmp.mapping.abort(), -- close completion window
                 ["<CR>"] = cmp.mapping.confirm({ select = false }),
             }),
-            
             -- sources for autocompletion
             sources = cmp.config.sources({
                 { name = "nvim_lsp"},
@@ -67,9 +61,4 @@ return {
             },
         })
     end,
-
-
-
-
-
 }
