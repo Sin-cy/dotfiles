@@ -3,6 +3,7 @@ return {
 	event = "BufReadPre",
 	opts = {},
 
+    -- FIXME: ajdaksda
 	config = function()
 		local hipatterns = require("mini.hipatterns")
 		hipatterns.setup({
