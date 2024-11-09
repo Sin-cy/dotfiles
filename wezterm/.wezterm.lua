@@ -10,8 +10,8 @@ config.window_decorations = "RESIZE"
 config.adjust_window_size_when_changing_font_size = false
 config.harfbuzz_features = { "calt=0" }
 config.max_fps = 120
-config.window_close_confirmation = "NeverPrompt"
 config.enable_kitty_graphics = true
+config.window_close_confirmation = "NeverPrompt"
 -- config.window_background_opacity = 0.75
 -- config.macos_window_background_blur = 50
 
