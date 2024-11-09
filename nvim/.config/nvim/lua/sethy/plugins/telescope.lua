@@ -6,6 +6,7 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-tree/nvim-web-devicons",
 		"folke/todo-comments.nvim",
+        'andrew-george/telescope-themes',
 	},
 	config = function()
 		local telescope = require("telescope")
@@ -13,15 +14,20 @@ return {
 		local transform_mod = require("telescope.actions.mt").transform_mod
 
 		local trouble = require("trouble")
-		local trouble_telescope = require("trouble.providers.telescope")
+		-- local trouble_telescope = require("trouble.providers.telescope")
 
 		local builtin = require("telescope.builtin")
 		-- or create your custom action
 		local custom_actions = transform_mod({
-			open_trouble_qflist = function(prompt_bufnr)
+			open_trouble_qflist = function()
 				trouble.toggle("quickfix")
 			end,
 		})
+
+        -- NOTE: Telescope Extensions
+        telescope.load_extension("fzf")
+        -- Telescope themes by Andrew George
+        telescope.load_extension('themes')
 
 		telescope.setup({
 			defaults = {
@@ -35,12 +41,22 @@ return {
 					},
 				},
 			},
+            extensions = {
+                themes = {
+                    -- (boolean) -> show/hide previewer window
+                    enable_previewer = true,
+                    -- (boolean) -> enable/disable live preview
+                    enable_live_preview = false,
+                    persist = {
+                        enabled = true,
+                        path = vim.fn.stdpath("config") .. "/lua/colorscheme.lua"
+                    }
+                },
+            }
 		})
 
-		telescope.load_extension("fzf")
 
-		-- set keymaps
-
+		-- NOTE: set keymaps
 		vim.keymap.set("n", "<leader>pf", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy find files in cwd" })
 		vim.keymap.set("n", "<leader>pr", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
 		vim.keymap.set("n", "<leader>ps", "<cmd>Telescope live_grep<CR>", { desc = "Find string in cwd" })
@@ -64,5 +80,8 @@ return {
 		end)
 		--Primeagen Help : find help for a command or for something
 		vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
+
+        -- Switch Themes with Telescope
+        vim.keymap.set("n", "<leader>th", ":Telescope themes<CR>", {noremap = true, silent = true, desc = "Theme Switcher"})
 	end,
 }

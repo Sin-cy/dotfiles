@@ -10,7 +10,7 @@ return {
 	{
 		"folke/tokyonight.nvim",
 		name = "folkeTokyonight",
-		priority = 1000,
+		-- priority = 1000,
 		config = function()
 			local transparent = false
 
@@ -60,7 +60,7 @@ return {
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
-		priority = 1000,
+		-- priority = 1000,
 		config = function()
 			require("rose-pine").setup({
 
@@ -125,11 +125,11 @@ return {
 			-- when quit and reopening nvim
 			-- vim.cmd("colorscheme rose-pine")
 
-			ColorMyPencils("rose-pine")
+			-- ColorMyPencils("rose-pine")
 		end,
 	},
     { "ellisonleao/gruvbox.nvim",
-        priority = 1000 ,
+        -- priority = 1000 ,
         config = function()
             require("gruvbox").setup({
                 terminal_colors = true, -- add neovim terminal colors
