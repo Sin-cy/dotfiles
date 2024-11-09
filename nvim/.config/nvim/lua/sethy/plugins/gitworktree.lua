@@ -12,7 +12,7 @@ return {
 
 		require("telescope").load_extension("git_worktree")
 
-		-- by default
+		-- HACK: by default
 		-- <Enter> - switches to that worktree
 		-- <c-d> - deletes that worktree
 		-- <c-f> - toggles forcing of the next deletion
