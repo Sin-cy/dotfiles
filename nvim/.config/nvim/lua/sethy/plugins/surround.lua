@@ -4,7 +4,8 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	version = "*", -- Use for stability; omit to use `main` branch for the latest features
 	config = true,
-    --
+
+    -- NOTE: Mini Surround Plugin 
     -- "echasnovski/mini.surround",
     -- opts = {
     --     -- Add custom surroundings to be used on top of builtin ones. For more
