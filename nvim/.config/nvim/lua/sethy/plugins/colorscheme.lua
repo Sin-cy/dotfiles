@@ -12,7 +12,7 @@ return {
 		name = "folkeTokyonight",
 		-- priority = 1000,
 		config = function()
-			local transparent = false
+			local transparent = true
 
 			local bg = "#011628"
 			local bg_dark = "#011423"
@@ -34,7 +34,7 @@ return {
 					floats = transparent and "transparent" or "dark",
 				},
 				on_colors = function(colors)
-					colors.bg = bg
+					colors.bg = transparent and colors.none or bg
 					colors.bg_dark = transparent and colors.none or bg_dark
 					colors.bg_float = transparent and colors.none or bg_dark
 					colors.bg_highlight = bg_highlight
