@@ -25,8 +25,7 @@ return {
 
         -- NOTE: Telescope Extensions
         telescope.load_extension("fzf")
-        -- Telescope themes by Andrew George
-        telescope.load_extension('themes')
+        telescope.load_extension('themes') -- Telescope themes by Andrew George
 
 		telescope.setup({
 			defaults = {
@@ -39,6 +38,7 @@ return {
 					},
 				},
 			},
+            -- config for telescope themes
             extensions = {
                 themes = {
                     -- (boolean) -> show/hide previewer window
@@ -53,7 +53,6 @@ return {
             }
 		})
 
-
 		-- NOTE: set keymaps
 		vim.keymap.set("n", "<leader>pf", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy find files in cwd" })
 		vim.keymap.set("n", "<leader>pr", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
@@ -64,9 +63,8 @@ return {
 			"<cmd>Telescope grep_string<CR>",
 			{ desc = "Find string under cursor in cwd" }
 		)
-        -- Find all Hipattern comment tags in a list
+        -- Find all Hipattern comment tags in telescope
 		vim.keymap.set("n", "<leader>pt", "<cmd>TodoTelescope<CR>", { desc = "Find all comment tags in current dir" })
-
 		-- Find everywhere in my project where I used the word where the cursor is at
 		vim.keymap.set("n", "<leader>pws", function()
 			local word = vim.fn.expand("<cword>")
@@ -79,7 +77,6 @@ return {
 		end)
 		-- find help for a command or for something
 		vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
-
         -- Switch Themes with Telescope
         vim.keymap.set("n", "<leader>th", ":Telescope themes<CR>", {noremap = true, silent = true, desc = "Theme Switcher"})
 	end,

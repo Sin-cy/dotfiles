@@ -8,22 +8,16 @@ return {
 		"neovim/nvim-lspconfig",
 	},
 	config = function()
-		-- import mason
+		-- import mason and mason_lspconfig
 		local mason = require("mason")
-		-- import mason-lspconfig
 		local mason_lspconfig = require("mason-lspconfig")
-
 		local mason_tool_installer = require("mason-tool-installer")
 
 		-- NOTE: Moved from lspconfig.lua
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
-
-		-- import cmp-nvim-lsp plugin
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
-		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = cmp_nvim_lsp.default_capabilities()
+		local cmp_nvim_lsp = require("cmp_nvim_lsp") -- import cmp-nvim-lsp plugin
+		local capabilities = cmp_nvim_lsp.default_capabilities() -- used to enable autocompletion (assign to every lsp server config)
 
 		-- enable mason and configure icons
 		mason.setup({
@@ -37,7 +31,7 @@ return {
 		})
 
 		mason_lspconfig.setup({
-			-- list of servers for mason to install
+			-- servers for mason to install
 			ensure_installed = {
 				"lua_ls",
 				"ts_ls",
@@ -49,7 +43,7 @@ return {
 				"emmet_language_server",
 				"eslint",
 			},
-			--auto install configured servers (with lspconfig)
+			-- auto install configured servers (with lspconfig)
 			automatic_installation = true,
 		})
 

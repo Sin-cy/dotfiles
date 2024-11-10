@@ -21,7 +21,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 -- remember yanked
 vim.keymap.set("v", "p", '"_dp', opts)
 
--- next greatest remap ever : asbjornHaland
+-- Leader yy will not yank to clipboard by asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 
 -- Copies or Yank to system clipboard
@@ -39,12 +39,6 @@ vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- prevent x delete from registering when next paste
 vim.keymap.set("n", "x", '"_x', opts)
-
--- using Trouble.nvim atm
---vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
---vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
--- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
--- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
