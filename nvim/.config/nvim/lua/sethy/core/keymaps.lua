@@ -32,10 +32,10 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- ctrl c as escape cuz Im lazy to reach up to the esc key
 vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- prevent x delete from registering when next paste
 vim.keymap.set("n", "x", '"_x', opts)
@@ -55,6 +55,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- clear search highlights
 vim.keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear Search Highlights" })
 
+-- tab stuff
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>") --open new tab
 vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>") --close current tab
 vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>") --go to next

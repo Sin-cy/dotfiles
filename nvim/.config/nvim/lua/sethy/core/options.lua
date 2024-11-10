@@ -10,7 +10,6 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
-
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
@@ -40,14 +39,12 @@ vim.opt.splitright = true --split vertical window to the right
 vim.opt.splitbelow = true --split horizontal window to the bottom
 
 vim.opt.isfname:append("@-@")
-
 vim.opt.updatetime = 50
-
 vim.opt.colorcolumn = "80"
+
 -- clipboard
 vim.opt.clipboard:append("unnamedplus") --use system clipboard as default
-
--- Enable mouse mode, can be useful for resizing splits for example !
-vim.opt.mouse = "a"
--- Highlight the word on search
 vim.opt.hlsearch = false
+
+-- for easy mouse resizing, just incase
+vim.opt.mouse = "a"
