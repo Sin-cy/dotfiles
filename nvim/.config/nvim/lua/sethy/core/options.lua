@@ -44,7 +44,7 @@ vim.opt.colorcolumn = "80"
 
 -- clipboard
 vim.opt.clipboard:append("unnamedplus") --use system clipboard as default
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 
 -- for easy mouse resizing, just incase
 vim.opt.mouse = "a"

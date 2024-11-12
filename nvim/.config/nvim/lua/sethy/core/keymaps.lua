@@ -32,6 +32,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- ctrl c as escape cuz Im lazy to reach up to the esc key
 vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("n", "<C-c>", ":nohl<CR>", { desc = "Clear search hl",  silent = true })
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "Q", "<nop>")
@@ -51,9 +52,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
-
--- clear search highlights
-vim.keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear Search Highlights" })
 
 -- tab stuff
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>") --open new tab
