@@ -11,6 +11,7 @@ return {
             view = {
                 width = 35,
                 relativenumber = true,
+                side = "right",
             },
             -- change folder arrow icons
             renderer = {
@@ -49,7 +50,7 @@ return {
 				-- vim.cmd("NvimTreeFocus")
     --     end
 
-        -- set keymaps
+        -- keymaps
         local keymap = vim.keymap -- for conciseness
 
         keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
