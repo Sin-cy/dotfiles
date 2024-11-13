@@ -12,28 +12,28 @@ config.harfbuzz_features = { "calt=0" }
 config.max_fps = 120
 config.enable_kitty_graphics = true
 config.window_close_confirmation = "NeverPrompt"
--- config.window_background_opacity = 0.75
--- config.macos_window_background_blur = 50
+config.macos_window_background_blur = 30
+config.window_background_opacity = 0.75
 
 config.window_padding = {
-	left = 5,
+	left = 1,
 	right = 0,
-	top = 30,
-	bottom = 0,
+	top = 10,
+	bottom = 5,
 }
 
 -- Key bindings for zoom and delete word
 config.keys = {
-	{
-		key = "+",
-		mods = "CMD",
-		action = wezterm.action.IncreaseFontSize,
-	},
-	{
-		key = "-",
-		mods = "CMD",
-		action = wezterm.action.DecreaseFontSize,
-	},
+	-- {
+	-- 	key = "+",
+	-- 	mods = "CMD",
+	-- 	action = wezterm.action.IncreaseFontSize,
+	-- },
+	-- {
+	-- 	key = "-",
+	-- 	mods = "CMD",
+	-- 	action = wezterm.action.DecreaseFontSize,
+	-- },
 	{
 		key = "LeftArrow",
 		mods = "OPT",
