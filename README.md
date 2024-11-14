@@ -4,14 +4,27 @@ This directory contains the dotfiles for my mac system which probably won't work
 
 ## Repository and brew installations needed
 
-`brew install eza fzf fd stow bat zoxide`
-`git clone https://github.com/junegunn/fzf-git.sh.git`
+### Install Homebrew
 
-### for Tmux
+-   Install homebrew
+    `curl -fsSL -o install.sh https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh`
 
-`brew install tmux`
+-   Execute the script with the bash command
+    `/bin/bash install.sh`
+
+Enter your password and proceed yes to confirm the installation if it prompts you to
+
+
+### Homebrew extras required
+- `brew install eza fzf fd stow bat zoxide`
+#### fzf 
+- `git clone https://github.com/junegunn/fzf-git.sh.git`
+
+### Tmux
+Installation
+- `brew install tmux`
 tmux plugins manager
-`git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+- `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
 ## Requirements
 
@@ -23,27 +36,24 @@ If not already installed in the home directory
 
 -   Check this by running `git --version` in the shell to see if the command is available
 -   If not, it will most likely prompt you to install it but make sure Xcode Command Line tools is installed.
+
+- (My Default) Manually Install git with Homebrew `brew install git`
+- brew installs git on mac at `/usr/local/bin/git`
+
 -   Install Xcode usign `xcode-select --install`
+-   xcode installs git at `/usr/bin/git`
+
+~
 
 ```
 git
 ```
 
-#### Installing Homebrew
-
--   Install homebrew
-    `curl -fsSL -o install.sh https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh`
-
--   Execute the script with the bash command
-    `/bin/bash install.sh`
-
-Enter your password and proceed yes to confirm the installation
-
 #### With using GNU Stow
 
--   already has a .zshrc ready to go
+-   already have .zshrc file ready to go
 
--   If not ,then just to make sure this path is added to .zshrc if not already added
+-   If not ,then just to make sure this path below is added to .zshrc if not already added
 
 ```
 # Add Homebrew's executable directory to the front of the PATH in .zshrc
