@@ -9,7 +9,6 @@
 # Set colors to match iTerm2 Terminal Colors
 #export TERM=xterm-256color
 
-export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
 # NVM 
@@ -117,6 +116,18 @@ export LANG=en_US.UTF-8
 # Console Ninja
 PATH=~/.console-ninja/.bin:$PATH
 
+# Function to search up history files, select and open to edit in nvim
+lofn() {
+  local files=($(nvim -u NONE --headless +'lua io.write(table.concat(vim.v.oldfiles, "\n") .. "\n")' +qa | \
+    grep -v '\[.*\]' | \
+    fzf --multi \
+      --preview 'bat --style=numbers --color=always --line-range=:500 {}' \
+      --preview-window=right:50%:wrap \
+      --height=65% \
+      --layout=reverse))
+
+  [[ ${#files[@]} -gt 0 ]] && nvim "${files[@]}"
+}
 
 
 # These alias need to have the same exact space as written here
