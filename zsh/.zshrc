@@ -58,13 +58,6 @@ export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git
 export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --color=hl:#2dd4bf"
 export FZF_TMUX_OPTS=" -p80%,70%"
 
-_fzf_compgen_path() {
-    fd --hidden --exclude .git . "$1"
-}
-
-_fzf_compgen_dir() {
-    fd --type=d --hidden --exclude .git . "$1"
-}
 
 # FZF with git right in the shell
 # Keymaps for this is available in fzf-git.sh github repo
@@ -73,6 +66,14 @@ source ~/fzf-git.sh/fzf-git.sh
 # Setup fzf previews
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+_fzf_compgen_path() {
+    fd --hidden --exclude .git . "$1"
+}
+
+_fzf_compgen_dir() {
+    fd --type=d --hidden --exclude .git . "$1"
+}
 
 _fzf_comprun() {
     local command=$1
@@ -84,6 +85,19 @@ _fzf_comprun() {
         ssh)          fzf --preview 'dig {}'                   "$@" ;;
         *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
     esac
+}
+
+# Function to search up history files, select and open to edit in nvim
+list_oldfiles() {
+  local files=($(nvim -u NONE --headless +'lua io.write(table.concat(vim.v.oldfiles, "\n") .. "\n")' +qa | \
+    grep -v '\[.*' | \
+    fzf --multi \
+      --preview 'bat --style=numbers --color=always --line-range=:500 {}' \
+      --preview-window=right:50%:wrap \
+      --height=65% \
+      --layout=reverse))
+
+  [[ ${#files[@]} -gt 0 ]] && nvim "${files[@]}"
 }
 
 
@@ -116,19 +130,6 @@ export LANG=en_US.UTF-8
 # Console Ninja
 PATH=~/.console-ninja/.bin:$PATH
 
-# Function to search up history files, select and open to edit in nvim
-lofn() {
-    local files=($(nvim -u NONE --headless +'lua io.write(table.concat(vim.v.oldfiles, "\n") .. "\n")' +qa | \
-        grep -v '\[.*' | \
-        fzf --multi \
-        --preview 'bat --style=numbers --color=always --line-range=:500 {}' \
-        --preview-window=right:50%:wrap \
-        --height=65% \
-        --layout=reverse))
-
-    [[ ${#files[@]} -gt 0 ]] && nvim "${files[@]}"
-}
-
 
 # These alias need to have the same exact space as written here
 # For Running Go Server using Air
@@ -157,6 +158,7 @@ alias gplog='git log --oneline --graph --all'
 #lazygit
 alias lg="lazygit"
 
+alias lofn="list_oldfiles"
 
 
 # Generated for envman. Do not edit.
