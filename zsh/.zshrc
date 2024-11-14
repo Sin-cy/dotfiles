@@ -75,15 +75,15 @@ export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
 _fzf_comprun() {
-  local command=$1
-  shift
+    local command=$1
+    shift
 
-  case "$command" in
-    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-    export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
-    ssh)          fzf --preview 'dig {}'                   "$@" ;;
-    *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
-  esac
+    case "$command" in
+        cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+        export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
+        ssh)          fzf --preview 'dig {}'                   "$@" ;;
+        *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
+    esac
 }
 
 
@@ -118,15 +118,15 @@ PATH=~/.console-ninja/.bin:$PATH
 
 # Function to search up history files, select and open to edit in nvim
 lofn() {
-  local files=($(nvim -u NONE --headless +'lua io.write(table.concat(vim.v.oldfiles, "\n") .. "\n")' +qa | \
-    grep -v '\[.*\]' | \
-    fzf --multi \
-      --preview 'bat --style=numbers --color=always --line-range=:500 {}' \
-      --preview-window=right:50%:wrap \
-      --height=65% \
-      --layout=reverse))
+    local files=($(nvim -u NONE --headless +'lua io.write(table.concat(vim.v.oldfiles, "\n") .. "\n")' +qa | \
+        grep -v '\[.*' | \
+        fzf --multi \
+        --preview 'bat --style=numbers --color=always --line-range=:500 {}' \
+        --preview-window=right:50%:wrap \
+        --height=65% \
+        --layout=reverse))
 
-  [[ ${#files[@]} -gt 0 ]] && nvim "${files[@]}"
+    [[ ${#files[@]} -gt 0 ]] && nvim "${files[@]}"
 }
 
 
