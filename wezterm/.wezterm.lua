@@ -14,6 +14,7 @@ config.enable_kitty_graphics = true
 config.window_close_confirmation = "NeverPrompt"
 config.macos_window_background_blur = 30
 config.window_background_opacity = 0.75
+config.audible_bell = "Disabled"
 
 config.window_padding = {
 	left = 1,
