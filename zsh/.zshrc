@@ -87,7 +87,7 @@ _fzf_comprun() {
     esac
 }
 
-# Function to search up history files, select and open to edit in nvim
+# Function to search up files, select and open to edit in nvim
 list_oldfiles() {
   local files=($(nvim -u NONE --headless +'lua io.write(table.concat(vim.v.oldfiles, "\n") .. "\n")' +qa | \
     grep -v '\[.*' | \
