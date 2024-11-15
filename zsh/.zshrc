@@ -1,13 +1,8 @@
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #echo source ~/.bash_profile
-#
 
-# Set CLICOLOR if you want Ansi Colors in iTerm2 
-#export CLICOLOR=1
-# Set colors to match iTerm2 Terminal Colors
-#export TERM=xterm-256color
+
 
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
@@ -26,14 +21,11 @@ export PATH=$PATH:$(go env GOPATH)/bin
 export ZSH="$HOME/.oh-my-zsh"
 
 
-# NOTE: Disabled : Currently trying out Warp Terminal for now 
+# NOTE: Disabled powerlevel10k 
 # Using Starship instead of p10k
 #ZSH_THEME="powerlevel10k/powerlevel10k"
 
-#ZSH_HIGHLIGHT_STYLES[command]='fg=049'
-#ZSH_HIGHLIGHT_STYLES[builtin]='fg=049'
-
-
+# HACK: zsh plugins
 plugins=(
     git 
     zsh-autosuggestions
@@ -48,7 +40,40 @@ eval "$(starship init zsh)"
 # set Starship PATH
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 
-# FZF
+# NOTE: Zoxide
+eval "$(zoxide init zsh)"
+# Finds every single file and opens in neovim
+search_with_zoxdie() {
+    if [ -z "$1" ]; then
+        # No parameter provided, use fzf to select a file interactively
+        file="$(fd --type f -I -H -E .git -E .git-crypt | fzf-tmux -p -w 80% -h 60% --preview='bat --style=plain --color=always {}')"
+        if [ -n "$file" ]; then
+            nvim "$file"
+        fi
+    else
+        # Handle when an argument is provided
+        lines=$(zoxide query -l | xargs -I {} fd --type f -I -H -E .git -E .git-crypt "$1" {} | fzf --no-sort) # Initial filter attempt with fzf
+        line_count="$(echo "$lines" | wc -l | xargs)"                                  # Trim any leading spaces
+
+        if [ -n "$lines" ] && [ "$line_count" -eq 1 ]; then
+            # If exactly one match is found, open it
+            file="$lines"
+            nvim "$file"
+        elif [ -n "$lines" ]; then
+            # If multiple files are found, allow further selection using fzf and bat for preview
+            file=$(echo "$lines" | fzf-tmux -p --query="$1" -w 80% -h 60% --preview='bat --style=plain --color=always {}')
+            if [ -n "$file" ]; then
+                nvim "$file"
+            fi
+        else
+            echo "No matches found." >&2
+        fi
+    fi
+}
+
+
+
+# NOTE: FZF
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
@@ -87,7 +112,7 @@ _fzf_comprun() {
     esac
 }
 
-# Function to search up files, select and open to edit in nvim
+# Function to search up most recent open/history files, select and open to edit in nvim
 list_oldfiles() {
   local files=($(nvim -u NONE --headless +'lua io.write(table.concat(vim.v.oldfiles, "\n") .. "\n")' +qa | \
     grep -v '\[.*' | \
@@ -132,7 +157,7 @@ PATH=~/.console-ninja/.bin:$PATH
 
 
 # These alias need to have the same exact space as written here
-# For Running Go Server using Air
+# HACK: For Running Go Server using Air
 alias air='$(go env GOPATH)/bin/air'
 
 # other Aliases shortcuts
@@ -157,9 +182,10 @@ alias gplog='git log --oneline --graph --all'
 
 #lazygit
 alias lg="lazygit"
-
-alias lofn="list_oldfiles"
-
+# fzf 
+alias nlof="list_oldfiles"
+# zoxide
+alias nzo="search_with_zoxdie"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
