@@ -2,7 +2,7 @@
 
 This directory contains the dotfiles for my mac system which probably won't work on yours.
 
-## Repository and brew installations needed
+## Repository and Installations needed
 
 ### Install Homebrew
 
@@ -14,21 +14,16 @@ This directory contains the dotfiles for my mac system which probably won't work
 
 Enter your password and proceed yes to confirm the installation if it prompts you to
 
-
-### Homebrew extras required
+#### Homebrew extras required
 - `brew install eza fzf fd stow bat zoxide`
-#### fzf 
+#### fzf-git
 - `git clone https://github.com/junegunn/fzf-git.sh.git`
 
 ### Tmux
 Installation
 - `brew install tmux`
-tmux plugins manager
+Tmux plugins manager
 - `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
-
-## Requirements
-
-Ensure you have the following installed.
 
 ### Git
 
@@ -37,36 +32,31 @@ If not already installed in the home directory
 -   Check this by running `git --version` in the shell to see if the command is available
 -   If not, it will most likely prompt you to install it but make sure Xcode Command Line tools is installed.
 
-- (My Default) Manually Install git with Homebrew `brew install git`
+##### Install Git with Homebrew ( My Default ) 
+- Manually Install git with Homebrew `brew install git`
 - brew installs git on mac at `/usr/local/bin/git`
 
+##### Install Git via Xcode
 -   Install Xcode usign `xcode-select --install`
 -   xcode installs git at `/usr/bin/git`
 
-~
 
+### GNU Stow
+- Refer the docs : [Read More](https://www.gnu.org/software/stow/)
 ```
-git
+brew install stow
 ```
-
-#### With using GNU Stow
+#### Update path in rc file with using GNU Stow
 
 -   already have .zshrc file ready to go
-
--   If not ,then just to make sure this path below is added to .zshrc if not already added
+-   If not ,then just to make sure this path below is added to .zshrc
 
 ```
 # Add Homebrew's executable directory to the front of the PATH in .zshrc
 export PATH=/usr/local/bin:$PATH
 ```
 
--   then `source ~/.zshrc`
-
-### GNU Stow
-
-```
-brew install stow
-```
+-   then in your shell `source ~/.zshrc`
 
 ## Installation of this repo using stow
 
@@ -80,7 +70,7 @@ $ cd dotfiles
 then use GNU stow to create symlinks(make sure you are in your dotfiles directory)
 
 ```
-$ stow .
+stow .
 
 or
 
