@@ -114,17 +114,27 @@ _fzf_comprun() {
 
 # Function to search up most recent open/history files, select and open to edit in nvim
 list_oldfiles() {
-  local files=($(nvim -u NONE --headless +'lua io.write(table.concat(vim.v.oldfiles, "\n") .. "\n")' +qa | \
+  # Get the oldfiles list from Neovim
+  local oldfiles=($(nvim -u NONE --headless +'lua io.write(table.concat(vim.v.oldfiles, "\n") .. "\n")' +qa))
+  # Filter invalid paths or files not found
+  local valid_files=()
+  for file in "${oldfiles[@]}"; do
+    if [[ -f "$file" ]]; then
+      valid_files+=("$file")
+    fi
+  done
+  # Use fzf to select from valid files
+  local files=($(printf "%s\n" "${valid_files[@]}" | \
     grep -v '\[.*' | \
     fzf --multi \
-      --preview 'bat --style=numbers --color=always --line-range=:500 {}' \
+      --preview 'bat --style=numbers --color=always --line-range=:500 {} 2>/dev/null || echo "Error previewing file"' \
       --preview-window=right:50%:wrap \
       --height=65% \
       --layout=reverse))
 
+  # Open selected files in Neovim
   [[ ${#files[@]} -gt 0 ]] && nvim "${files[@]}"
 }
-
 
 #User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
