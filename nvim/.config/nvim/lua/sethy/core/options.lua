@@ -1,7 +1,7 @@
 vim.cmd("let g:netrw_liststyle = 3")
 
+vim.o.autochdir = true
 vim.opt.guicursor = ""
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
