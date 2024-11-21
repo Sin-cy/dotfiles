@@ -42,6 +42,7 @@ return {
 				"emmet_ls",
 				"emmet_language_server",
 				"eslint",
+                "marksman",
 			},
 			-- auto install configured servers (with lspconfig)
 			automatic_installation = true,
