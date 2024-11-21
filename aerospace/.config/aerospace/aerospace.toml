@@ -42,8 +42,8 @@ key-mapping.preset = 'qwerty'
 # Drop it from your config, if you don't like this behavior
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
-on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = "move-mouse window-lazy-center"
+# on-focused-monitor-changed = ['move-mouse monitor-lazy-center'] # switchin dislays mouse re center
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -53,12 +53,12 @@ on-focus-changed = "move-mouse window-lazy-center"
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 10
-inner.vertical =   18
-outer.left =       18
-outer.bottom =     18
-outer.top =        18
-outer.right =      18
+inner.horizontal = 7 
+inner.vertical =   7 
+outer.left =       7
+outer.bottom =     7
+outer.top =        7
+outer.right =      7
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -111,12 +111,13 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
-alt-b = 'workspace B'
-alt-e = 'workspace E'
-alt-m = 'workspace M'
-alt-n = 'workspace N'
+alt-b = 'workspace B' # for browser
+alt-e = 'workspace E' # 
+alt-f = 'workspace F' # for finder
+alt-m = 'workspace M' #
+alt-n = 'workspace N' # for notes
 alt-p = 'workspace P'
-alt-t = 'workspace T'
+alt-t = 'workspace T' # for terminal shell
 alt-v = 'workspace V'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
@@ -131,13 +132,13 @@ alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 alt-shift-b = 'move-node-to-workspace B'
 alt-shift-e = 'move-node-to-workspace E'
+alt-shift-f = 'move-node-to-workspace F'
 alt-shift-m = 'move-node-to-workspace M'
 alt-shift-n = 'move-node-to-workspace N'
 alt-shift-p = 'move-node-to-workspace P'
 alt-shift-t = 'move-node-to-workspace T'
 alt-shift-v = 'move-node-to-workspace V'
 
-alt-shift-f = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -189,3 +190,15 @@ run = "move-node-to-workspace B"
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = "move-node-to-workspace B"
+
+[[on-window-detected]]
+if.app-id = 'worg.mozilla.com.zen.browser'
+run = "move-node-to-workspace B"
+
+[[on-window-detected]]
+if.app-id = 'notion.id'
+run = "move-node-to-workspace N"
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = "move-node-to-workspace N"
