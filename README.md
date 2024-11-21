@@ -6,11 +6,11 @@ This directory contains the dotfiles for my mac system which probably won't work
 
 ### Install Homebrew
 
--   Install homebrew.
+- Install homebrew.
 
-`curl -fsSL -o install.sh https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh`
+- `curl -fsSL -o install.sh https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh`
 
--   Execute the script with the bash command
+- Execute the script with the bash command
     `/bin/bash install.sh`
 
 Enter your password and proceed yes to confirm the installation if it prompts you to
