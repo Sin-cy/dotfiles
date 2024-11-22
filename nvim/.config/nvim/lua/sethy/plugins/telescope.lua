@@ -65,16 +65,16 @@ return {
 		)
         -- Find all Hipattern comment tags in telescope
 		vim.keymap.set("n", "<leader>pt", "<cmd>TodoTelescope<CR>", { desc = "Find all comment tags in current dir" })
-		-- Find everywhere in my project where I used the word where the cursor is at
+		-- Find word under cursor 
 		vim.keymap.set("n", "<leader>pws", function()
 			local word = vim.fn.expand("<cword>")
 			builtin.grep_string({ search = word })
-		end)
+		end, {desc = "Find word under the cursor"})
 		-- Find everywhere in my project where example vim.keymap.set was used
 		vim.keymap.set("n", "<leader>pWs", function()
 			local word = vim.fn.expand("<cWORD>")
 			builtin.grep_string({ search = word })
-		end)
+		end, {desc = "Find Connected Words under cursor"})
 		-- find help for a command or for something
 		vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
         -- Switch Themes with Telescope
