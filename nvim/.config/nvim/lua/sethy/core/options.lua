@@ -1,9 +1,5 @@
 vim.cmd("let g:netrw_liststyle = 3")
 
-vim.cmd([[
-  autocmd BufEnter * silent! lcd %:p:h
-]])
-
 vim.opt.guicursor = ""
 vim.opt.nu = true
 vim.opt.relativenumber = true
