@@ -2,8 +2,6 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #echo source ~/.bash_profile
 
-
-
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
 # NVM 
@@ -17,7 +15,8 @@ export PATH=$GOPATH/bin:$PATH
 export PATH=$PATH:$(go env GOPATH)/bin
 
 # Path to your oh-my-zsh installation.
-# NOTE : Disabled : Currently using Starship
+# NOTE : Disabled Shell Prompt: Currently using Starship
+# NOTE: using oh-my-zsh only for zsh plugins management
 export ZSH="$HOME/.oh-my-zsh"
 
 
@@ -72,7 +71,6 @@ search_with_zoxdie() {
 }
 
 
-
 # NOTE: FZF
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
@@ -112,7 +110,7 @@ _fzf_comprun() {
     esac
 }
 
-# Function to search up most recent open/history files, select and open to edit in nvim
+# NOTE:  Function to search up most recent open/history files, select and open to edit in nvim
 list_oldfiles() {
   # Get the oldfiles list from Neovim
   local oldfiles=($(nvim -u NONE --headless +'lua io.write(table.concat(vim.v.oldfiles, "\n") .. "\n")' +qa))
@@ -174,7 +172,7 @@ alias air='$(go env GOPATH)/bin/air'
 alias c="clear"
 alias e="exit"
 alias t="tmux"
-alias tn="(){tmux new -s $1}"
+alias tn="tmux_new_session"
 alias f="fzf"
 alias fman="compgen -c | fzf | xargs man"
 
@@ -196,6 +194,9 @@ alias lg="lazygit"
 alias nlof="list_oldfiles"
 # zoxide
 alias nzo="search_with_zoxdie"
+
+#obsidian icloud path
+alias sethvault="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/sethVault/"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
