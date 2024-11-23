@@ -8,9 +8,11 @@ return {
 				["<C-h>"] = false,
 				["<M-h>"] = "actions.select_split",
 			},
+            delete_to_trash = true,
 			view_options = {
 				show_hidden = true,
 			},
+            skip_confirm_for_simple_edits = true,
 		})
 
 		-- opens parent dir over current active window

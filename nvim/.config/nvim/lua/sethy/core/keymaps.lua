@@ -57,6 +57,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
+-- Set textwidth to 80 for Markdown files
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "markdown" },
+    callback = function()
+        vim.opt_local.textwidth = 80
+    end,
+})
+
 -- tab stuff
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>")   --open new tab
 vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>") --close current tab
