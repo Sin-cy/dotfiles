@@ -57,6 +57,7 @@ return {
                     --node_incremental = "<bs>",
                 },
             },
+            additional_vim_regex_highlighting = false,
         })
     end,
 }
