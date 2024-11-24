@@ -82,8 +82,8 @@ export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --color=hl:#2dd4
 export FZF_TMUX_OPTS=" -p80%,70%"
 
 
-# FZF with git right in the shell
-# Keymaps for this is available in fzf-git.sh github repo
+# FZF with Git right in the shell
+# Keymaps for this is available at https://github.com/junegunn/fzf-git.sh
 source ~/fzf-git.sh/fzf-git.sh
 
 # Setup fzf previews
@@ -140,13 +140,6 @@ list_oldfiles() {
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -173,11 +166,13 @@ alias c="clear"
 alias e="exit"
 alias t="tmux"
 alias tn="tmux_new_session"
+# calls the tmux new session script
+alias tns="~/.tmux-sessionizer.sh"
 alias f="fzf"
+# opens documentation for things you got in your terminal (eg: git,zsh etc.)
 alias fman="compgen -c | fzf | xargs man"
 
 # Eza a better ls 
-# brew install eza
 # available no options : --no-filesize --no-time --no-permissions
 alias ls="eza --color=always --long --icons=always --no-user" 
 
@@ -186,7 +181,7 @@ alias gt="git"
 alias ga="git add ."
 alias gs="git status -s"
 alias gc='git commit -m'
-alias gplog='git log --oneline --graph --all'
+alias glog='git log --oneline --graph --all'
 
 #lazygit
 alias lg="lazygit"
@@ -197,6 +192,8 @@ alias nzo="search_with_zoxdie"
 
 #obsidian icloud path
 alias sethvault="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/sethVault/"
+
+bindkey -r "^G"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
