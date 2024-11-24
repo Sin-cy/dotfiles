@@ -25,13 +25,16 @@ This directory contains the dotfiles for my mac system which probably won't work
 Enter your password and proceed yes to confirm the installation if it prompts you to
 
 #### Homebrew extras required
-- `brew install eza fzf fd stow bat zoxide`
+- `brew install eza fzf fd stow bat zoxide zsh-autosuggestions
+zsh-syntax-highlighting git`
+
 #### fzf-git
 - `git clone https://github.com/junegunn/fzf-git.sh.git`
 
 ### Tmux
 Installation
 - `brew install tmux`
+
 Tmux plugins manager
 - `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
