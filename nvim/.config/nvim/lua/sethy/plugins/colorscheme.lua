@@ -19,7 +19,7 @@ return {
             		transparency = true,
             	},
             	highlight_groups = {
-            		ColorColumn = { bg = "#1C1C21" },
+            		-- ColorColumn = { bg = "#1C1C21" },
                     Normal = { bg = "none" }, -- Main background remains transparent
                     Pmenu = { bg = "#26233a", fg = "#e0def4" }, -- Completion menu background
                     PmenuSel = { bg = "#eb6f92", fg = "#1f1d2e" }, -- Highlighted completion item
@@ -35,7 +35,7 @@ return {
 
 			-- HACK: set this on the color you want to be persistent
 			-- when quit and reopening nvim
-			-- vim.cmd("colorscheme rose-pine")
+			vim.cmd("colorscheme rose-pine")
 		end,
 	},
 	-- NOTE: gruvbox
@@ -114,17 +114,21 @@ return {
 					colors.fg_sidebar = fg_dark
 				end,
 			})
-            -- vim.cmd("colorscheme tokyonight")
-            -- NOTE: Auto switch to tokyonight for markdown files only
-            vim.api.nvim_create_autocmd("FileType", {
-                pattern = { "markdown" },
-                callback = function()
-                    -- Check if the buffer is a real file and not a hover or floating window
-                    if vim.fn.expand("%:t") ~= "" and not vim.api.nvim_buf_get_option(0, "buftype") == "nofile" then
-                        vim.cmd("colorscheme tokyonight")
-                    end
-                end,
-            })
+             -- vim.cmd("colorscheme tokyonight")
+             -- NOTE: Auto switch to tokyonight for markdown files only
+             -- vim.api.nvim_create_autocmd("FileType", {
+             --     pattern = { "markdown" },
+             --     callback = function()
+             --         -- Ensure the theme switch only happens once for a buffer
+             --         local buffer = vim.api.nvim_get_current_buf()
+             --         if not vim.b[buffer].tokyonight_applied then
+             --             if vim.fn.expand("%:t") ~= "" and vim.api.nvim_buf_get_option(0, "buftype") ~= "nofile" then
+             --                 vim.cmd("colorscheme tokyonight")
+             --             end
+             --             vim.b[buffer].tokyonight_applied = true
+             --         end
+             --     end,
+             -- })
 		end,
 	},
 }
