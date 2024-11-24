@@ -2,6 +2,15 @@
 
 This directory contains the dotfiles for my mac system which probably won't work on yours.
 
+# Install with Script
+- Using install.sh script
+- optional: Install xcode beforehand (already setup in script) `xcode-select --install`
+    - `git clone https://github.com/Sin-cy/dotfiles.git $HOME/dotfiles` this repo into $HOME
+    - `cd dotfiles` and make install.sh executable `chmod +x ~/dotfiles/install.sh`
+    which ever way possible
+    - run in shell `bash ~/dotfiles/install.sh` or `~/dotfiles/install.sh` 
+
+# Manual Install
 ## Repository and Installations needed
 
 ### Install Homebrew
