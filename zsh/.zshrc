@@ -1,4 +1,3 @@
-# If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #echo source ~/.bash_profile
 
@@ -93,19 +92,6 @@ _fzf_comprun() {
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh
-#
-
 # Console Ninja
 PATH=~/.console-ninja/.bin:$PATH
 
@@ -119,7 +105,6 @@ alias c="clear"
 alias e="exit"
 
 # Tmux 
-alias t="tmux"
 alias a="attach"
 # calls the tmux new session script
 alias tns="~/scripts/tmux-sessionizer"
@@ -128,33 +113,33 @@ alias tns="~/scripts/tmux-sessionizer"
 alias f="fzf"
 # called from ~/scripts/
 alias nlof="~/scripts/fzf_listoldfiles.sh"
-# opens documentation for things you got in your terminal (eg: git,zsh etc.)
+# opens documentation through fzf (eg: git,zsh etc.)
 alias fman="compgen -c | fzf | xargs man"
 
 # zoxide (called from ~/scripts/)
 alias nzo="~/scripts/zoxide_openfiles_nvim.sh"
 
-# Eza a better ls 
-# available no options : --no-filesize --no-time --no-permissions
+# Next level of an ls 
+# options : --no-filesize --no-time --no-permissions
 alias ls="eza --color=always --long --icons=always --no-user" 
 
-# aliases for git
+# git aliases
 alias gt="git"
 alias ga="git add ."
 alias gs="git status -s"
 alias gc='git commit -m'
 alias glog='git log --oneline --graph --all'
 
-#lazygit
+# lazygit
 alias lg="lazygit"
 
-#obsidian icloud path
+# obsidian icloud path
 alias sethvault="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/sethVault/"
 
-#unbind ctrl g in terminal
+# unbind ctrl g in terminal
 bindkey -r "^G"
 
-# Brew installations activation (new mac systems brew path: opt/homebrew , not usr/local )
+# brew installations activation (new mac systems brew path: opt/homebrew , not usr/local )
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
