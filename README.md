@@ -7,7 +7,7 @@ This directory contains the dotfiles for my mac system which probably won't work
 Run the following
 - optional: Install xcode command line tools beforehand `xcode-select --install`
     - Install brew  
-        -`sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+        - `sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
     - `brew install git`
     - `git clone https://github.com/Sin-cy/dotfiles.git $HOME/dotfiles` this repo into $HOME
@@ -32,8 +32,8 @@ Enter your password and proceed yes to confirm the installation if it prompts yo
 #### Homebrew extras required
 - `brew install neovim eza fzf fd stow bat zoxide zsh-autosuggestions
 zsh-syntax-highlighting git starship tmux nvm`
-    - For This Config ,Mason lsp starts shouting when opening neovim
-    - do nvm install node v23 or v-xx-xx
+    - If Mason lsp starts shouting when opening neovim
+    - do nvm install node v23.3.0 or v-xx-xx
 
 #### fzf-git
 - `git clone https://github.com/junegunn/fzf-git.sh.git`
@@ -65,17 +65,6 @@ Tmux plugins manager
 ```
 brew install stow
 ```
-#### Update path in rc file with using GNU Stow
-
--   already have .zshrc file ready to go from the cloned repo
--   If not ,then just to make sure this path below is added to .zshrc
-
-```
-# Add Homebrew's executable directory at the top of .zshrc or .bashrc
-eval "$(brew shellenv)"
-```
-
--   then in your shell `source ~/.zshrc`
 
 ## Installation of this repo using stow
 
@@ -96,7 +85,7 @@ $ cd dotfiles
 
 then use GNU stow to create symlinks
 > [!IMPORTANT]
-> (make sure you are in your dotfiles directory)
+> make sure you are in your dotfiles directory
 
 - `cd dotfiles`
 - as long as you have the structure setup in $HOME correctly
@@ -108,7 +97,7 @@ then use GNU stow to create symlinks
 ```bash
 stow -t ~ starship wezterm tmux
 
-or run them separately
+#or run them separately
 
 stow -t ~ nvim
 stow -t ~ zsh
