@@ -2,6 +2,11 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #echo source ~/.bash_profile
 
+eval "$(brew shellenv)"
+
+# Add local ~/scripts to the PATH
+export PATH="$HOME/scripts:$PATH"
+
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
 # NVM 
@@ -27,12 +32,13 @@ export ZSH="$HOME/.oh-my-zsh"
 # HACK: zsh plugins
 plugins=(
     git 
-    zsh-autosuggestions
-    zsh-syntax-highlighting
+    # zsh-autosuggestions
+    # zsh-syntax-highlighting
     web-search
 )
 
 source $ZSH/oh-my-zsh.sh
+
 
 # Starship 
 eval "$(starship init zsh)"
@@ -41,35 +47,6 @@ export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 
 # NOTE: Zoxide
 eval "$(zoxide init zsh)"
-# Finds every single file and opens in neovim
-search_with_zoxdie() {
-    if [ -z "$1" ]; then
-        # No parameter provided, use fzf to select a file interactively
-        file="$(fd --type f -I -H -E .git -E .git-crypt | fzf-tmux -p -w 80% -h 60% --preview='bat --style=plain --color=always {}')"
-        if [ -n "$file" ]; then
-            nvim "$file"
-        fi
-    else
-        # Handle when an argument is provided
-        lines=$(zoxide query -l | xargs -I {} fd --type f -I -H -E .git -E .git-crypt "$1" {} | fzf --no-sort) # Initial filter attempt with fzf
-        line_count="$(echo "$lines" | wc -l | xargs)"                                  # Trim any leading spaces
-
-        if [ -n "$lines" ] && [ "$line_count" -eq 1 ]; then
-            # If exactly one match is found, open it
-            file="$lines"
-            nvim "$file"
-        elif [ -n "$lines" ]; then
-            # If multiple files are found, allow further selection using fzf and bat for preview
-            file=$(echo "$lines" | fzf-tmux -p --query="$1" -w 80% -h 60% --preview='bat --style=plain --color=always {}')
-            if [ -n "$file" ]; then
-                nvim "$file"
-            fi
-        else
-            echo "No matches found." >&2
-        fi
-    fi
-}
-
 
 # NOTE: FZF
 # Set up fzf key bindings and fuzzy completion
@@ -82,9 +59,9 @@ export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --color=hl:#2dd4
 export FZF_TMUX_OPTS=" -p80%,70%"
 
 
-# FZF with Git right in the shell
+# FZF with Git right in the shell by Junegunn : check out his github below
 # Keymaps for this is available at https://github.com/junegunn/fzf-git.sh
-source ~/fzf-git.sh/fzf-git.sh
+source ~/scripts/fzf-git.sh
 
 # Setup fzf previews
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
@@ -108,30 +85,6 @@ _fzf_comprun() {
         ssh)          fzf --preview 'dig {}'                   "$@" ;;
         *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
     esac
-}
-
-# NOTE:  Function to search up most recent open/history files, select and open to edit in nvim
-list_oldfiles() {
-  # Get the oldfiles list from Neovim
-  local oldfiles=($(nvim -u NONE --headless +'lua io.write(table.concat(vim.v.oldfiles, "\n") .. "\n")' +qa))
-  # Filter invalid paths or files not found
-  local valid_files=()
-  for file in "${oldfiles[@]}"; do
-    if [[ -f "$file" ]]; then
-      valid_files+=("$file")
-    fi
-  done
-  # Use fzf to select from valid files
-  local files=($(printf "%s\n" "${valid_files[@]}" | \
-    grep -v '\[.*' | \
-    fzf --multi \
-      --preview 'bat --style=numbers --color=always --line-range=:500 {} 2>/dev/null || echo "Error previewing file"' \
-      --preview-window=right:50%:wrap \
-      --height=65% \
-      --layout=reverse))
-
-  # Open selected files in Neovim
-  [[ ${#files[@]} -gt 0 ]] && nvim "${files[@]}"
 }
 
 #User configuration
@@ -164,13 +117,22 @@ alias air='$(go env GOPATH)/bin/air'
 # other Aliases shortcuts
 alias c="clear"
 alias e="exit"
+
+# Tmux 
 alias t="tmux"
-alias tn="tmux_new_session"
+alias a="attach"
 # calls the tmux new session script
-alias tns="~/.tmux-sessionizer.sh"
+alias tns="~/scripts/tmux-sessionizer"
+
+# fzf 
 alias f="fzf"
+# called from ~/scripts/
+alias nlof="~/scripts/fzf_listoldfiles.sh"
 # opens documentation for things you got in your terminal (eg: git,zsh etc.)
 alias fman="compgen -c | fzf | xargs man"
+
+# zoxide (called from ~/scripts/)
+alias nzo="~/scripts/zoxide_openfiles_nvim.sh"
 
 # Eza a better ls 
 # available no options : --no-filesize --no-time --no-permissions
@@ -185,15 +147,16 @@ alias glog='git log --oneline --graph --all'
 
 #lazygit
 alias lg="lazygit"
-# fzf 
-alias nlof="list_oldfiles"
-# zoxide
-alias nzo="search_with_zoxdie"
 
 #obsidian icloud path
 alias sethvault="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/sethVault/"
 
+#unbind ctrl g in terminal
 bindkey -r "^G"
+
+# Brew installations activation (new mac systems brew path: opt/homebrew , not usr/local )
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
