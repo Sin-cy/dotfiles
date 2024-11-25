@@ -3,30 +3,37 @@
 This directory contains the dotfiles for my mac system which probably won't work on yours.
 
 # Install with Script
-- Using install.sh script
-- optional: Install xcode beforehand (already setup in script) `xcode-select --install`
+
+Run the following
+- optional: Install xcode command line tools beforehand `xcode-select --install`
+    - Install brew  
+        -`sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+
+    - `brew install git`
     - `git clone https://github.com/Sin-cy/dotfiles.git $HOME/dotfiles` this repo into $HOME
     - `cd dotfiles` and make install.sh executable `chmod +x ~/dotfiles/install.sh`
     which ever way possible
-    - run in shell `bash ~/dotfiles/install.sh` or `~/dotfiles/install.sh` 
+    - run in shell `/bin/bash ~/dotfiles/install.sh` 
 
 # Manual Install
 ## Repository and Installations needed
+
+### Install Command Line Tools 
+- `xcode-select --install`
 
 ### Install Homebrew
 
 - Install homebrew.
 
-- `curl -fsSL -o install.sh https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh`
-
-- Execute the script with the bash command
-    `/bin/bash install.sh`
+- `sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
 Enter your password and proceed yes to confirm the installation if it prompts you to
 
 #### Homebrew extras required
-- `brew install eza fzf fd stow bat zoxide zsh-autosuggestions
-zsh-syntax-highlighting git`
+- `brew install neovim eza fzf fd stow bat zoxide zsh-autosuggestions
+zsh-syntax-highlighting git starship tmux nvm`
+    - For This Config ,Mason lsp starts shouting when opening neovim
+    - do nvm install node v23 or v-xx-xx
 
 #### fzf-git
 - `git clone https://github.com/junegunn/fzf-git.sh.git`
@@ -40,14 +47,13 @@ Tmux plugins manager
 
 ### Git
 
-If not already installed in the home directory
-
 -   Check this by running `git --version` in the shell to see if the command is available
--   If not, it will most likely prompt you to install it but make sure Xcode Command Line tools is installed.
+-   it will most likely prompt you to install it with Xcode Command Line tools.
+    - (Skip this step if command line tools already installed)
 
 ##### Install Git with Homebrew ( My Default ) 
 - Manually Install git with Homebrew `brew install git`
-- brew installs git on mac at `/usr/local/bin/git`
+- brew installs git on mac at `/opt/homebrew/bin/git`
 
 ##### Install Git via Xcode
 -   Install Xcode usign `xcode-select --install`
@@ -61,12 +67,12 @@ brew install stow
 ```
 #### Update path in rc file with using GNU Stow
 
--   already have .zshrc file ready to go
+-   already have .zshrc file ready to go from the cloned repo
 -   If not ,then just to make sure this path below is added to .zshrc
 
 ```
-# Add Homebrew's executable directory to the front of the PATH in .zshrc
-export PATH=/usr/local/bin:$PATH
+# Add Homebrew's executable directory at the top of .zshrc or .bashrc
+eval "$(brew shellenv)"
 ```
 
 -   then in your shell `source ~/.zshrc`
@@ -76,16 +82,34 @@ export PATH=/usr/local/bin:$PATH
 First, check out dotfiles repo in your $HOME directory using git
 
 ```
-$ git clone git@github.com:Sin-cy/dotfiles.git
+$ git clone https://github.com/Sin-cy/dotfiles.git
 $ cd dotfiles
 ```
+#### Before Running any stow commands
+- At least for this config structure
+- **!! make sure home directories is set to have the same structure first !!**
+- for instances ( Watch for Sub-directories ) 
+    - if any subdirectory eg: `~/.config` dont exist in $HOME then `mkdir .config`
+    - other config files that don't exist in $HOME atm, should not have any problems
+      for stow symlinks
 
-then use GNU stow to create symlinks(make sure you are in your dotfiles directory)
 
-```
-stow .
+then use GNU stow to create symlinks
+> [!IMPORTANT]
+> (make sure you are in your dotfiles directory)
 
-or
+- `cd dotfiles`
+- as long as you have the structure setup in $HOME correctly
+- running `stow .` should be enough
 
-search for the stow command to make sure again
+##### However, for assurance
+- run stow commands like below for each directory in dotfiles 
+- re-check if the symlinks are correct for each sub-directories and files
+```bash
+stow -t ~ starship wezterm tmux
+
+or run them separately
+
+stow -t ~ nvim
+stow -t ~ zsh
 ```
