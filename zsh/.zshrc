@@ -52,13 +52,12 @@ eval "$(zoxide init zsh)"
 # NOTE: FZF
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git "
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
 export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --color=hl:#2dd4bf"
-export FZF_TMUX_OPTS=" -p80%,70%"
-
+export FZF_TMUX_OPTS=" -p80%,70% "
 
 # FZF with Git right in the shell by Junegunn : check out his github below
 # Keymaps for this is available at https://github.com/junegunn/fzf-git.sh
@@ -68,6 +67,7 @@ source ~/scripts/fzf-git.sh
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
+# Extra fzf setups
 _fzf_compgen_path() {
     fd --hidden --exclude .git . "$1"
 }
@@ -116,7 +116,7 @@ alias tns="~/scripts/tmux-sessionizer"
 alias f="fzf"
 # called from ~/scripts/
 alias nlof="~/scripts/fzf_listoldfiles.sh"
-# opens documentation through fzf (eg: git,zsh etc.)
+# opens documentation through fzf (eg: git,zsh)
 alias fman="compgen -c | fzf | xargs man"
 
 # zoxide (called from ~/scripts/)
@@ -125,6 +125,10 @@ alias nzo="~/scripts/zoxide_openfiles_nvim.sh"
 # Next level of an ls 
 # options : --no-filesize --no-time --no-permissions
 alias ls="eza --color=always --long --icons=always --no-user" 
+
+# tree
+alias tree="tree -L 3 -a -I '.git' --charset X"
+alias dtree="tree -L 3 -a -d -I '.git' --charset X"
 
 # git aliases
 alias gt="git"
