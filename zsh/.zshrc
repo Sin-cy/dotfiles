@@ -8,6 +8,8 @@ export PATH="$HOME/scripts:$PATH"
 
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
+export TMUX_CONF=~/.config/tmux/tmux.conf
+
 # NVM 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -105,6 +107,7 @@ alias c="clear"
 alias e="exit"
 
 # Tmux 
+alias tmux="tmux -f ~/.config/tmux/tmux.conf"
 alias a="attach"
 # calls the tmux new session script
 alias tns="~/scripts/tmux-sessionizer"
