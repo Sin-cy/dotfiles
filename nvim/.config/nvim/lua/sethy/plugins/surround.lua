@@ -17,7 +17,7 @@ return {
     --     <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
     --     delete(functi*on calls)     dsf             function calls
     --
-    -- TODO: Mini surrond might just be better
+    -- NOTE : Trying out Mini surrond 
     "echasnovski/mini.surround",
     opts = {
         -- Add custom surroundings to be used on top of builtin ones. For more
