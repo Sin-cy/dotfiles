@@ -70,29 +70,6 @@ export FZF_TMUX_OPTS=" -p90%,70% "
 # Keymaps for this is available at https://github.com/junegunn/fzf-git.sh
 source ~/scripts/fzf-git.sh
 
-# Extra fzf setups
-_fzf_compgen_path() {
-    fd --type=f --hidden --exclude .git  "$1" 
-}
-
-_fzf_compgen_dir() {
-    fd --type=d --hidden --exclude .git "$1" 
-}
-
-_fzf_comprun() {
-    local command=$1
-    shift # Safely shift only if there is at least one argument
-
-    case "$command" in
-        cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-        export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
-        ssh)          fzf --preview 'dig {}'                   "$@" ;;
-        *)            fzf --preview "bat -n --color=always --line-range :400 {}" "$@" ;;
-    esac
-}
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 #User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
