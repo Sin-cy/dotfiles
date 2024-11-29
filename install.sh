@@ -1,8 +1,16 @@
 #!/bin/bash
 
 # Install xCode cli tools
-echo "Installing commandline tools..."
-xcode-select --install
+if [[ "$(uname)" == "Darwin" ]]; then
+    echo "macOS deteted..."
+
+    if xcode-select -p &>/dev/null; then
+        echo "Xcode already installed"
+    else
+        echo "Installing commandline tools..."
+        xcode-select --install
+    fi
+fi
 
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -69,7 +77,8 @@ brew install --cask font-sf-pro
 
 ## MacOS settings
 echo "Changing macOS defaults..."
-defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write com.apple.Dock autohide -bool TRUE
+defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write InitialKeyRepeat -int 10
 
 csrutil status
@@ -78,7 +87,7 @@ echo "Installation complete..."
 # Clone dotfiles repository
 if [ ! -d "$HOME/dotfiles" ]; then
   echo "Cloning dotfiles repository..."
-  git clone git@github.com:Sin-cy/dotfiles.git $HOME/dotfiles
+  git clone https://github.com/Sin-cy/dotfiles.git $HOME/dotfiles
 fi
 
 # Navigate to dotfiles directory
@@ -86,7 +95,7 @@ cd $HOME/dotfiles || exit
 
 # Stow dotfiles packages
 echo "Stowing dotfiles..."
-stow aerospace karabiner nvim starship wezterm tmux zsh
+stow -t ~ aerospace karabiner neovim starship wezterm tmux zsh
 
 echo "Dotfiles setup complete!"
 
