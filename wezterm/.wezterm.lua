@@ -12,8 +12,8 @@ config.harfbuzz_features = { "calt=0" }
 config.max_fps = 120
 config.enable_kitty_graphics = true
 config.window_close_confirmation = "NeverPrompt"
-config.macos_window_background_blur = 30
-config.window_background_opacity = 0.75
+config.macos_window_background_blur = 12
+config.window_background_opacity = 0.67
 config.audible_bell = "Disabled"
 
 config.window_padding = {
