@@ -33,8 +33,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # HACK: zsh plugins
 plugins=(
     git 
-    # zsh-autosuggestions
-    # zsh-syntax-highlighting
+    ## with oh-my-zsh and not homebrew
+    # zsh-autosuggestions ( git clone <find link in the repo> and uncomment  )
+    # zsh-syntax-highlighting ( git clone <find link in the repo> and uncomment )
     web-search
 )
 
