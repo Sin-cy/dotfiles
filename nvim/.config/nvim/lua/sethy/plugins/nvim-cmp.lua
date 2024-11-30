@@ -2,8 +2,8 @@ return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
-    "hrsh7th/cmp-buffer", -- source for text in buffer
-    "hrsh7th/cmp-path", -- source for file system paths
+        "hrsh7th/cmp-buffer", -- source for text in buffer
+        "hrsh7th/cmp-path", -- source for file system paths
         {
             "L3MON4D3/LuaSnip",
             -- follow latest release.
@@ -14,9 +14,10 @@ return {
         "saadparwaiz1/cmp_luasnip", -- autocompletion
         "rafamadriz/friendly-snippets", -- snippets
         "nvim-treesitter/nvim-treesitter",
-        "luckasRanarison/tailwind-tools.nvim",
         "onsails/lspkind.nvim", -- vs-code pictograms
+        "roobert/tailwindcss-colorizer-cmp.nvim",
     },
+
     config = function()
         local cmp = require("cmp")
         local luasnip = require("luasnip")
@@ -50,14 +51,16 @@ return {
                 { name = "luasnip" }, -- snippets
                 { name = "buffer" }, -- text within current buffer
                 { name = "path" }, -- file system paths
+                { name = "tailwindcss-colorizer-cmp" },
             }),
             -- setup lspkind for vscode pictograms in autocompletion dropdown
             formatting = {
                 format = lspkind.cmp_format({
-                    maxwidth = 50,
+                    maxwidth = 30,
                     ellipsis_char = "...",
-                    before = require("tailwind-tools.cmp").lspkind_format,
+                    before = require("tailwindcss-colorizer-cmp").formatter
                 }),
+                -- format = require("tailwindcss-colorizer-cmp").formatter
             },
         })
     end,

@@ -1,13 +1,23 @@
 return {
-    "luckasRanarison/tailwind-tools.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    opts = {
-    } ,
-    require("tailwind-tools").setup({
-        document_color = {
-            enabled = true,
-            kind = "background",
-            debounce = 100,
-        },
-    })
+    "roobert/tailwindcss-colorizer-cmp.nvim",
+    {
+        "NvChad/nvim-colorizer.lua",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        opts = {},
+        config = function()
+            local nvchadcolorizer = require("colorizer")
+            local tailwindcolorizer = require("tailwindcss-colorizer-cmp")
+
+            nvchadcolorizer.setup({
+                user_default_options = {
+                    tailwind = true,
+                }
+            })
+
+            tailwindcolorizer.setup({
+                color_square_width = 2,
+            })
+
+        end,
+    },
 }
