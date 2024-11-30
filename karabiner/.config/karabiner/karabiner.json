@@ -54,10 +54,7 @@
                                     }
                                 ],
                                 "description": "Hyper + f -> Open Finder",
-                                "from": {
-                                    "key_code": "f",
-                                    "modifiers": { "mandatory": ["right_command", "right_option", "right_control", "right_shift"] }
-                                },
+                                "from": { "key_code": "f" },
                                 "to": [{ "shell_command": "open -a Finder" }],
                                 "type": "basic"
                             },
