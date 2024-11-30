@@ -18,7 +18,7 @@
 
 - In this case, Sublayers hyper keys are mainly used to control
     - opening applications
-    - system commands like window management via raycast + rectangle
+    - system commands like sounds, music & window management via raycast + rectangle
     - global vim motions
     - other raycast available deep links extensions. 
 

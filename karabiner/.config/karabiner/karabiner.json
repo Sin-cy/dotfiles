@@ -54,7 +54,10 @@
                                     }
                                 ],
                                 "description": "Hyper + f -> Open Finder",
-                                "from": { "key_code": "f" },
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": { "mandatory": ["right_command", "right_option", "right_control", "right_shift"] }
+                                },
                                 "to": [{ "shell_command": "open -a Finder" }],
                                 "type": "basic"
                             },
@@ -616,7 +619,7 @@
                                 ],
                                 "description": "Window: maximize",
                                 "from": {
-                                    "key_code": "f",
+                                    "key_code": "return_or_enter",
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [{ "shell_command": "open -g rectangle://execute-action?name=maximize" }],
