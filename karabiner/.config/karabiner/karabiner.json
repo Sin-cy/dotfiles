@@ -40,22 +40,9 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Hyper + q -> Right Control",
+                                "description": "Hyper + q -> Left Control",
                                 "from": { "key_code": "q" },
-                                "to": [{ "key_code": "right_control" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "hyper",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "description": "Hyper + f -> Open Finder",
-                                "from": { "key_code": "f" },
-                                "to": [{ "shell_command": "open -a Finder" }],
+                                "to": [{ "key_code": "left_control" }],
                                 "type": "basic"
                             },
                             {
@@ -341,12 +328,12 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open -a 'Visual Studio Code.app'",
+                                "description": "Open -a 'Discord.app'",
                                 "from": {
-                                    "key_code": "v",
+                                    "key_code": "d",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open -a 'Visual Studio Code.app'" }],
+                                "to": [{ "shell_command": "open -a 'Discord.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -357,12 +344,28 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open -a 'Discord.app'",
+                                "description": "Open -a 'Finder.app'",
                                 "from": {
-                                    "key_code": "d",
+                                    "key_code": "f",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open -a 'Discord.app'" }],
+                                "to": [{ "shell_command": "open -a 'Finder.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_o",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Open -a 'Obsidian.app'",
+                                "from": {
+                                    "key_code": "o",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Obsidian.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -411,6 +414,22 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'Music.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_o",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Open -a 'Visual Studio Code.app'",
+                                "from": {
+                                    "key_code": "v",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Visual Studio Code.app'" }],
                                 "type": "basic"
                             }
                         ]
@@ -620,27 +639,6 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [{ "shell_command": "open -g rectangle://execute-action?name=maximize" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "hyper_sublayer_w",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "description": "Window: Previous Tab",
-                                "from": {
-                                    "key_code": "u",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "tab",
-                                        "modifiers": ["right_control", "right_shift"]
-                                    }
-                                ],
                                 "type": "basic"
                             },
                             {
