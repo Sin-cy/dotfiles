@@ -67,7 +67,7 @@ return {
 			end,
 		},
 	},
-    -- Lazy git
+    -- Lazy git 
     {
         "kdheepak/lazygit.nvim",
         cmd = {
@@ -77,7 +77,7 @@ return {
             "LazyGitFilter",
             "LazyGitFilterCurrentFile",
         },
-        enabled = true,
+        enabled = false,
         -- window border thing
         dependencies = {
             "nvim-lua/plenary.nvim",
