@@ -1,5 +1,5 @@
 # My dotfiles
-
+Adding this line to test neogit
 This directory contains the dotfiles for my mac system which probably won't work on yours.
 
 # Install with Script
