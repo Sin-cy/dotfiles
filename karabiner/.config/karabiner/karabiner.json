@@ -66,19 +66,6 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Hyper + n -> Notion",
-                                "from": { "key_code": "n" },
-                                "to": [{ "shell_command": "open -a 'Notion'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "hyper",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
                                 "description": "Hyper + b -> Arc",
                                 "from": { "key_code": "b" },
                                 "to": [{ "shell_command": "open -a 'Arc'" }],
@@ -321,6 +308,22 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'Obsidian.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_o",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Open -a 'Notion.app'",
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Notion.app'" }],
                                 "type": "basic"
                             },
                             {
