@@ -1,5 +1,5 @@
 
-import = [
+general.import = [
     "~/.config/alacritty/repothemes/themes/rose-pine.toml"
 ]
 
