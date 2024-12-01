@@ -1,7 +1,6 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
--- config.force_reverse_video_cursor = true
 config.font_size = 16
 config.font = wezterm.font("JetBrainsMonoNL Nerd Font")
 config.automatically_reload_config = true
@@ -25,16 +24,6 @@ config.window_padding = {
 
 -- Key bindings for zoom and delete word
 config.keys = {
-	-- {
-	-- 	key = "+",
-	-- 	mods = "CMD",
-	-- 	action = wezterm.action.IncreaseFontSize,
-	-- },
-	-- {
-	-- 	key = "-",
-	-- 	mods = "CMD",
-	-- 	action = wezterm.action.DecreaseFontSize,
-	-- },
 	{
 		key = "LeftArrow",
 		mods = "OPT",
@@ -51,10 +40,9 @@ config.keys = {
 -- Add Custom Color Scheme
 config.color_scheme = "rose-pine"
 config.colors = {
-	-- background = "#12151B", -- fav
+	-- background = "#12151B", -- lighter gray
     -- background = "#0D0D0D", -- darker gray
     background = "#000", -- pure black
-	-- background = "#1a1a1e", -- fav
     cursor_bg = "#9B96B5",
 	cursor_fg = "#1a1a1e",
 	cursor_border = "#9B96B5",
