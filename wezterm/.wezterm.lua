@@ -17,9 +17,9 @@ config.window_background_opacity = 0.67
 config.audible_bell = "Disabled"
 
 config.window_padding = {
-	left = 1,
-	right = 0,
-	top = 10,
+	left = 18,
+	right = 15,
+	top = 20,
 	bottom = 5,
 }
 
