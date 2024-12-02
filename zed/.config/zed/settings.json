@@ -1,0 +1,150 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+	"features": {
+		"inline_completion_provider": "none"
+	},
+	"vim_mode": true,
+	"ui_font_size": 18,
+	"buffer_font_size": 20,
+	"buffer_font_family": "JetBrainsMono Nerd Font Mono",
+	"current_line_highlight": "none",
+	"cursor_shape": "block",
+	// Might be Related to LSP
+	"tab_size": 4,
+	"hard_tabs": true,
+	"format_on_save": "off",
+	"formatter": "language_server",
+	"enable_language_server": true,
+
+	"vertical_scroll_margin": 8,
+	"cursor_blink": false,
+	"relative_line_numbers": true,
+	"ensure_final_newline_on_save": true,
+	"remove_trailing_whitespace_on_save": true,
+	"show_inline_completions": false,
+	"tab_bar": {
+		"show": false
+	},
+	"tabs": {
+		"git_status": true
+	},
+	"inlay_hints": {
+		// to enable you define it to true in LSP config down below
+		"enabled": false
+	},
+	"scrollbar": {
+		"show": "never"
+	},
+	"toolbar": {
+		"breadcrumbs": false,
+		"quick_actions": true
+	},
+	// Move all panel to the right
+	"project_panel": {
+		"button": true,
+		"dock": "right",
+		"git_status": true
+	},
+	"outline_panel": {
+		"dock": "right"
+	},
+	"collaboration_panel": {
+		"dock": "left"
+	},
+	// Move some unnecessary panels to the left
+	"notification_panel": {
+		"dock": "left"
+	},
+	"chat_panel": {
+		"dock": "left"
+	},
+	// Themes
+	"theme": "Rosé Pine Moon",
+	"experimental.theme_overrides": {
+		// "editor.background": "#121213",
+		// "background.appearance": "blurred",
+		// "editor.line_number": "#fff",
+		// "editor.active_line_number": "#eebebe",
+		// "editor.gutter.background": "#121213",
+		// "tab_bar.background": "#000",
+		// "terminal.background": "#121213",
+		// "toolbar.background": "#121213",
+		// "tab.active_background": "#121213",
+		// "tab.inactive_background": "#121213",
+	},
+	// LSP Config
+	"lsp": {
+		"tailwindcss-language-server": {
+			"settings": {
+				"classAttributes": [
+					"class",
+					"className",
+					"ngClass",
+					"styles"
+				]
+			}
+		},
+		"gppls": {},
+		"rust-analyzer": {},
+	},
+	"languages": {
+		// Refer https://zed.dev/docs/languages/javascript and https://zed.dev/docs/languages/typescript for more info
+		"JavaScript": {
+			"hard_tabs": true,
+			"tab_size": 4,
+			"format_on_save": "off",
+			// "formatter": "language_server"
+			"inlay_hints": {
+				"enabled": false
+			}
+		},
+		"TypeScript": {
+			"format_on_save": "off",
+			// Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
+			"inlay_hints": {
+				"enabled": false,
+				"show_parameter_hints": false,
+				"show_other_hints": true,
+				"show_type_hints": true //shows type hints right in the line
+			}
+		},
+		"Python": {
+			"format_on_save": {
+				"language_server": {
+					"name": "ruff"
+				}
+			},
+			"formatter": {
+				"language_server": {
+					"name": "ruff"
+				}
+			},
+			"language_servers": [
+				"pyright",
+				"ruff"
+			]
+		}
+	},
+	"language_overrides": {
+		"TypeScript": {
+			"tab_size": 4,
+			"hard_tabs": true,
+			"format_on_save": "off",
+			"inlay_hints": {
+				"enabled": false
+			}
+		},
+		"JSON": {
+			"tab_size": 4,
+			"hard_tabs": true,
+			"format_on_save": "off"
+		}
+	}
+}

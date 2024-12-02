@@ -1,0 +1,207 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+	// Put keybinds here to work globally outside & inside of editor
+	{
+		"context": "EmptyPane || SharedScreen || vim_operator == none && !VimWaiting && vim_mode != insert ",
+		"bindings": {
+			"ctrl-e h": "tab_switcher::Toggle", // opens up a list for quickly switching file
+			"space p f": "file_finder::Toggle",
+			"space p s": "pane::DeploySearch", // after searching, go to where you wanna go and press g space to go to that file
+			"ctrl-o p": "projects::OpenRecent",
+			"space e e": "workspace::ToggleRightDock", // ALREADY SET BY DEFAULT as cmd shift e which still works with this
+		}
+	},
+	{
+		"context": "Editor && VimControl && !VimWaiting && !menu",
+		"bindings": {
+			"ctrl-w z": "workspace::ToggleZoom",
+			// "space s t": "tab_switcher::Toggle",
+			// "ctrl-d": "tab_switcher::CloseSelectedItem",
+			// "ctrl-w t": "terminal_panel::ToggleFocus",
+			// "space d g": "diagnostics::Deploy",
+			// "space e": "workspace::ToggleLeftDock"
+			// "space p": "outline::Toggle"
+		}
+	},
+	// put key-bindings here if you want them to work ONLY in INSERT mode
+	{
+		"context": "Editor && vim_mode == insert && !VimWaiting && !menu ",
+		"bindings": {
+			"ctrl-h": "editor::ShowSignatureHelp"
+		}
+	},
+	// put key-bindings here if you want them to work ONLY in NORMAL mode
+	{
+		"context": "Editor && vim_mode == normal && !VimWaiting && !menu ",
+		"bindings": {
+			"ctrl-^": "pane::AlternateFile", // quickly move between two panes defaults to ctrl 6
+			"ctrl-w f": "workspace::NewCenterTerminal",
+			"shift-k": "editor::Hover", // Hovering
+			"ctrl-c": [
+				"editor::Cancel",
+				"menu::Cancel"
+			],
+			// Ctrl hjkl to move between panes
+			"ctrl-h": [
+				"workspace::ActivatePaneInDirection",
+				"Left"
+			],
+			"ctrl-l": [
+				"workspace::ActivatePaneInDirection",
+				"Right"
+			],
+			"ctrl-k": [
+				"workspace::ActivatePaneInDirection",
+				"Up"
+			],
+			"ctrl-j": [
+				"workspace::ActivatePaneInDirection",
+				"Down"
+			],
+			// "j": "pane::ActivateNextItem",
+			// "k": "pane::ActivatePrevItem",
+		}
+	},
+	// put key-bindings here if you want them to work ONLY in VISUAL mode
+	{
+		"context": "Editor && vim_mode == visual && !VimWaiting && !menu ",
+		"bindings": {
+			"=": "editor::Format",
+			// Move Lines Up/Down
+			"shift-j": "editor::MoveLineDown",
+			"shift-k": "editor::MoveLineUp",
+		}
+	},
+	// put key-bindings here if you want them to work in NORMAL & VISUAL mode
+	{
+		"context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+		"bindings": {
+			"g ]": "editor::GoToDiagnostic",
+			"g [": "editor::GoToPrevDiagnostic",
+			"g r": "editor::FindAllReferences", // find references in directory on word under cursor
+			"space v c a": "editor::ToggleCodeActions",
+			"space m p": "editor::Format",
+			// "space p f": "file_finder::Toggle",
+			// "space p s": "pane::DeploySearch", // after searching, go to where you wanna go and press g space to go to that file
+			// "cmd-shift e": "workspace::ToggleLeftDock", // ALREADY SET BY DEFAULT
+			// "space e e": "workspace::ToggleRightDock", // need to find a way to disable space when in explorer
+			// "space p": "outline::Toggle", // DEFAULT TO g s
+			"space v": "editor::GoToDefinitionSplit",
+			// "g d": "editor::GoToTypeDefinition", // ALREADY BY DEFAULT
+			"space r n": "editor::Rename",
+			// Git
+			"space g d": "editor::ToggleHunkDiff",
+			// "space g u": "editor::RevertSelectedHunks",
+			// Toggle inlay hints
+			"space t i": "editor::ToggleInlayHints",
+			// NOTE: Toggle Zen mode, not fully working yet
+			"space c z": "workspace::ToggleCenteredLayout",
+			// Open markdown preview
+			// "space m p": "markdown::OpenPreview",
+			"space m P": "markdown::OpenPreviewToTheSide",
+			// Open recent project
+			"space f p": "projects::OpenRecent",
+			// Search word under cursor
+			// Go to file with `gf`
+			"g f": "editor::OpenExcerpts"
+		}
+	},
+	// bind ctrl c to escape
+	{
+		"context": "Editor",
+		"bindings": {
+			"ctrl-c ": [
+				"workspace::SendKeystrokes",
+				"escape"
+			],
+			"ctrl-j": "menu::SelectNext", // Remap Ctrl-j to move down in selection only menus
+			"ctrl-k": "menu::SelectPrev", // Remap Ctrl-k to move up in selection only menus
+		}
+	},
+	{
+		"context": "VimControl && !menu",
+		"bindings": {
+			// Put key bindings here if you want them to work in normal & visual mode.
+			// "space p f": "file_finder::Toggle"
+		}
+	},
+	{
+		"context": "EmptyPane || SharedScreen",
+		"bindings": {
+			// Put key bindings here (in addition to the context above) if you want them to
+			// work when no editor exists.
+		}
+	},
+	{
+		// File explorer
+		"context": "ProjectPanel && not_editing",
+		"bindings": {
+			"a": "project_panel::NewFile", // DEFAULTS to % sign to add file or dir
+			"A": "project_panel::NewDirectory",
+			"r": "project_panel::Rename",
+			"d": "project_panel::Delete",
+			"x": "project_panel::Cut",
+			"c": "project_panel::Copy",
+			"p": "project_panel::Paste",
+			"q": "workspace::ToggleRightDock", // use q to close out of file explorer when inside explorer
+			// Close project panel as project file panel on the right
+			// ctrl hjkl to move back into editor from file explorer
+			"ctrl-h": [
+				"workspace::ActivatePaneInDirection",
+				"Left"
+			],
+			"ctrl-l": [
+				"workspace::ActivatePaneInDirection",
+				"Right"
+			],
+			"ctrl-k": [
+				"workspace::ActivatePaneInDirection",
+				"Up"
+			],
+			"ctrl-j": [
+				"workspace::ActivatePaneInDirection",
+				"Down"
+			]
+		}
+	},
+	// Toggle Terminal
+	{
+		"context": "Terminal",
+		"bindings": {
+			"ctrl-h": [
+				"workspace::ActivatePaneInDirection",
+				"Left"
+			],
+			"ctrl-l": [
+				"workspace::ActivatePaneInDirection",
+				"Right"
+			],
+			"ctrl-k": [
+				"workspace::ActivatePaneInDirection",
+				"Up"
+			],
+			"ctrl-j": [
+				"workspace::ActivatePaneInDirection",
+				"Down"
+			],
+			"ctrl-w f": "workspace::NewCenterTerminal"
+		},
+	},
+	// already by default
+	// Use Ctrl-w as prefix before moving out of the dock
+	// {
+	//   "context": "Dock",
+	//   "bindings": {
+	//     "ctrl-w h": ["workspace::ActivatePaneInDirection", "Left"],
+	//     "ctrl-w l": ["workspace::ActivatePaneInDirection", "Right"],
+	//     "ctrl-w k": ["workspace::ActivatePaneInDirection", "Up"],
+	//     "ctrl-w j": ["workspace::ActivatePaneInDirection", "Down"]
+	//   }
+	// }
+]
