@@ -96,19 +96,6 @@
                                 "from": { "key_code": "2" },
                                 "to": [{ "shell_command": "open -a 'OBS Studio'" }],
                                 "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "hyper",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "description": "Hyper + c -> Open Notion Calendar",
-                                "from": { "key_code": "c" },
-                                "to": [{ "shell_command": "open -a 'Notion Calendar'" }],
-                                "type": "basic"
                             }
                         ]
                     },
@@ -304,7 +291,7 @@
                                 ],
                                 "description": "Open -a 'Obsidian.app'",
                                 "from": {
-                                    "key_code": "1",
+                                    "key_code": "0",
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'Obsidian.app'" }],
@@ -420,6 +407,22 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'Visual Studio Code.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_o",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Open -a 'Notion Calendar.app'",
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Notion Calendar.app'" }],
                                 "type": "basic"
                             }
                         ]
