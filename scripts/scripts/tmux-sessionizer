@@ -6,7 +6,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(fd . ~/.config ~/dotfiles ~/Desktop/main-cs ~/Desktop/main-cs/Projects ~/ ~/Desktop/work ~/Desktop/work/youtube -t d -d 1 | fzf)
+    selected=$(fd -H . ~/dotfiles ~/Desktop/main-cs ~/Desktop/main-cs/Projects ~/ ~/Desktop/work ~/Desktop/work/youtube -t d -d 1 | fzf)
 fi
 
 if [[ -z $selected ]]; then
