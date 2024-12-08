@@ -71,6 +71,14 @@ export FZF_TMUX_OPTS=" -p90%,70% "
 # Keymaps for this is available at https://github.com/junegunn/fzf-git.sh
 source ~/scripts/fzf-git.sh
 
+# Atuin Configs
+eval "$(atuin init zsh)"
+# Keybinding to start Atuin in Insert Mode
+bindkey '^r' atuin-search-viins  # Ctrl-r starts Atuin in Insert mode
+
+# Keybinding to start Atuin in Normal Mode
+bindkey '^x^n' atuin-search-vicmd  # Ctrl-x + Ctrl-n starts Atuin in Normal mode
+
 #User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 

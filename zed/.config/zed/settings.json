@@ -22,13 +22,15 @@
 	"format_on_save": "off",
 	"formatter": "language_server",
 	"enable_language_server": true,
-
 	"vertical_scroll_margin": 8,
 	"cursor_blink": false,
 	"relative_line_numbers": true,
 	"ensure_final_newline_on_save": true,
 	"remove_trailing_whitespace_on_save": true,
 	"show_inline_completions": false,
+	"file_finder": {
+		"modal_width": "medium"
+	},
 	"tab_bar": {
 		"show": false
 	},

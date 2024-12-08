@@ -2,10 +2,7 @@ return {
     -- Adding a filename to the Top Right
     {
         "b0o/incline.nvim",
-        dependencies = {},
-        enabled = true,
-        event = "BufReadPre",
-        priority = 1200,
+        dependencies = {"nvim-web-devicons"},
         config = function()
             local devicons = require("nvim-web-devicons")
             require("incline").setup({
@@ -15,10 +12,12 @@ return {
                 },
                 render = function(props)
                     local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-                    local filetype = vim.bo[props.buf].filetype
-                    local icon, color = devicons.get_icon_color_by_filetype(filetype)
-
+                    if filename == '' then
+                        filename = '[No Name]'
+                    end
+                    local icon, color = devicons.get_icon_color_by_filetype(filename)
                     local modified = vim.bo[props.buf].modified
+
                     local buffer = {
                         icon and { " ", icon, " ", guifg = color }
                         or "",

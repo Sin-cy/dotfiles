@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Save this file as ~/.local/bin/tmux-sessionizer
+# Save this file as ~/scripts/tmux-sessionizer
 # Make it executable with: chmod +x ~/.local/bin/tmux-sessionizer
 
 if [[ $# -eq 1 ]]; then
