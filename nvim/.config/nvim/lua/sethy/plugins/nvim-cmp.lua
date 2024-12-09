@@ -37,6 +37,7 @@ return {
                 completion = {
                     border = {'┌', '─', '┐', '│', '┘', '─', '└', '│'},
                 }
+
             },
             -- config nvim cmp to work with snippet engine
             snippet = {
