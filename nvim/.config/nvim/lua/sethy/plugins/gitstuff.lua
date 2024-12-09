@@ -77,7 +77,7 @@ return {
             "LazyGitFilter",
             "LazyGitFilterCurrentFile",
         },
-        enabled = false,
+        enabled = true,
         -- window border thing
         dependencies = {
             "nvim-lua/plenary.nvim",

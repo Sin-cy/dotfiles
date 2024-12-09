@@ -177,7 +177,7 @@ return {
                     }
                     hl.TelescopePromptTitle = {
                         bg = prompt,
-                        fg = prompt,
+                        fg = "#2C94DD",
                     }
                     hl.TelescopePreviewTitle = {
                         bg = c.bg_dark,
