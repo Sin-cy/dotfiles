@@ -120,7 +120,7 @@ return {
                         -- set their background accordingly if you wish to keep them dark and borderless
                         LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
                         MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-                        TelescopeTitle = { fg = theme.ui.special , bold = true },
+                        TelescopeTitle = { fg = theme.ui.special, bold = true },
                         TelescopePromptBorder = { fg = theme.ui.special, },
                         TelescopeResultsNormal = { fg = theme.ui.fg_dim, },
                         TelescopeResultsBorder = { fg = theme.ui.special, },
@@ -134,7 +134,7 @@ return {
             })
         end
     },
-    -- NOTE: neosolarized theme
+    -- NOTE: neosolarized 
     {
         "craftzdog/solarized-osaka.nvim",
         lazy = false,
@@ -150,14 +150,44 @@ return {
                     functions = {},
                     variables = {},
                     -- Background styles. Can be "dark", "transparent" or "normal"
-                    sidebars = "dark", -- style for sidebars, see below
-                    floats = "dark", -- style for floating windows
+                    sidebars = "dark",            -- style for sidebars, see below
+                    floats = "dark",              -- style for floating windows
                 },
-                sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-                day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+                sidebars = { "qf", "help" },      -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
+                day_brightness = 0.3,             -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
                 hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
-                dim_inactive = false, -- dims inactive windows
-                lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
+                dim_inactive = false,             -- dims inactive windows
+                lualine_bold = false,             -- When `true`, section headers in the lualine theme will be bold
+                on_highlights = function(hl, c)
+                    local prompt = "#2d3149"
+                    hl.TelescopeNormal = {
+                        bg = c.bg_dark,
+                        fg = c.fg_dark,
+                    }
+                    hl.TelescopeBorder = {
+                        bg = c.bg_dark,
+                        fg = c.bg_dark,
+                    }
+                    hl.TelescopePromptNormal = {
+                        bg = c.bg_dark,
+                    }
+                    hl.TelescopePromptBorder = {
+                        bg = c.bg_dark,
+                        fg = c.bg_dark,
+                    }
+                    hl.TelescopePromptTitle = {
+                        bg = prompt,
+                        fg = prompt,
+                    }
+                    hl.TelescopePreviewTitle = {
+                        bg = c.bg_dark,
+                        fg = c.bg_dark,
+                    }
+                    hl.TelescopeResultsTitle = {
+                        bg = c.bg_dark,
+                        fg = c.bg_dark,
+                    }
+                end,
             })
         end
     },
