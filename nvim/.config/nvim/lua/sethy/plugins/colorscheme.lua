@@ -9,10 +9,10 @@ return {
                 variant = "main",      -- auto, main, moon, or dawn
                 dark_variant = "main", -- main, moon, or dawn
                 dim_inactive_windows = false,
-                disable_background = true,
+                -- disable_background = true,
                 -- 	disable_nc_background = false,
                 -- 	disable_float_background = false,
-                extend_background_behind_borders = false,
+                -- extend_background_behind_borders = false,
                 styles = {
                     bold = true,
                     italic = false,
@@ -21,7 +21,7 @@ return {
                 highlight_groups = {
                     ColorColumn = { bg = "#1C1C21" },
                     Normal = { bg = "none" },                      -- Main background remains transparent
-                    Pmenu = { bg = "#26233a", fg = "#e0def4" },    -- Completion menu background
+                    Pmenu = { bg = "", fg = "#e0def4" },           -- Completion menu background
                     PmenuSel = { bg = "#4a465d", fg = "#f8f5f2" }, -- Highlighted completion item
                     PmenuSbar = { bg = "#191724" },                -- Scrollbar background
                     PmenuThumb = { bg = "#9ccfd8" },               -- Scrollbar thumb
@@ -31,11 +31,12 @@ return {
                     legacy_highlights = false, -- Improve compatibility for previous versions of Neovim
                     migrations = true,         -- Handle deprecated options automatically
                 },
+
             })
 
             -- HACK: set this on the color you want to be persistent
             -- when quit and reopening nvim
-            vim.cmd("colorscheme rose-pine")
+            -- vim.cmd("colorscheme rose-pine")
         end,
     },
     -- NOTE: gruvbox
@@ -63,7 +64,9 @@ return {
                 inverse = true, -- invert background for search, diffs, statuslines and errors
                 contrast = "",  -- can be "hard", "soft" or empty string
                 palette_overrides = {},
-                overrides = {},
+                overrides = {
+                    Pmenu = { bg = "" }, -- Completion menu background
+                },
                 dim_inactive = false,
                 transparent_mode = true,
             })
@@ -91,7 +94,8 @@ return {
                         dragon = {},
                         all = {
                             ui = {
-                                bg_gutter = "none"
+                                bg_gutter = "none",
+                                border = "rounded"
                             }
                         }
                     },
@@ -102,7 +106,7 @@ return {
                         NormalFloat = { bg = "none" },
                         FloatBorder = { bg = "none" },
                         FloatTitle = { bg = "none" },
-                        Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },  -- add `blend = vim.o.pumblend` to enable transparency
+                        Pmenu = { fg = theme.ui.shade0, bg = "NONE", blend = vim.o.pumblend }, -- add `blend = vim.o.pumblend` to enable transparency
                         PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
                         PmenuSbar = { bg = theme.ui.bg_m1 },
                         PmenuThumb = { bg = theme.ui.bg_p2 },
@@ -116,17 +120,44 @@ return {
                         -- set their background accordingly if you wish to keep them dark and borderless
                         LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
                         MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-                        TelescopeTitle = { fg = theme.ui.special, bold = true },
-                        TelescopePromptBorder = { fg = theme.ui.bg_p1,  },
-                        TelescopeResultsNormal = { fg = theme.ui.fg_dim,  },
-                        TelescopeResultsBorder = { fg = theme.ui.bg_m1,  },
-                        TelescopePreviewBorder = { fg = theme.ui.bg_dim },
+                        TelescopeTitle = { fg = theme.ui.special , bold = true },
+                        TelescopePromptBorder = { fg = theme.ui.special, },
+                        TelescopeResultsNormal = { fg = theme.ui.fg_dim, },
+                        TelescopeResultsBorder = { fg = theme.ui.special, },
+                        TelescopePreviewBorder = { fg = theme.ui.special },
                     }
                 end,
                 theme = "wave",    -- Load "wave" theme when 'background' option is not set
                 background = {     -- map the value of 'background' option to a theme
                     dark = "wave", -- try "dragon" !
                 },
+            })
+        end
+    },
+    -- NOTE: neosolarized theme
+    {
+        "craftzdog/solarized-osaka.nvim",
+        lazy = false,
+        config = function()
+            require("solarized-osaka").setup({
+                transparent = true,
+                terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
+                styles = {
+                    -- Style to be applied to different syntax groups
+                    -- Value is any valid attr-list value for `:help nvim_set_hl`
+                    comments = { italic = true },
+                    keywords = { italic = false },
+                    functions = {},
+                    variables = {},
+                    -- Background styles. Can be "dark", "transparent" or "normal"
+                    sidebars = "dark", -- style for sidebars, see below
+                    floats = "dark", -- style for floating windows
+                },
+                sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
+                day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+                hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
+                dim_inactive = false, -- dims inactive windows
+                lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
             })
         end
     },

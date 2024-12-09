@@ -30,6 +30,14 @@ return {
             completion = {
                 completeopt = "menu,menuone,preview,noselect",
             },
+            window = {
+                documentation = {
+                    border = {'╭', '─', '╮', '│', '╯', '─', '╰', '│'},
+                },
+                completion = {
+                    border = {'┌', '─', '┐', '│', '┘', '─', '└', '│'},
+                }
+            },
             -- config nvim cmp to work with snippet engine
             snippet = {
                 expand = function(args)
