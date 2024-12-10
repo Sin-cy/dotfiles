@@ -30,7 +30,6 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- ctrl c as escape cuz Im lazy to reach up to the esc key
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<C-c>", ":nohl<CR>", { desc = "Clear search hl", silent = true })
--- formats current buffer nvim built in formatting attach to LSP (not prettier)
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- Unmaps Q in normal mode
@@ -58,6 +57,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
+-- Set textwidth to 80 for Markdown files
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "markdown" },
+    callback = function()
+        vim.opt_local.textwidth = 80
+    end,
+})
 
 -- tab stuff
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>")   --open new tab
@@ -77,7 +83,8 @@ vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current spli
 
 -- Copy filepath to the clipboard
 vim.keymap.set("n", "<leader>fp", function()
-    local filePath = vim.fn.expand("%:~")              -- Gets the file path relative to the home directory
-    vim.fn.setreg("+", filePath)                       -- Copy the file path to the clipboard register
-    print("File path copied to clipboard: " .. filePath) -- Optional: print message to confirm
+  local filePath = vim.fn.expand("%:~") -- Gets the file path relative to the home directory
+  vim.fn.setreg("+", filePath) -- Copy the file path to the clipboard register
+  print("File path copied to clipboard: " .. filePath) -- Optional: print message to confirm
 end, { desc = "Copy file path to clipboard" })
+
