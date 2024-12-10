@@ -1,4 +1,3 @@
-print("markdown.lua loaded")
 local set = vim.opt_local
 
 set.textwidth = 80   -- Wrap text at 80 characters
@@ -35,4 +34,3 @@ vim.cmd(
   string.format([[highlight @markup.heading.6.markdown cterm=bold gui=bold guifg=%s guibg=%s]], color_fg, color6_bg)
 )
 
-print(" Markdown settings & highlights applied! ")
