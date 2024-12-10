@@ -1,6 +1,12 @@
+print("markdown.lua loaded")
+local set = vim.opt_local
+
+set.textwidth = 80   -- Wrap text at 80 characters
+set.spell = true     -- Enable spell checking
+set.linebreak = true
 
 -- added extra highlights for markdown files to render highlights properly
--- thx to Likarzu
+-- thx to Linkarzu
 
 local color1_bg = "#ff757f"
 local color2_bg = "#4fd6be"
@@ -28,3 +34,5 @@ vim.cmd(
 vim.cmd(
   string.format([[highlight @markup.heading.6.markdown cterm=bold gui=bold guifg=%s guibg=%s]], color_fg, color6_bg)
 )
+
+print(" Markdown settings & highlights applied! ")

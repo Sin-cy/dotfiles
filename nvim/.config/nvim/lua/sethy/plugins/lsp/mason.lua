@@ -146,20 +146,6 @@ return {
                     },
                 })
             end,
-            ["marksman"] = function()
-                lspconfig["marksman"].setup({
-                    capabilities = capabilities,
-                    on_attach = function(client, bufnr)
-                        -- Apply Markdown-specific settings
-                        if vim.bo[bufnr].filetype == "markdown" then
-                            -- Set textwidth to 80 for Markdown
-                            vim.bo[bufnr].textwidth = 80
-                            -- Optional: Automatically wrap text while typing
-                            vim.bo[bufnr].formatoptions = vim.bo[bufnr].formatoptions .. "t"
-                        end
-                    end,
-                })
-            end,
             ["ts_ls"] = function()
                 lspconfig.ts_ls.setup({
                     capabilities = capabilities,

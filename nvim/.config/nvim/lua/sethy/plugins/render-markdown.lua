@@ -6,7 +6,7 @@ return {
         "nvim-tree/nvim-web-devicons"
     },
     ---@module 'render-markdown'
-    ft = { "markdown", "norg", "rmd", "org" },
+    -- ft = { "markdown", "norg", "rmd", "org" },
     init = function()
         -- Define colors
         local color1_bg = "#ff757f"
@@ -24,7 +24,7 @@ return {
         vim.cmd(string.format([[highlight Headline5Bg guifg=%s guibg=%s gui=bold]], color_fg, color5_bg))
         vim.cmd(string.format([[highlight Headline6Bg guifg=%s guibg=%s gui=bold]], color_fg, color6_bg))
 
-        -- Heading foregrounds
+        -- Heading fg
         -- vim.cmd(string.format([[highlight Headline1Fg guifg=%s gui=bold]], colors.color1_bg))
         -- vim.cmd(string.format([[highlight Headline2Fg guifg=%s gui=bold]], colors.color2_bg))
         -- vim.cmd(string.format([[highlight Headline3Fg guifg=%s gui=bold]], colors.color3_bg))
@@ -58,10 +58,10 @@ return {
             width = "block",
             right_pad = 1,
         },
-        -- bullet = {
-        --     -- Turn on / off list bullet rendering
-        --     enabled = true,
-        -- },
+        bullet = {
+            -- Turn on / off list bullet rendering
+            enabled = true,
+        },
         -- checkbox = {
         --     -- Turn on / off checkbox state rendering
         --     enabled = true,

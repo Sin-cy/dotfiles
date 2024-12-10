@@ -26,7 +26,7 @@ return {
 					default = wilder.make_hl(
 						"WilderPopupMenu",
 						"Pmenu",
-						{ { a = 1 }, { a = 1 }, { background = "#282c34" } } -- Adjust background color
+						{ { a = 1 }, { a = 1 }, { background = "#1E212B" } } -- Adjust background color
 					),
 					accent = wilder.make_hl(
 						"WilderAccent",
@@ -36,7 +36,7 @@ return {
 				},
 				-- 'single', 'double', 'rounded' or 'solid'
 				-- can also be a list of 8 characters, see :h wilder#popupmenu_border_theme() for more details
-				border = "rounded",
+				border = "single",
 			}))
 		)
 	end,
