@@ -36,7 +36,7 @@ vim.o.foldlevel = 99        -- Open most folds by default
 vim.o.foldcolumn = "0"
 
 -- backspace
-vim.opt.backspace = { "start", "eol", "indent" }
+vim.opt.backspace = "start, eol, indent"
 
 --split windows
 vim.opt.splitright = true --split vertical window to the right
