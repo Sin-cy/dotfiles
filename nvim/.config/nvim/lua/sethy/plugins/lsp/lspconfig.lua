@@ -2,17 +2,17 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     opts = {
-        servers = {
-            ts_ls = {},
-            gopls = {},
-            css_ls = {},
-            tailwindcss = {},
-            html = {},
-            lua_ls = {},
-            marksman = {},
-            emmet_ls = {},
-            emmet_language_server = {}
-        },
+        -- servers = {
+        --     ts_ls = {},
+        --     gopls = {},
+        --     css_ls = {},
+        --     tailwindcss = {},
+        --     html = {},
+        --     lua_ls = {},
+        --     marksman = {},
+        --     emmet_ls = {},
+        --     emmet_language_server = {}
+        -- },
     },
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
