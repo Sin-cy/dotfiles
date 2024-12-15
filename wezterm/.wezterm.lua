@@ -22,7 +22,7 @@ config.window_padding = {
 	bottom = 5,
 }
 
--- Key bindings for zoom and delete word
+-- Key bindings delete word
 config.keys = {
 	{
 		key = "LeftArrow",
