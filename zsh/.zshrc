@@ -76,9 +76,6 @@ eval "$(atuin init zsh)"
 # Keybinding to start Atuin in Insert Mode
 bindkey '^r' atuin-search-viins  # Ctrl-r starts Atuin in Insert mode
 
-# Keybinding to start Atuin in Normal Mode
-bindkey '^x^n' atuin-search-vicmd  # Ctrl-x + Ctrl-n starts Atuin in Normal mode
-
 #User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -104,7 +101,6 @@ alias a="attach"
 alias tns="~/scripts/tmux-sessionizer"
 
 # fzf 
-alias f="fzf"
 # called from ~/scripts/
 alias nlof="~/scripts/fzf_listoldfiles.sh"
 # opens documentation through fzf (eg: git,zsh etc.)
