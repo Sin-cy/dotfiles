@@ -1,0 +1,20 @@
+# Reload config with shft + cmd + , 
+
+theme = rose-pine
+background = #000000
+background-opacity = 0.65
+background-blur-radius = 15
+
+font-family = JetBrainsMonoNL Nerd Font 
+font-size = 20
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor 
+
+macos-titlebar-style = hidden
+
+confirm-close-surface = false
+window-decoration = true
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
