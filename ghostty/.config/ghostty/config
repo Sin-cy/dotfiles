@@ -1,4 +1,4 @@
-# Reload config with shft + cmd + , 
+# By default Reload config with shft + cmd + , 
 
 theme = rose-pine
 background = #000000
@@ -18,3 +18,9 @@ window-decoration = true
 window-padding-x = 10
 window-padding-y = 10
 window-padding-balance = true
+
+auto-update = check
+
+# Custom Keybinds & Config (super represents cmd key on mac)
+keybind = super+r=reload_config 
+keybind = super+i=inspector:toggle
