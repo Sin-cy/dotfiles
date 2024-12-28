@@ -31,7 +31,8 @@ keybind = super+i=inspector:toggle
 # (ctrl b for tmux -> cmb b for ghostty)
 keybind = super+b>r=reload_config
 keybind = super+b>x=close_surface
-# this only works if you have macos-titlebar-style enabled else it behaves like new window
+# this only works if you have `macos-titlebar-style = tabs or native or transparent`
+# else it behaves like new window
 keybind = super+b>c=new_tab 
 keybind = super+b>n=new_window
 
@@ -47,6 +48,7 @@ keybind = super+b>8=goto_tab:8
 keybind = super+b>9=goto_tab:9
 
 # splitting
+# | current does not work
 keybind = super+b>\=new_split:right
 keybind = super+b>-=new_split:down
 keybind = super+b>e=equalize_splits
