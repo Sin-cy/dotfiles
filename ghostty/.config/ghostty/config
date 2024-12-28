@@ -3,7 +3,7 @@
 theme = rose-pine
 background = #000000
 background-opacity = 0.65
-background-blur-radius = 15
+background-blur-radius = 20
 
 font-family = JetBrainsMonoNL Nerd Font 
 font-size = 20
@@ -22,5 +22,38 @@ window-padding-balance = true
 auto-update = check
 
 # Custom Keybinds & Config (super represents cmd key on mac)
-keybind = super+r=reload_config 
+
+# For Simple Keybinds
+# keybind = super+r=reload_config 
 keybind = super+i=inspector:toggle
+
+# Similar Tmux but with Ghostty
+# (ctrl b for tmux -> cmb b for ghostty)
+keybind = super+b>r=reload_config
+keybind = super+b>x=close_surface
+# this only works if you have macos-titlebar-style enabled else it behaves like new window
+keybind = super+b>c=new_tab 
+keybind = super+b>n=new_window
+
+# tab nav
+keybind = super+b>1=goto_tab:1
+keybind = super+b>2=goto_tab:2
+keybind = super+b>3=goto_tab:3
+keybind = super+b>4=goto_tab:4
+keybind = super+b>5=goto_tab:5
+keybind = super+b>6=goto_tab:6
+keybind = super+b>7=goto_tab:7
+keybind = super+b>8=goto_tab:8
+keybind = super+b>9=goto_tab:9
+
+# splitting
+keybind = super+b>\=new_split:right
+keybind = super+b>-=new_split:down
+keybind = super+b>e=equalize_splits
+
+# split nav
+keybind = super+b>h=goto_split:left
+keybind = super+b>j=goto_split:bottom
+keybind = super+b>k=goto_split:top
+keybind = super+b>l=goto_split:right
+
