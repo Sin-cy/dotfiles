@@ -9,9 +9,10 @@ font-family = JetBrainsMonoNL Nerd Font
 font-size = 20
 cursor-style = block
 cursor-style-blink = false
-shell-integration-features = no-cursor 
+cursor-invert-fg-bg = true
 
 macos-titlebar-style = hidden
+mouse-hide-while-typing = true
 
 confirm-close-surface = false
 window-decoration = true
@@ -20,9 +21,13 @@ window-padding-y = 10
 window-padding-balance = true
 
 auto-update = check
+auto-update-channel = stable
+
+# extras
+shell-integration-features = no-cursor 
+copy-on-select = clipboard
 
 # Custom Keybinds & Config (super represents cmd key on mac)
-
 # For Simple Keybinds
 # keybind = super+r=reload_config 
 keybind = super+i=inspector:toggle
@@ -48,14 +53,12 @@ keybind = super+b>8=goto_tab:8
 keybind = super+b>9=goto_tab:9
 
 # splitting
-# | current does not work
 keybind = super+b>\=new_split:right
 keybind = super+b>-=new_split:down
 keybind = super+b>e=equalize_splits
 
-# split nav
+# split nav (setting this to control will not work if tmux already uses it)
 keybind = super+b>h=goto_split:left
 keybind = super+b>j=goto_split:bottom
 keybind = super+b>k=goto_split:top
 keybind = super+b>l=goto_split:right
-
