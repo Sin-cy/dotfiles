@@ -12,6 +12,7 @@ cursor-style-blink = false
 cursor-invert-fg-bg = true
 
 macos-titlebar-style = hidden
+macos-option-as-alt = true
 mouse-hide-while-typing = true
 
 confirm-close-surface = false
