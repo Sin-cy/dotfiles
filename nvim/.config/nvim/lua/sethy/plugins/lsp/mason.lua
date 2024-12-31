@@ -6,6 +6,7 @@ return {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         "hrsh7th/cmp-nvim-lsp",
         "neovim/nvim-lspconfig",
+        -- "saghen/blink.cmp",
     },
     config = function()
         -- import mason and mason_lspconfig
@@ -34,14 +35,14 @@ return {
             -- servers for mason to install
             ensure_installed = {
                 "lua_ls",
-                "ts_ls",
+                -- "ts_ls", currently using a ts plugin
                 "html",
                 "cssls",
                 "tailwindcss",
                 "gopls",
                 "emmet_ls",
                 "emmet_language_server",
-                "eslint",
+                -- "eslint",
                 "marksman",
             },
             -- auto install configured servers (with lspconfig)
@@ -55,12 +56,13 @@ return {
                 "isort",    -- python formatter
                 "pylint",
                 "clangd",
-                -- { 'eslint_d', version = '13.1.2' },
+                "denols",
+                { 'eslint_d', version = '13.1.2' },
             },
         })
 
         -- NOTE: Moved from lspconfig.lua
-        --
+
         mason_lspconfig.setup_handlers({
             -- default handler for installed servers
             function(server_name)
@@ -146,13 +148,22 @@ return {
                     },
                 })
             end,
+            ["denols"] = function()
+                lspconfig.denols.setup({
+                    capabilities = capabilities,
+                    root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'), -- Attach only if these files exist
+                })
+            end,
             ["ts_ls"] = function()
                 lspconfig.ts_ls.setup({
                     capabilities = capabilities,
-                    on_attach = function(client, bufnr)
-                        -- Disable formatting if you're using a separate formatter like Prettier
-                        -- client.server_capabilities.documentFormattingProvider = false
+                    root_dir = function(fname)
+                        -- Use tsserver unless a Deno-specific config is present
+                        local util = lspconfig.util
+                        return not util.root_pattern('deno.json', 'deno.jsonc')(fname)
+                            and util.root_pattern('tsconfig.json', 'package.json', 'jsconfig.json', '.git')(fname)
                     end,
+                    single_file_support = false,
                     init_options = {
                         preferences = {
                             includeCompletionsWithSnippetText = true,
