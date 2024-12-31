@@ -11,13 +11,13 @@ return {
             nvchadcolorizer.setup({
                 user_default_options = {
                     tailwind = true,
-                }
+                },
+                filetypes = { "html", "css", "javascript", "typescript", "jsx", "tsx", "vue", "svelte" },
             })
 
             tailwindcolorizer.setup({
                 color_square_width = 2,
             })
-
         end,
     },
 }
