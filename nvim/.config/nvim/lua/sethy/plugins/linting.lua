@@ -12,7 +12,7 @@ return {
 			typescript = {},
 			javascriptreact = {},
 			typescriptreact = {},
-			svelte = { "eslint" },
+			svelte = { "eslint_d" },
 			python = { "pylint" },
 		}
 
