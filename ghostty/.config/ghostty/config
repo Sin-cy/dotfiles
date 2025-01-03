@@ -1,6 +1,6 @@
 # By default Reload config with shft + cmd + , 
 
-theme = rose-pine
+config-file = themes/rosepine
 background = #000000
 background-opacity = 0.65
 background-blur-radius = 20
@@ -32,6 +32,7 @@ copy-on-select = clipboard
 # For Simple Keybinds
 # keybind = super+r=reload_config 
 keybind = super+i=inspector:toggle
+keybind = super+b>,=toggle_quick_terminal
 
 # Similar Tmux but with Ghostty
 # (ctrl b for tmux -> cmb b for ghostty)
@@ -63,3 +64,6 @@ keybind = super+b>h=goto_split:left
 keybind = super+b>j=goto_split:bottom
 keybind = super+b>k=goto_split:top
 keybind = super+b>l=goto_split:right
+
+#Autocommands (auto attach tmux when open ghostty)
+command = zsh --login -c "if command -v tmux >/dev/null 2>&1; then tmux attach || tmux; else zsh; fi"
