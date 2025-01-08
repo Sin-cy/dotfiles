@@ -4,7 +4,7 @@ This directory contains the dotfiles for my mac system which probably won't work
 # Install with Script
 
 Run the following
-- optional: Install xcode command line tools beforehand `xcode-select --install`
+- optional: Install Xcode command line tools beforehand `xcode-select --install`
     - Install brew  
         - `sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
@@ -22,7 +22,7 @@ Run the following
 
 ### Install Homebrew
 
-- Install homebrew.
+- Install Homebrew.
 
 - `sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
