@@ -65,9 +65,3 @@ keybind = super+b>j=goto_split:bottom
 keybind = super+b>k=goto_split:top
 keybind = super+b>l=goto_split:right
 
-#Shaders
-# custom-shader = shaders/bettercrt.glsl
-# custom-shader = shaders/retro-terminal.glsl
-
-#Autocommands (auto attach tmux when open ghostty)
-# command = zsh --login -c "if command -v tmux >/dev/null 2>&1; then tmux attach || tmux; else zsh; fi"
