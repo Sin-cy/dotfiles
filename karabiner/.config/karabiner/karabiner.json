@@ -5,6 +5,25 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "description": "Change caps_lock to command+control+option+shift.",
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": ["left_command", "left_control", "left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Hyper Key (⌃⌥⇧⌘)",
                         "manipulators": [
                             {
@@ -94,7 +113,7 @@
                                 ],
                                 "description": "Hyper + 2 -> OBS Studio",
                                 "from": { "key_code": "2" },
-                                "to": [{ "shell_command": "open -a 'OBS Studio'" }],
+                                "to": [{ "shell_command": "open -a 'OBS'" }],
                                 "type": "basic"
                             }
                         ]
@@ -1405,7 +1424,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast://extensions/VladCuciureanu/toothpick/connect-favorite-device-1",
+                                "description": "Open raycast toothpick fav device",
                                 "from": {
                                     "key_code": "1",
                                     "modifiers": { "optional": ["any"] }
@@ -1421,7 +1440,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast://extensions/VladCuciureanu/toothpick/connect-favorite-device-2",
+                                "description": "Open raycast toothpick bluetooth selector",
                                 "from": {
                                     "key_code": "2",
                                     "modifiers": { "optional": ["any"] }
@@ -1437,7 +1456,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast://extensions/thomas/color-picker/pick-color",
+                                "description": "Open raycast color picker extension",
                                 "from": {
                                     "key_code": "c",
                                     "modifiers": { "optional": ["any"] }
@@ -1453,7 +1472,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast://extensions/raycast/raycast-notes/raycast-notes",
+                                "description": "Open raycast notes",
                                 "from": {
                                     "key_code": "n",
                                     "modifiers": { "optional": ["any"] }
@@ -1469,7 +1488,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast://extensions/raycast/emoji-symbols/search-emoji-symbols",
+                                "description": "Open raycast quick emojis",
                                 "from": {
                                     "key_code": "e",
                                     "modifiers": { "optional": ["any"] }
@@ -1485,7 +1504,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast://extensions/raycast/raycast/confetti",
+                                "description": "Open raycast confetti",
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": { "optional": ["any"] }
@@ -1501,7 +1520,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast://extensions/raycast/clipboard-history/clipboard-history",
+                                "description": "Open raycast clipboard-history",
                                 "from": {
                                     "key_code": "h",
                                     "modifiers": { "optional": ["any"] }
@@ -1593,7 +1612,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast://extensions/raycast/file-search/search-files",
+                                "description": "Open raycast search file extension",
                                 "from": {
                                     "key_code": "s",
                                     "modifiers": { "optional": ["any"] }
@@ -1609,7 +1628,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast://extensions/GastroGeek/folder-search/search",
+                                "description": "Open raycast folder search extension",
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": { "optional": ["any"] }
@@ -1701,7 +1720,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast://extensions/erics118/file-manager/manage-files",
+                                "description": "Open raycast file manager",
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": { "optional": ["any"] }
@@ -1714,7 +1733,10 @@
                 ]
             },
             "name": "Default",
-            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+            "virtual_hid_keyboard": {
+                "indicate_sticky_modifier_keys_state": false,
+                "keyboard_type_v2": "ansi"
+            }
         }
     ]
 }
