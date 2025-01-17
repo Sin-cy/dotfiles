@@ -45,7 +45,7 @@ key-mapping.preset = 'qwerty'
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 on-focus-changed = "move-mouse window-lazy-center"
-# on-focused-monitor-changed = ['move-mouse monitor-lazy-center'] # switchin dislays mouse re center
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center'] # switchin dislays mouse re center
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
