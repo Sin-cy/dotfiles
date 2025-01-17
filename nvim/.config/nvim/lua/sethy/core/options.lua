@@ -1,4 +1,7 @@
-vim.cmd("let g:netrw_liststyle = 3")
+-- vim.g.loaded_netrw = 0
+-- vim.g.loaded_netrwPlugin = 0
+-- vim.cmd("let g:netrw_liststyle = 3")
+vim.cmd("let g:netrw_banner = 0 ")
 
 vim.opt.guicursor = ""
 vim.opt.nu = true

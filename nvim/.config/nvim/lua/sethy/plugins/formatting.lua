@@ -38,8 +38,8 @@ return {
 				graphql = { "prettier" },
 				liquid = { "prettier" },
 				lua = { "stylua" },
-				python = { "isort", "black" },
-                markdown = { "prettier", "markdownlint-cli2", "markdown-toc" },
+				python = { "black" },
+                markdown = { "prettier" },
                 ["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
 			},
 			-- format_on_save = {

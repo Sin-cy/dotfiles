@@ -65,3 +65,6 @@ keybind = super+b>j=goto_split:bottom
 keybind = super+b>k=goto_split:top
 keybind = super+b>l=goto_split:right
 
+#Shaders
+custom-shader = shaders/bettercrt.glsl
+# custom-shader = shaders/retro-terminal.glsl

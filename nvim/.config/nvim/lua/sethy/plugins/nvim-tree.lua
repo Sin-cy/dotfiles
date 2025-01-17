@@ -1,5 +1,6 @@
 return {
     "nvim-tree/nvim-tree.lua",
+    enabled = false,
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
         local nvimtree = require("nvim-tree")
@@ -8,6 +9,10 @@ return {
         vim.g.loaded_netrwPlugin = 1
 
         nvimtree.setup({
+            hijack_directories = {
+                enable = false, -- Set this to false if you want to disable it
+                auto_open = false, -- Automatically open the tree when switching to a directory
+            },
             view = {
                 width = 35,
                 relativenumber = true,
@@ -46,17 +51,18 @@ return {
         })
 
         -- ** Opens nvim file tree at start
-    --     if vim.fn.argc(-1) == 0 then
-				-- vim.cmd("NvimTreeFocus")
-    --     end
+        -- if vim.fn.argc(-1) == 0 then
+        --     vim.cmd("NvimTreeFocus")
+        -- end
 
         -- keymaps
-        local keymap = vim.keymap -- for conciseness
+        local keymap = vim.keymap                                                                                         -- for conciseness
 
-        keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
-        keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
+        keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })     -- toggle file explorer
+        keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>",
+            { desc = "Toggle file explorer on current file" })                                          -- toggle file explorer on current file
         keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
-        keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+        keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })   -- refresh file explorer
     end
 
 }

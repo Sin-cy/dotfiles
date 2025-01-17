@@ -1,9 +1,11 @@
 return {
 	"stevearc/oil.nvim",
+    -- enabled = false,
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		require("oil").setup({
-			columns = { "icons" },
+            default_file_explorer = true, -- start up nvim with oil instead of netrw
+			columns = { },
 			keymaps = {
 				["<C-h>"] = false,
 				["<M-h>"] = "actions.select_split",
