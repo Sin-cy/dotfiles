@@ -3,6 +3,9 @@ general.import = [
     "~/.config/alacritty/repothemes/themes/rose-pine.toml"
 ]
 
+[colors.primary]
+background = "#000000"
+
 [env]
 TERM = "xterm-256color"
 
@@ -12,8 +15,12 @@ padding.y = 10
 
 decorations = "Buttonless"
 
+opacity = 0.65
+blur = true
+dynamic_padding = true
+
 [font]
-normal.family = "JetBrainsMonoNL Nerd Font" 
+normal.family = "JetBrainsMono Nerd Font" 
 
 size = 16
 
