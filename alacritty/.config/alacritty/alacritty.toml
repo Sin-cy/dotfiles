@@ -19,6 +19,9 @@ opacity = 0.65
 blur = true
 dynamic_padding = true
 
+[mouse]
+hide_when_typing = true
+
 [font]
 normal.family = "JetBrainsMono Nerd Font" 
 
@@ -34,8 +37,7 @@ bindings = [
   { key = "Back",  mods = "Command", chars = "\u0017"    },# Delete word
 ]
 
-# Add these lines to allow full color support in terminal applications
 [colors]
-draw_bold_text_with_bright_colors = true
-
+draw_bold_text_with_bright_colors = false
+transparent_background_colors = true
 
