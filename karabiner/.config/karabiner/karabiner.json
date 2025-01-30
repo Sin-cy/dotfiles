@@ -5,25 +5,6 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "description": "Change caps_lock to command+control+option+shift.",
-                                "from": {
-                                    "key_code": "caps_lock",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_shift",
-                                        "modifiers": ["left_command", "left_control", "left_option"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Hyper Key (⌃⌥⇧⌘)",
                         "manipulators": [
                             {
@@ -85,9 +66,9 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Hyper + b -> Arc",
+                                "description": "Hyper + b -> Zen Browser",
                                 "from": { "key_code": "b" },
-                                "to": [{ "shell_command": "open -a 'Arc'" }],
+                                "to": [{ "shell_command": "open -a 'Zen Browser'" }],
                                 "type": "basic"
                             },
                             {
@@ -113,7 +94,7 @@
                                 ],
                                 "description": "Hyper + 2 -> OBS Studio",
                                 "from": { "key_code": "2" },
-                                "to": [{ "shell_command": "open -a 'OBS'" }],
+                                "to": [{ "shell_command": "open -a 'OBS Studio'" }],
                                 "type": "basic"
                             }
                         ]
@@ -1424,7 +1405,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast toothpick fav device",
+                                "description": "Open raycast://extensions/VladCuciureanu/toothpick/connect-favorite-device-1",
                                 "from": {
                                     "key_code": "1",
                                     "modifiers": { "optional": ["any"] }
@@ -1440,7 +1421,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast toothpick bluetooth selector",
+                                "description": "Open raycast://extensions/VladCuciureanu/toothpick/connect-favorite-device-2",
                                 "from": {
                                     "key_code": "2",
                                     "modifiers": { "optional": ["any"] }
@@ -1456,7 +1437,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast color picker extension",
+                                "description": "Open raycast://extensions/thomas/color-picker/pick-color",
                                 "from": {
                                     "key_code": "c",
                                     "modifiers": { "optional": ["any"] }
@@ -1472,7 +1453,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast notes",
+                                "description": "Open raycast://extensions/raycast/raycast-notes/raycast-notes",
                                 "from": {
                                     "key_code": "n",
                                     "modifiers": { "optional": ["any"] }
@@ -1488,7 +1469,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast quick emojis",
+                                "description": "Open raycast://extensions/raycast/emoji-symbols/search-emoji-symbols",
                                 "from": {
                                     "key_code": "e",
                                     "modifiers": { "optional": ["any"] }
@@ -1504,7 +1485,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast confetti",
+                                "description": "Open raycast://extensions/raycast/raycast/confetti",
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": { "optional": ["any"] }
@@ -1520,7 +1501,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast clipboard-history",
+                                "description": "Open raycast://extensions/raycast/clipboard-history/clipboard-history",
                                 "from": {
                                     "key_code": "h",
                                     "modifiers": { "optional": ["any"] }
@@ -1612,7 +1593,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast search file extension",
+                                "description": "Open raycast://extensions/raycast/file-search/search-files",
                                 "from": {
                                     "key_code": "s",
                                     "modifiers": { "optional": ["any"] }
@@ -1628,7 +1609,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast folder search extension",
+                                "description": "Open raycast://extensions/GastroGeek/folder-search/search",
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": { "optional": ["any"] }
@@ -1720,7 +1701,7 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open raycast file manager",
+                                "description": "Open raycast://extensions/erics118/file-manager/manage-files",
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": { "optional": ["any"] }
@@ -1733,10 +1714,7 @@
                 ]
             },
             "name": "Default",
-            "virtual_hid_keyboard": {
-                "indicate_sticky_modifier_keys_state": false,
-                "keyboard_type_v2": "ansi"
-            }
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         }
     ]
 }
