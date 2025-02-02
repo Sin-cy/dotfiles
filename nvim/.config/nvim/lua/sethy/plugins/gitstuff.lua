@@ -70,6 +70,8 @@ return {
     -- Lazy git 
     {
         "kdheepak/lazygit.nvim",
+        --NOTE: Trying out lazygit from snacks nvim
+        enabled = false,
         cmd = {
             "LazyGit",
             "LazyGitConfig",
@@ -77,8 +79,6 @@ return {
             "LazyGitFilter",
             "LazyGitFilterCurrentFile",
         },
-        --NOTE: Trying out lazygit from snacks nvim
-        enabled = false,
         -- window border thing
         dependencies = {
             "nvim-lua/plenary.nvim",
