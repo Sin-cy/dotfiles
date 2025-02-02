@@ -25,6 +25,6 @@ return {
 		-- Switch/list worktrees
 		vim.keymap.set("n", "<leader>wc", function()
 			require("telescope").extensions.git_worktree.create_git_worktree()
-		end, { desc = "Create Git Worktree" })
+		end, { desc = "Create Git Worktree Branches" })
 	end,
 }

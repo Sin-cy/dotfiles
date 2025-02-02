@@ -17,7 +17,7 @@ return {
         },
         -- neogit keymaps
         vim.keymap.set("n", "<leader>gc", ":Neogit commit<CR>", {silent = true, noremap = true}),
-        vim.keymap.set("n", "<leader>gbr", ":Telescope git_branches<CR>", {silent = true, noremap = true})
+        -- vim.keymap.set("n", "<leader>gbr", ":Telescope git_branches<CR>", {silent = true, noremap = true})
     },
 	{
 		"lewis6991/gitsigns.nvim",
