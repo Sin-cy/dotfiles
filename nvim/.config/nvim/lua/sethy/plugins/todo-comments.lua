@@ -1,6 +1,5 @@
 return {
     -- Quickly Jump through the todo tags
-    -- Dont find myself using at all btw
     "folke/todo-comments.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "nvim-lua/plenary.nvim" },
