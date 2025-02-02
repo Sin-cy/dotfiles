@@ -70,7 +70,7 @@ return {
     -- Lazy git 
     {
         "kdheepak/lazygit.nvim",
-        --NOTE: Trying out lazygit from snacks nvim
+        --NOTE: Trying out lazygit in snacks nvim
         enabled = false,
         cmd = {
             "LazyGit",
