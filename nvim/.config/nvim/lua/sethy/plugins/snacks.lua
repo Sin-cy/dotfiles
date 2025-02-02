@@ -1,8 +1,5 @@
 return {
     "folke/snacks.nvim",
-    dependencies = {
-        "folke/which-key.nvim",
-    },
     priority = 1000,
     -- lazy = false,
     config = function()
@@ -21,7 +18,6 @@ return {
             quickfile = {
                 exclude = { "latex" },
             },
-            input = {},
         })
 
         -- Define keybindings
