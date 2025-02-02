@@ -2,7 +2,6 @@ return {
     -- File explorer (this works properly with oil unlike nvim-tree)
     {
         'echasnovski/mini.files',
-        version = 'false',
         config = function()
             local MiniFiles = require("mini.files")
             MiniFiles.setup({
@@ -92,7 +91,6 @@ return {
     -- Replaced this from Nvim Autopairs 
     {
         'echasnovski/mini.pairs',
-        version = 'false',
         config = function()
             local minipairs = require("mini.pairs")
             minipairs.setup({})
