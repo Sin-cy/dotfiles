@@ -93,6 +93,10 @@ return {
 					enabled = false,
 				},
 
+                health = {
+                    checker = true,
+                },
+
 				popupmenu = {
 					enabled = true,
 				},
