@@ -77,7 +77,7 @@ return {
             "LazyGitFilter",
             "LazyGitFilterCurrentFile",
         },
-        --NOTE: trying out lazygit from snacks nvim
+        --NOTE: Trying out lazygit from snacks nvim
         enabled = false,
         -- window border thing
         dependencies = {
