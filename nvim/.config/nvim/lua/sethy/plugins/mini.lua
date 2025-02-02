@@ -90,4 +90,26 @@ return {
             })
         end,
     },
+    -- Get rid of whitespace
+    {
+        "echasnovski/mini.trailspace",
+        event = { "BufReadPost", "BufNewFile" },
+        config = function()
+            require("mini.trailspace").setup({
+                only_in_normal_buffers = true,
+            })
+            vim.keymap.set("n", "<leader>cw", function()require("mini.trailspace").trim()end, { desc = "Erase Whitespace" })
+        end,
+    },
+    -- Split & join
+    {
+        "echasnovski/mini.splitjoin",
+        config = function()
+            require("mini.splitjoin").setup({
+                mappings = { toggle = "" }, -- Disable default toggle mapping
+            })
+            vim.keymap.set({ "n", "x" }, "sj", function()require("mini.splitjoin").join()end, { desc = "Join arguments" })
+            vim.keymap.set({ "n", "x" }, "sk", function()require("mini.splitjoin").split()end, { desc = "Split arguments" })
+        end,
+    },
 }
