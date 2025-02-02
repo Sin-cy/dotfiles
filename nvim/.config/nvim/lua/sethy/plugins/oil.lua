@@ -8,7 +8,9 @@ return {
 			columns = { },
 			keymaps = {
 				["<C-h>"] = false,
+                ["<C-c>"] = false, -- prevent from closing Oil as <C-c> is esc key
 				["<M-h>"] = "actions.select_split",
+                ["q"] = "actions.close",
 			},
             delete_to_trash = true,
 			view_options = {
