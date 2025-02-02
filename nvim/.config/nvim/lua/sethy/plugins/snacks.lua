@@ -1,4 +1,5 @@
 return {
+    -- HACK: docs @ https://github.com/folke/snacks.nvim/blob/main/docs
     {
         "folke/snacks.nvim",
         priority = 1000,
@@ -13,6 +14,7 @@ return {
             quickfile = {
                 exclude = { "latex" },
             },
+            -- HACK: read picker docs @ https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
             picker = {
                 layout = {
                     -- presets options : "default" , "ivy" , "ivy-split" , "telescope" , "vscode", "select" , "sidebar"
