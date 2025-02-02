@@ -1,4 +1,6 @@
 return {
+    -- Comments
+    { 'echasnovski/mini.comment', version = false },
     -- File explorer (this works properly with oil unlike nvim-tree)
     {
         'echasnovski/mini.files',
@@ -87,13 +89,5 @@ return {
                 },
             })
         end,
-    },
-    -- Replaced this from Nvim Autopairs 
-    {
-        'echasnovski/mini.pairs',
-        config = function()
-            local minipairs = require("mini.pairs")
-            minipairs.setup({})
-        end
     },
 }
