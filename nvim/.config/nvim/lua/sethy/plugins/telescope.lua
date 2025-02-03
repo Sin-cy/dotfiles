@@ -44,7 +44,7 @@ return {
                     -- (boolean) -> show/hide previewer window
                     enable_previewer = true,
                     -- (boolean) -> enable/disable live preview
-                    enable_live_preview = false,
+                    enable_live_preview = true,
                     persist = {
                         enabled = true,
                         path = vim.fn.stdpath("config") .. "/lua/colorscheme.lua"
@@ -66,7 +66,7 @@ return {
 		vim.keymap.set("n", "<leader>pWs", function() local word = vim.fn.expand("<cWORD>") builtin.grep_string({ search = word }) end, {desc = "Find Connected Words under cursor"})
 		-- find help for a command or for something
 		-- vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
-        -- Switch Themes with Telescope
-        -- vim.keymap.set("n", "<leader>th", ":Telescope themes<CR>", {noremap = true, silent = true, desc = "Theme Switcher"})
+        -- Switch Themes with Telescope and Save persistence
+        vim.keymap.set("n", "<leader>ths", ":Telescope themes<CR>", {noremap = true, silent = true, desc = "Theme Switcher"})
 	end,
 }
