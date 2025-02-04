@@ -7,15 +7,18 @@ return {
         -- NOTE: Options
         opts = {
             explorer = {
+                enabled = true,
                 layout = {
                     cycle = false,
                 }
             },
             quickfile = {
+                enabled = true,
                 exclude = { "latex" },
             },
             -- HACK: read picker docs @ https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
             picker = {
+                enabled = true,
                 layout = {
                     -- presets options : "default" , "ivy" , "ivy-split" , "telescope" , "vscode", "select" , "sidebar"
                     -- override picker layout in keymaps function as a param below
@@ -82,6 +85,22 @@ return {
                     },
                 }
             },
+            dashboard = {
+                enabled = true,
+                sections = {
+                    { section = "header" },
+                    { section = "keys", gap = 1, padding = 1 },
+                    { section = "startup" },
+                    {
+                        section = "terminal",
+                        cmd = "ascii-image-converter ~/Desktop/Others/profiles.JPG -C -c",
+                        random = 10,
+                        pane = 2,
+                        indent = 4,
+                        height = 30,
+                    },
+                },
+            },
         },
         -- NOTE: Keymaps
         keys = {
@@ -89,7 +108,7 @@ return {
             { "<leader>gl", function() require("snacks").lazygit.log() end, desc = "Lazygit Logs" },
             { "<leader>es", function() require("snacks").explorer() end, desc = "Open Snacks Explorer" },
             { "<leader>rN", function() require("snacks").rename.rename_file() end, desc = "Fast Rename Current File" },
-            { "<leader>dB", function() require("snacks").bufdelete() end, desc = "Delete Buffer (Confirm)" },
+            { "<leader>dB", function() require("snacks").bufdelete() end, desc = "Delete or Close Buffer  (Confirm)" },
 
             -- Snacks Picker
             { "<leader>pf", function() require("snacks").picker.files() end, desc = "Find Files (Snacks Picker)" },
@@ -113,7 +132,7 @@ return {
         optional = true,
         keys = {
             { "<leader>pt", function() require("snacks").picker.todo_comments() end, desc = "Todo" },
-            { "<leader>pT", function () require("snacks").picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "Todo/Fix/Fixme" },
+            { "<leader>pT", function() require("snacks").picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "Todo/Fix/Fixme" },
         },
     }
 }
