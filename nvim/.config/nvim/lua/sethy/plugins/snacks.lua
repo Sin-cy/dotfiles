@@ -19,6 +19,13 @@ return {
             -- HACK: read picker docs @ https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
             picker = {
                 enabled = true,
+                formatters = {
+                    file = {
+                        filename_first = false,
+                        filename_only = false,
+                        icon_width = 2,
+                    },
+                },
                 layout = {
                     -- presets options : "default" , "ivy" , "ivy-split" , "telescope" , "vscode", "select" , "sidebar"
                     -- override picker layout in keymaps function as a param below
