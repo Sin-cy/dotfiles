@@ -1,6 +1,29 @@
 return {
     -- Comments
-    { 'echasnovski/mini.comment', version = false },
+    {
+        'echasnovski/mini.comment',
+        version = false,
+        dependencies = {
+            "JoosepAlviste/nvim-ts-context-commentstring",
+        },
+        config = function()
+            -- disable the autocommand from ts-context-commentstring
+            require('ts_context_commentstring').setup {
+                enable_autocmd = false,
+            }
+
+            require("mini.comment").setup {
+                -- tsx, jsx, html , svelte comment support
+                options = {
+                    custom_commentstring = function()
+                        return require('ts_context_commentstring.internal').calculate_commentstring({ key =
+                            'commentstring' })
+                            or vim.bo.commentstring
+                    end,
+                },
+            }
+        end
+    },
     -- File explorer (this works properly with oil unlike nvim-tree)
     {
         'echasnovski/mini.files',
@@ -18,7 +41,7 @@ return {
             vim.keymap.set("n", "<leader>ef", function()
                 MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
                 MiniFiles.reveal_cwd()
-            end, {desc = "Toggle into currently opened file"})
+            end, { desc = "Toggle into currently opened file" })
         end,
     },
     -- Surround
@@ -78,7 +101,7 @@ return {
             miniTrailspace.setup({
                 only_in_normal_buffers = true,
             })
-            vim.keymap.set("n", "<leader>cw", function() miniTrailspace.trim()  end, { desc = "Erase Whitespace" })
+            vim.keymap.set("n", "<leader>cw", function() miniTrailspace.trim() end, { desc = "Erase Whitespace" })
 
             -- Ensure highlight never reappears by removing it on CursorMoved
             vim.api.nvim_create_autocmd("CursorMoved", {
@@ -97,8 +120,8 @@ return {
             miniSplitJoin.setup({
                 mappings = { toggle = "" }, -- Disable default mapping
             })
-            vim.keymap.set({ "n", "x" }, "sj", function() miniSplitJoin.join()end, { desc = "Join arguments" })
-            vim.keymap.set({ "n", "x" }, "sk", function() miniSplitJoin.split()end, { desc = "Split arguments" })
+            vim.keymap.set({ "n", "x" }, "sj", function() miniSplitJoin.join() end, { desc = "Join arguments" })
+            vim.keymap.set({ "n", "x" }, "sk", function() miniSplitJoin.split() end, { desc = "Split arguments" })
         end,
     },
 }
