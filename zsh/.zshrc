@@ -126,6 +126,7 @@ alias ga="git add ."
 alias gs="git status -s"
 alias gc='git commit -m'
 alias glog='git log --oneline --graph --all'
+alias gh-create='gh repo create --private --source=. --remote=origin && git push -u --all && gh browse'
 
 # lazygit
 alias lg="lazygit"
