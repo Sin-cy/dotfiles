@@ -19,6 +19,10 @@ return {
             -- HACK: read picker docs @ https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
             picker = {
                 enabled = true,
+                matchers = {
+                    frecency = true,
+                    cwd_bonus = false,
+                },
                 formatters = {
                     file = {
                         filename_first = false,
@@ -91,6 +95,20 @@ return {
                         },
                     },
                 }
+            },
+            image = {
+                enabled = true,
+                doc = {
+                    float = true,
+                    inline = false,
+                    max_width = 60,
+                    max_height = 30,
+                },
+                convert = {
+                    notify = true,
+                },
+                img_dirs = { "img", "images", "assets", "static", "public", "media", "attachments", "sethVault", "~/Library", "~/Downloads" },
+
             },
             dashboard = {
                 enabled = true,
