@@ -99,16 +99,18 @@ return {
             image = {
                 enabled = true,
                 doc = {
-                    float = true,
-                    inline = false,
-                    max_width = 60,
+                    float = false,
+                    inline = true, -- false if you want show image on cursor hover
+                    max_width = 50,
                     max_height = 30,
+                    wo = {
+                        wrap = true,
+                    },
                 },
                 convert = {
                     notify = true,
                 },
                 img_dirs = { "img", "images", "assets", "static", "public", "media", "attachments", "sethVault", "~/Library", "~/Downloads" },
-
             },
             dashboard = {
                 enabled = true,
