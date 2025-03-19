@@ -3,15 +3,36 @@ return {
 	{
 		"tpope/vim-fugitive",
         config = function()
-            -- Make commit messages open in fullscreen
-            vim.api.nvim_create_autocmd("FileType", {
-                pattern = "gitcommit",
+            vim.keymap.set("n", "<leader>gg", vim.cmd.Git)
+
+            local myFugitive = vim.api.nvim_create_augroup("myFugitive", {})
+
+            local autocmd = vim.api.nvim_create_autocmd
+            autocmd("BufWinEnter", {
+                group = myFugitive,
+                pattern = "*",
                 callback = function()
-                    vim.cmd("only") -- Close all other splits when committing
+                    if vim.bo.ft ~= "fugitive" then
+                        return
+                    end
+
+                    local bufnr = vim.api.nvim_get_current_buf()
+                    local opts = {buffer = bufnr, remap = false}
+                    vim.keymap.set("n", "<leader>P", function()
+                        vim.cmd.Git('push')
+                    end, opts)
+
+                    -- rebase always
+                    vim.keymap.set("n", "<leader>p", function()
+                        vim.cmd.Git({'pull',  '--rebase'})
+                    end, opts)
+
+                    -- NOTE: It allows me to easily set the branch i am pushing and any tracking
+                    -- needed if i did not set the branch up correctly
+                    vim.keymap.set("n", "<leader>t", ":Git push -u origin ", opts);
                 end,
             })
         end,
-        vim.keymap.set("n", "<leader>gg", ":tab Git<CR>", { silent = true, noremap = true })
     },
     -- {
     --     "NeogitOrg/neogit",
