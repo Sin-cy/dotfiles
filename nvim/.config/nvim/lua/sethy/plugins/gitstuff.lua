@@ -2,23 +2,35 @@ return {
     -- for all git plugins 
 	{
 		"tpope/vim-fugitive",
-	},
-    {
-        "NeogitOrg/neogit",
-        dependencies = {
-            "nvim-lua/plenary.nvim",         -- required
-            "sindrets/diffview.nvim",        -- optional - Diff integration
-            -- Only one of these is needed.
-            "nvim-telescope/telescope.nvim",
-        },
-        config = true,
-        keys = {
-            { "<leader>ng", "<cmd>Neogit<cr>", desc = "Opens Neogit" },
-        },
-        -- neogit keymaps
-        vim.keymap.set("n", "<leader>gc", ":Neogit commit<CR>", {silent = true, noremap = true}),
-        -- vim.keymap.set("n", "<leader>gbr", ":Telescope git_branches<CR>", {silent = true, noremap = true})
+        config = function()
+            -- Make commit messages open in fullscreen
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = "gitcommit",
+                callback = function()
+                    vim.cmd("only") -- Close all other splits when committing
+                end,
+            })
+        end,
+        vim.keymap.set("n", "<leader>gg", ":tab Git<CR>", { silent = true, noremap = true })
     },
+    -- {
+    --     "NeogitOrg/neogit",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "sindrets/diffview.nvim",
+    --         "nvim-telescope/telescope.nvim",
+    --     },
+    --     config = function()
+    --         require("neogit").setup({
+    --             auto_stage = false, -- Prevents Neogit from auto-staging everything
+    --             disable_commit_confirmation = false, -- Ensures commit UI shows up
+    --         })
+    --     end,
+    --     keys = {
+    --         { "<leader>ng", "<cmd>Neogit<cr>", desc = "Opens Neogit" },
+    --     },
+    --     vim.keymap.set("n", "<leader>gc", ":Neogit commit<CR>", {silent = true, noremap = true}),
+    -- },
 	{
 		"lewis6991/gitsigns.nvim",
 		event = { "BufReadPre", "BufNewFile" },
