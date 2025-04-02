@@ -100,7 +100,7 @@ return {
                 enabled = true,
                 doc = {
                     float = false,
-                    inline = true, -- false if you want show image on cursor hover
+                    inline = true, -- if you want show image on cursor hover
                     max_width = 50,
                     max_height = 30,
                     wo = {
@@ -109,8 +109,9 @@ return {
                 },
                 convert = {
                     notify = true,
+                    command = "magick"
                 },
-                img_dirs = { "img", "images", "assets", "static", "public", "media", "attachments", "sethVault", "~/Library", "~/Downloads" },
+                img_dirs = { "img", "images", "assets", "static", "public", "media", "attachments","Archives/All-Vault-Images/", "~/Library", "~/Downloads" },
             },
             dashboard = {
                 enabled = true,
