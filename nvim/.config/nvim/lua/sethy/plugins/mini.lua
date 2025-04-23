@@ -1,4 +1,6 @@
 return {
+    -- Mini Nvim
+    {"echasnovski/mini.nvim", version = false },
     -- Comments
     {
         'echasnovski/mini.comment',
