@@ -34,24 +34,6 @@ return {
             })
         end,
     },
-    -- {
-    --     "NeogitOrg/neogit",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --         "sindrets/diffview.nvim",
-    --         "nvim-telescope/telescope.nvim",
-    --     },
-    --     config = function()
-    --         require("neogit").setup({
-    --             auto_stage = false, -- Prevents Neogit from auto-staging everything
-    --             disable_commit_confirmation = false, -- Ensures commit UI shows up
-    --         })
-    --     end,
-    --     keys = {
-    --         { "<leader>ng", "<cmd>Neogit<cr>", desc = "Opens Neogit" },
-    --     },
-    --     vim.keymap.set("n", "<leader>gc", ":Neogit commit<CR>", {silent = true, noremap = true}),
-    -- },
 	{
 		"lewis6991/gitsigns.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -80,20 +62,12 @@ return {
 
 				map("n", "<leader>gS", gs.stage_buffer, "Stage buffer") -- stage whole buffer
 				map("n", "<leader>gR", gs.reset_buffer, "Reset buffer") -- unstage whole buffer
-
 				map("n", "<leader>gu", gs.undo_stage_hunk, "Undo stage hunk")
-
 				map("n", "<leader>gp", gs.preview_hunk, "Preview hunk")
-
-				map("n", "<leader>gbl", function()
-					gs.blame_line({ full = true })
-				end, "Blame line")
+				map("n", "<leader>gbl", function() gs.blame_line({ full = true }) end, "Blame line")
 				map("n", "<leader>gB", gs.toggle_current_line_blame, "Toggle line blame")
-
 				map("n", "<leader>gd", gs.diffthis, "Diff this")
-				map("n", "<leader>gD", function()
-					gs.diffthis("~")
-				end, "Diff this ~")
+				map("n", "<leader>gD", function() gs.diffthis("~") end, "Diff this ~")
 
 				-- Text object
 				map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Gitsigns select hunk")

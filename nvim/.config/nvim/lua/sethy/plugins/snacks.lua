@@ -3,14 +3,21 @@ return {
     {
         "folke/snacks.nvim",
         priority = 1000,
-        lazy = false,
+        lazy = true,
         -- NOTE: Options
         opts = {
-            explorer = {
-                enabled = true,
-                layout = {
-                    cycle = false,
+            -- Styling for each Item of Snacks
+            styles = {
+                input = {
+                    keys = {
+                        n_esc = { "<C-c>", { "cmp_close", "cancel" }, mode = "n", expr = true },
+                        i_esc = { "<C-c>", { "cmp_close", "stopinsert" }, mode = "i", expr = true },
+                    },
                 }
+            },
+            -- Snacks Modules
+            input = {
+                enabled = true,
             },
             quickfile = {
                 enabled = true,
@@ -134,7 +141,6 @@ return {
         keys = {
             { "<leader>lg", function() require("snacks").lazygit() end, desc = "Lazygit" },
             { "<leader>gl", function() require("snacks").lazygit.log() end, desc = "Lazygit Logs" },
-            { "<leader>es", function() require("snacks").explorer() end, desc = "Open Snacks Explorer" },
             { "<leader>rN", function() require("snacks").rename.rename_file() end, desc = "Fast Rename Current File" },
             { "<leader>dB", function() require("snacks").bufdelete() end, desc = "Delete or Close Buffer  (Confirm)" },
 
