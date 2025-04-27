@@ -1,8 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
-    opts = {
-    },
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
         -- "saghen/blink.cmp",
@@ -71,11 +69,14 @@ return {
             [vim.diagnostic.severity.INFO]  = " ",
         }
 
-        -- Set the diagnostic config once with all icons
+        -- Set the diagnostic config with all icons
         vim.diagnostic.config({
             signs = {
-                text = signs
-            }
+                text = signs -- Enable signs in the gutter
+            },
+            virtual_text = true,  -- Specify Enable virtual text for diagnostics
+            underline = true,     -- Specify Underline diagnostics
+            update_in_insert = false,  -- Keep diagnostics active in insert mode
         })
 
         -- NOTE : Moved all mason_lspconfig.setup_handlers to mason.lua file
