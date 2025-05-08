@@ -59,7 +59,7 @@ inner.horizontal = 7
 inner.vertical =   7 
 outer.left =       7
 outer.bottom =     7
-outer.top =        7
+outer.top =        25
 outer.right =      7
 
 # 'main' binding mode declaration
@@ -186,16 +186,16 @@ if.app-id = 'com.mitchellh.ghostty'
 run = "move-node-to-workspace T"
 
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
-run = "move-node-to-workspace B"
-
-[[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = "move-node-to-workspace B"
 
 [[on-window-detected]]
-if.app-id = 'worg.mozilla.com.zen.browser'
+if.app-id = 'app.zen-browser.zen'
 run = "move-node-to-workspace B"
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = "move-node-to-workspace F"
 
 [[on-window-detected]]
 if.app-id = 'notion.id'
