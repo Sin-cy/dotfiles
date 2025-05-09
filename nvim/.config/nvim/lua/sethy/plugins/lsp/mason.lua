@@ -6,6 +6,7 @@ return {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         "hrsh7th/cmp-nvim-lsp",
         "neovim/nvim-lspconfig",
+        { "folke/neodev.nvim",                   opts = {} },
         -- "saghen/blink.cmp",
     },
     config = function()
@@ -14,11 +15,11 @@ return {
         local mason_lspconfig = require("mason-lspconfig")
         local mason_tool_installer = require("mason-tool-installer")
 
-        -- NOTE: Moved from lspconfig.lua
-        -- import lspconfig plugin
-        local lspconfig = require("lspconfig")
-        local cmp_nvim_lsp = require("cmp_nvim_lsp")             -- import cmp-nvim-lsp plugin
-        local capabilities = cmp_nvim_lsp.default_capabilities() -- used to enable autocompletion (assign to every lsp server config)
+        -- NOTE: Moved these local imports below back to lspconfig.lua due to mason depracated handlers
+
+        -- local lspconfig = require("lspconfig")
+        -- local cmp_nvim_lsp = require("cmp_nvim_lsp")             -- import cmp-nvim-lsp plugin
+        -- local capabilities = cmp_nvim_lsp.default_capabilities() -- used to enable autocompletion (assign to every lsp server config)
 
         -- enable mason and configure icons
         mason.setup({
@@ -32,6 +33,7 @@ return {
         })
 
         mason_lspconfig.setup({
+            automatic_enable = false,
             -- servers for mason to install
             ensure_installed = {
                 "lua_ls",
@@ -45,6 +47,7 @@ return {
                 -- "eslint",
                 "marksman",
             },
+
         })
 
         mason_tool_installer.setup({
@@ -55,113 +58,11 @@ return {
                 "pylint",
                 "clangd",
                 "denols",
-                { 'eslint_d', version = '13.1.2' },
+                -- { 'eslint_d', version = '13.1.2' },
             },
-            -- NOTE: mason BREAKING Change! Removed setup_handlers -> now using handlers = {}
-            handlers = {
-                -- Default handler for all servers
-                function(server_name)
-                    lspconfig[server_name].setup({
-                        capabilities = capabilities,
-                    })
-                end,
 
-                -- Custom handler for lua_ls
-                ["lua_ls"] = function()
-                    lspconfig.lua_ls.setup({
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                diagnostics = {
-                                    globals = { "vim" },
-                                },
-                                completion = {
-                                    callSnippet = "Replace",
-                                },
-                                workspace = {
-                                    library = {
-                                        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                                        [vim.fn.stdpath("config") .. "/lua"] = true,
-                                    },
-                                },
-                            },
-                        },
-                    })
-                end,
-
-                -- Custom handler for emmet_ls
-                ["emmet_ls"] = function()
-                    lspconfig.emmet_ls.setup({
-                        capabilities = capabilities,
-                        filetypes = {
-                            "html",
-                            "typescriptreact",
-                            "javascriptreact",
-                            "css",
-                            "sass",
-                            "scss",
-                            "less",
-                            "svelte",
-                        },
-                    })
-                end,
-
-                -- Custom handler for emmet_language_server
-                ["emmet_language_server"] = function()
-                    lspconfig.emmet_language_server.setup({
-                        filetypes = {
-                            "css",
-                            "eruby",
-                            "html",
-                            "javascript",
-                            "javascriptreact",
-                            "less",
-                            "sass",
-                            "scss",
-                            "pug",
-                            "typescriptreact",
-                        },
-                        init_options = {
-                            includeLanguages = {},
-                            excludeLanguages = {},
-                            extensionsPath = {},
-                            preferences = {},
-                            showAbbreviationSuggestions = true,
-                            showExpandedAbbreviation = "always",
-                            showSuggestionsAsSnippets = false,
-                            syntaxProfiles = {},
-                            variables = {},
-                        },
-                    })
-                end,
-
-                -- Custom handler for denols
-                ["denols"] = function()
-                    lspconfig.denols.setup({
-                        capabilities = capabilities,
-                        root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-                    })
-                end,
-
-                -- Custom handler for tsserver
-                ["ts_ls"] = function()
-                    lspconfig.ts_ls.setup({
-                        capabilities = capabilities,
-                        root_dir = function(fname)
-                            local util = lspconfig.util
-                            return not util.root_pattern("deno.json", "deno.jsonc")(fname)
-                                and util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git")(fname)
-                        end,
-                        single_file_support = false,
-                        init_options = {
-                            preferences = {
-                                includeCompletionsWithSnippetText = true,
-                                includeCompletionsForImportStatements = true,
-                            },
-                        },
-                    })
-                end,
-            },
+            -- NOTE: mason BREAKING Change! Removed setup_handlers
+            -- moved lsp configuration settings back into lspconfig.lua file
         })
     end,
 }

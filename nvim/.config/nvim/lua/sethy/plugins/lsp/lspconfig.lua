@@ -5,7 +5,7 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         -- "saghen/blink.cmp",
         { "antosha417/nvim-lsp-file-operations", config = true },
-        { "folke/neodev.nvim",                   opts = {} },
+        { "folke/neodev.nvim", opts = {} },
     },
     config = function()
         -- NOTE: LSP Keybinds
@@ -79,14 +79,108 @@ return {
             update_in_insert = false,  -- Keep diagnostics active in insert mode
         })
 
-        -- NOTE : Moved all mason_lspconfig.setup_handlers to mason.lua file
 
+        -- NOTE : 
+        -- Moved back from mason_lspconfig.setup_handlers from mason.lua file
+        -- as mason setup_handlers is deprecated & its causing issues with lsp settings
+        --
+        -- Setup servers
+        local lspconfig = require("lspconfig")
+        local cmp_nvim_lsp = require("cmp_nvim_lsp")
+        local capabilities = cmp_nvim_lsp.default_capabilities()
+
+        -- Config lsp servers here
+        -- lua_ls
+        require("neodev").setup()
+        lspconfig.lua_ls.setup({
+            capabilities = capabilities,
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { "vim" },
+                    },
+                    completion = {
+                        callSnippet = "Replace",
+                    },
+                    workspace = {
+                        library = {
+                            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                            [vim.fn.stdpath("config") .. "/lua"] = true,
+                        },
+                    },
+                },
+            },
+        })
+        -- emmet_ls
+        lspconfig.emmet_ls.setup({
+            capabilities = capabilities,
+            filetypes = {
+                "html",
+                "typescriptreact",
+                "javascriptreact",
+                "css",
+                "sass",
+                "scss",
+                "less",
+                "svelte",
+            },
+        })
+
+        -- emmet_language_server
+        lspconfig.emmet_language_server.setup({
+            capabilities = capabilities,
+            filetypes = {
+                "css",
+                "eruby",
+                "html",
+                "javascript",
+                "javascriptreact",
+                "less",
+                "sass",
+                "scss",
+                "pug",
+                "typescriptreact",
+            },
+            init_options = {
+                includeLanguages = {},
+                excludeLanguages = {},
+                extensionsPath = {},
+                preferences = {},
+                showAbbreviationSuggestions = true,
+                showExpandedAbbreviation = "always",
+                showSuggestionsAsSnippets = false,
+                syntaxProfiles = {},
+                variables = {},
+            },
+        })
+
+        -- denols
+        lspconfig.denols.setup({
+            capabilities = capabilities,
+            root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+        })
+
+        -- ts_ls (replaces tsserver)
+        lspconfig.ts_ls.setup({
+            capabilities = capabilities,
+            root_dir = function(fname)
+                local util = lspconfig.util
+                return not util.root_pattern("deno.json", "deno.jsonc")(fname)
+                    and util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git")(fname)
+            end,
+            single_file_support = false,
+            init_options = {
+                preferences = {
+                    includeCompletionsWithSnippetText = true,
+                    includeCompletionsForImportStatements = true,
+                },
+            },
+        })
 
 
 
 
         -- HACK: If using Blink.cmp Configure all LSPs here
-        -- disabled cuz blink has no tailwind support
 
         -- ( comment the ones in mason )
         -- local lspconfig = require("lspconfig")
