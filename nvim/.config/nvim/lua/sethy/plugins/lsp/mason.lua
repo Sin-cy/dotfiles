@@ -6,7 +6,6 @@ return {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         "hrsh7th/cmp-nvim-lsp",
         "neovim/nvim-lspconfig",
-        { "folke/neodev.nvim",                   opts = {} },
         -- "saghen/blink.cmp",
     },
     config = function()

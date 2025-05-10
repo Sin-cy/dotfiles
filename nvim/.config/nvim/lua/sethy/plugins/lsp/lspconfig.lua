@@ -5,7 +5,6 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         -- "saghen/blink.cmp",
         { "antosha417/nvim-lsp-file-operations", config = true },
-        { "folke/neodev.nvim", opts = {} },
     },
     config = function()
         -- NOTE: LSP Keybinds
@@ -91,7 +90,6 @@ return {
 
         -- Config lsp servers here
         -- lua_ls
-        require("neodev").setup()
         lspconfig.lua_ls.setup({
             capabilities = capabilities,
             settings = {
