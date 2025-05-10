@@ -229,6 +229,7 @@ return {
             -- autocompletion sources
             sources = cmp.config.sources({
                 { name = "luasnip" }, -- snippets
+                { name = "lazydev" },
                 { name = "nvim_lsp"},
                 { name = "buffer" }, -- text within current buffer
                 { name = "path" }, -- file system paths
@@ -250,11 +251,13 @@ return {
                 --     smart_bs()
                 -- end, { 'i', 's' }),
 
-                ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-
                 ["<C-e>"] = cmp.mapping.abort(), -- close completion window
+                ['<C-d>'] = cmp.mapping(function()
+                    cmp.close_docs()
+                end, { 'i', 's' }),
 
                 ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                ['<C-b>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-j>'] = cmp.mapping(select_next_item),
                 ['<C-k>'] = cmp.mapping(select_prev_item),
                 ['<C-n>'] = cmp.mapping(select_next_item),
@@ -263,6 +266,15 @@ return {
                 ['<Up>'] = cmp.mapping(select_prev_item),
 
                 ['<C-y>'] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        local entry = cmp.get_selected_entry()
+                        confirm(entry)
+                    else
+                        fallback()
+                    end
+                end, { 'i', 's' }),
+
+                ['<CR>'] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         local entry = cmp.get_selected_entry()
                         confirm(entry)
@@ -321,7 +333,7 @@ return {
 
                     -- use lspkind and tailwindcss-colorizer-cmp for additional formatting
                     vim_item = lspkind.cmp_format({
-                        maxwidth = 30,
+                        maxwidth = 25,
                         ellipsis_char = "...",
                     })(entry, vim_item)
 
