@@ -3,10 +3,9 @@ return {
     {
         "folke/snacks.nvim",
         priority = 1000,
-        lazy = true,
+        lazy = false,
         -- NOTE: Options
         opts = {
-            -- Styling for each Item of Snacks
             styles = {
                 input = {
                     keys = {
@@ -106,12 +105,12 @@ return {
             image = {
                 enabled = true,
                 doc = {
-                    float = false,
-                    inline = true, -- if you want show image on cursor hover
+                    float = true, -- show image on cursor hover
+                    inline = false, -- show image inline
                     max_width = 50,
                     max_height = 30,
                     wo = {
-                        wrap = true,
+                        wrap = false,
                     },
                 },
                 convert = {
@@ -129,10 +128,10 @@ return {
                     {
                         section = "terminal",
                         cmd = "ascii-image-converter ~/Desktop/Others/profiles.JPG -C -c",
-                        random = 10,
+                        random = 15,
                         pane = 2,
-                        indent = 4,
-                        height = 30,
+                        indent = 15,
+                        height = 20,
                     },
                 },
             },
