@@ -1,0 +1,62 @@
+# https://github.com/FelixKratz/dotfiles
+
+source "$CONFIG_DIR/colors.sh"
+source "$CONFIG_DIR/icons.sh" # Loads all defined icons
+
+ITEM_DIR="$CONFIG_DIR/items"
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+FONT="JetBrainsMonoNL Nerd Font"
+
+##### Bar Appearance #####
+# Configuring the general appearance of the bar.
+# These are only some of the options available. For all options see:
+# https://felixkratz.github.io/SketchyBar/config/bar
+# If you are looking for other colors, see the color picker:
+# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+
+sketchybar --bar position=top height=35 blur_radius=0 color="$TRANSPARENT"
+
+##### Changing Defaults #####
+# We now change some default values, which are applied to all further items.
+# For a full list of all available item properties see:
+# https://felixkratz.github.io/SketchyBar/config/items
+
+default=(
+        padding_left=3
+        padding_right=3
+        background.color="$ITEM_BG_COLOR"
+        background.corner_radius=5
+        background.height=25
+        icon.color=$WHITE
+        icon.y_offset=1
+        label.color=$WHITE
+        label.y_offset=1
+        icon.padding_left=10
+        icon.padding_right=4
+        label.padding_left=4
+        label.padding_right=10
+)
+sketchybar --default "${default[@]}"
+
+sketchybar --add event aerospace_workspace_change
+
+##### Left Items #####
+source "$ITEM_DIR/space.sh"
+# adds layout background for workspaces
+sketchybar --add bracket workspaces space.1 space.2 space.3 space.4 space.8 space.9 space.B space.F space.M space.N space.T \
+           --set workspaces background.color="$PURE_BLACK" \
+
+source "$ITEM_DIR/front_app.sh"
+
+##### Right Items #####
+source "$ITEM_DIR/clock.sh"
+
+source "$ITEM_DIR/media_block.sh"
+          
+           
+sketchybar --hotload on
+##### Force all scripts to run the first time (never do this in a script) #####
+sketchybar --update
+
+echo "sketchybar configuation loaded.."

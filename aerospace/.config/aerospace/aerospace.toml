@@ -13,7 +13,13 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    'exec-and-forget borders active_color=0xbf909293 inactive_color=0xff494d64 width=3.0'
+    'exec-and-forget sketchybar',
+    'exec-and-forget borders active_color=Oxffele3e4 inactive_color=0xff494d64 width=3.0'
+]
+
+# Notify Sketchybar about workspace change
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 ]
 
 # Start AeroSpace at login
@@ -59,8 +65,10 @@ inner.horizontal = 7
 inner.vertical =   7 
 outer.left =       7
 outer.bottom =     7
-outer.top =        25
+outer.top =        40
 outer.right =      7
+# outer.top = [{ monitor.main = 10 }, { monitor."some-pattern" = 25 }, 10]
+
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -108,38 +116,38 @@ alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
+# alt-5 = 'workspace 5'
+# alt-6 = 'workspace 6'
+# alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-b = 'workspace B' # for browser
-alt-e = 'workspace E' # 
+# alt-e = 'workspace E' # 
 alt-f = 'workspace F' # for finder
 alt-m = 'workspace M' #
 alt-n = 'workspace N' # for notes
-alt-p = 'workspace P'
+# alt-p = 'workspace P'
 alt-t = 'workspace T' # for terminal shell
-alt-v = 'workspace V'
+# alt-v = 'workspace V'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
 alt-shift-2 = 'move-node-to-workspace 2'
 alt-shift-3 = 'move-node-to-workspace 3'
 alt-shift-4 = 'move-node-to-workspace 4'
-alt-shift-5 = 'move-node-to-workspace 5'
-alt-shift-6 = 'move-node-to-workspace 6'
-alt-shift-7 = 'move-node-to-workspace 7'
+# alt-shift-5 = 'move-node-to-workspace 5'
+# alt-shift-6 = 'move-node-to-workspace 6'
+# alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 alt-shift-b = 'move-node-to-workspace B'
-alt-shift-e = 'move-node-to-workspace E'
+# alt-shift-e = 'move-node-to-workspace E'
 alt-shift-f = 'move-node-to-workspace F'
 alt-shift-m = 'move-node-to-workspace M'
 alt-shift-n = 'move-node-to-workspace N'
-alt-shift-p = 'move-node-to-workspace P'
+# alt-shift-p = 'move-node-to-workspace P'
 alt-shift-t = 'move-node-to-workspace T'
-alt-shift-v = 'move-node-to-workspace V'
+# alt-shift-v = 'move-node-to-workspace V'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
@@ -180,6 +188,14 @@ alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Shottr'
+run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
