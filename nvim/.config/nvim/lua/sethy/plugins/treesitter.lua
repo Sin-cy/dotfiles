@@ -58,6 +58,7 @@ return {
     -- NOTE: js,ts,jsx,tsx Auto Close Tags
     {
         "windwp/nvim-ts-autotag",
+        enabled = true,
         ft = { "html", "xml", "javascript", "typescript", "javascriptreact", "typescriptreact", "svelte" },
         config = function()
             -- Independent nvim-ts-autotag setup
