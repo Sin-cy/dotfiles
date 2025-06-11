@@ -10,7 +10,6 @@ media_block=(
     background.corner_radius=6 
     background.padding_left=0 
     background.padding_right=0 
-    background.height=25 
     blur_radius=0
 )
 

@@ -6,7 +6,7 @@ source "$CONFIG_DIR/icons.sh" # Loads all defined icons
 ITEM_DIR="$CONFIG_DIR/items"
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
-FONT="JetBrainsMonoNL Nerd Font"
+FONT="Hack Nerd Font"
 
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar.
@@ -15,7 +15,7 @@ FONT="JetBrainsMonoNL Nerd Font"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar position=top height=35 blur_radius=0 color="$TRANSPARENT"
+sketchybar --bar position=top height=40 blur_radius=0 color="$TRANSPARENT"
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -38,7 +38,6 @@ default=(
         label.padding_right=10
 )
 sketchybar --default "${default[@]}"
-
 sketchybar --add event aerospace_workspace_change
 
 ##### Left Items #####
