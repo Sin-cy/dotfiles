@@ -28,6 +28,9 @@ export PATH=$PATH:$(go env GOPATH)/bin
 # NOTE: using oh-my-zsh only for zsh plugins management
 export ZSH="$HOME/.oh-my-zsh"
 
+if [[ -o interactive ]]; then
+  fastfetch
+fi
 
 # NOTE: Disabled powerlevel10k 
 # Using Starship instead of p10k
@@ -96,6 +99,7 @@ alias air='$(go env GOPATH)/bin/air'
 # other Aliases shortcuts
 alias c="clear"
 alias e="exit"
+alias vim="nvim"
 
 # Tmux 
 alias tmux="tmux -f $TMUX_CONF"
@@ -128,6 +132,8 @@ alias gc='git commit -m'
 alias glog='git log --oneline --graph --all'
 alias gh-create='gh repo create --private --source=. --remote=origin && git push -u --all && gh browse'
 
+alias nvim-scratch="NVIM_APPNAME=nvim-scratch nvim"
+
 # lazygit
 alias lg="lazygit"
 
@@ -149,6 +155,7 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+export PATH="$PATH:/Applications/010 Editor.app/Contents/CmdLine" #ADDED BY 010 EDITOR
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
