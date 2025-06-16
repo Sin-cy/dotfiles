@@ -34,6 +34,11 @@ zsh-syntax-highlighting git starship tmux nvm`
     - If Mason lsp starts shouting when opening neovim
     - do nvm install node v23.3.0 or v-xx-xx
 
+#### coreutils
+- `brew install coreutils`
+- add `PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"` to top of the rc
+  file (~/.zshrc or ~/.zshenv)
+
 #### fzf-git
 - `git clone https://github.com/junegunn/fzf-git.sh.git`
 

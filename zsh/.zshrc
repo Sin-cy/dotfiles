@@ -3,6 +3,8 @@
 
 eval "$(brew shellenv)"
 
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+
 # Add local ~/scripts to the PATH
 export PATH="$HOME/scripts:$PATH"
 
