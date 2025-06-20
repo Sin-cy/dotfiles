@@ -32,6 +32,11 @@ brew tap FelixKratz/formulae
 
 ## Formulae
 echo "Installing Brew Formulae..."
+
+## Core Utils
+echo "Install gnu coreutils"
+brew install coreutils
+
 ### Must Have things
 brew install zsh-autosuggestions
 brew install zsh-syntax-highlighting
@@ -67,7 +72,7 @@ brew install sqlite
 brew install --cask raycast
 brew install --cask karabiner-elements
 brew install --cask wezterm
-brew install --cask aerospace
+brew install --cask nikitabobko/tap/aerospace
 brew install --cask keycastr
 brew install --cask betterdisplay
 brew install --cask linearmouse
@@ -79,7 +84,7 @@ brew install --cask font-sf-pro
 echo "Changing macOS defaults..."
 defaults write com.apple.Dock autohide -bool TRUE
 defaults write NSGlobalDomain KeyRepeat -int 2
-defaults write InitialKeyRepeat -int 10
+defaults write InitialKeyRepeat -int 15
 
 csrutil status
 echo "Installation complete..."
@@ -89,6 +94,9 @@ if [ ! -d "$HOME/dotfiles" ]; then
   echo "Cloning dotfiles repository..."
   git clone https://github.com/Sin-cy/dotfiles.git $HOME/dotfiles
 fi
+
+# export gnu coreutils to path
+echo 'export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"' >> ~/.zshrc
 
 # Navigate to dotfiles directory
 cd $HOME/dotfiles || exit
