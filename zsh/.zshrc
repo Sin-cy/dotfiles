@@ -25,8 +25,9 @@ eval "$(fzf --zsh)"
 source ~/scripts/fzf-git.sh
 
 # Atuin Configs
-eval "$(atuin init zsh)"
-bindkey '^r' atuin-search-viins  # Ctrl-r starts Atuin in Insert mode
+export ATUIN_NOBIND="true"
+eval "$(atuin init zsh --disable-up-arrow )"
+bindkey '^r' _atuin_search_widget
 
 #User configuration
 # export MANPATH="/usr/local/man:$MANPATH"

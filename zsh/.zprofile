@@ -6,9 +6,6 @@ export LANG=en_US.UTF-8
 # GNU coreutils
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
-# Set XDG config home
-export XDG_CONFIG_HOME="$HOME/.config"
-
 # Add local ~/scripts to the PATH
 export PATH="$HOME/scripts:$PATH"
 
