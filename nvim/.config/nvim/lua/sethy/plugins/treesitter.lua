@@ -42,6 +42,7 @@ return {
                     "c",
                     "java",
                     "rust",
+                    "ron",
                 },
                 incremental_selection = {
                     enable = true,
