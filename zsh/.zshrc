@@ -5,6 +5,8 @@ eval "$(brew shellenv)"
 # source .zprofile in all zsh shells (just in case)
 # [[ -f "$HOME/.zprofile" ]] && source "$HOME/.zprofile"
 
+eval "$(gdircolors)"
+
 source $ZSH/oh-my-zsh.sh
 
 # unbind ctrl g in terminal
@@ -12,6 +14,10 @@ bindkey -r "^G"
 
 # Starship 
 bindkey -v
+if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
+      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
+    zle -N zle-keymap-select "";
+fi
 eval "$(starship init zsh)"
 
 # Zoxide
@@ -26,9 +32,9 @@ source ~/scripts/fzf-git.sh
 
 # Atuin Configs
 export ATUIN_NOBIND="true"
-eval "$(atuin init zsh --disable-up-arrow )"
-bindkey '^r' _atuin_search_widget
-
+eval "$(atuin init zsh)"
+# bindkey '^r' _atuin_search_widget
+bindkey '^r' atuin-up-search-viins
 #User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -85,6 +91,9 @@ alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
 alias tree="tree -L 3 -a -I '.git' --charset X "
 alias dtree="tree -L 3 -a -d -I '.git' --charset X "
 
+# lstr
+alias lstr="lstr --icons"
+
 # git aliases
 alias gt="git"
 alias ga="git add ."
@@ -97,6 +106,9 @@ alias nvim-scratch="NVIM_APPNAME=nvim-scratch nvim"
 
 # lazygit
 alias lg="lazygit"
+
+# mpd start alias
+alias mpds="mpd ~/.config/mpd/mpd.conf"
 
 # obsidian icloud path
 alias sethvault="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/sethVault/"
