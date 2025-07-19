@@ -1,7 +1,19 @@
 # By default Reload config with shft + cmd + , 
+<<<<<<< HEAD
 config-file = themes/rosepine
 # background-opacity = 0.88
 # background-blur-radius = 25
+=======
+config-file = themes/rosepine 
+background = #000000
+<<<<<<< HEAD
+background-opacity = 0.75
+background-blur-radius = 23
+=======
+# background-opacity = 0.65
+# background-blur-radius = 20
+>>>>>>> 3b650a5 (initial changes for macwork machine)
+>>>>>>> 9ff9546 (initial changes for macwork machine)
 
 font-family = JetBrainsMonoNL Nerd Font 
 font-size = 20
