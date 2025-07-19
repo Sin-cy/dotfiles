@@ -2,8 +2,8 @@
 
 config-file = themes/rosepine
 background = #000000
-background-opacity = 0.65
-background-blur-radius = 20
+# background-opacity = 0.65
+# background-blur-radius = 20
 
 font-family = JetBrainsMonoNL Nerd Font 
 font-size = 20
