@@ -1,3 +1,6 @@
+NOTE:
+> !! DO NOT MERGE THIS TO MAIN !!
+
 # My dotfiles
 This directory contains the dotfiles for my mac system which probably won't work on yours.
 
