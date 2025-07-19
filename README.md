@@ -1,3 +1,8 @@
+
+> [!NOTE] note to myself
+> This config is only for macwork worktree branch for my mac work machine
+> !! DO NOT MERGE THIS TO MAIN !!
+
 # My dotfiles
 This directory contains the dotfiles for my mac system which probably won't work on yours.
 
