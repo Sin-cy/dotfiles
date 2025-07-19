@@ -13,14 +13,14 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    'exec-and-forget sketchybar',
-    'exec-and-forget borders active_color=Oxffele3e4 inactive_color=0xff494d64 width=3.0'
+    # 'exec-and-forget sketchybar',
+    # 'exec-and-forget borders active_color=Oxffele3e4 inactive_color=0xff494d64 width=3.0'
 ]
 
 # Notify Sketchybar about workspace change
-exec-on-workspace-change = ['/bin/bash', '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
-]
+# exec-on-workspace-change = ['/bin/bash', '-c',
+#     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+# ]
 
 # Start AeroSpace at login
 start-at-login = true
@@ -50,8 +50,8 @@ key-mapping.preset = 'qwerty'
 # Drop it from your config, if you don't like this behavior
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
-on-focus-changed = "move-mouse window-lazy-center"
-on-focused-monitor-changed = ['move-mouse monitor-lazy-center'] # switchin dislays mouse re center
+# on-focus-changed = "move-mouse window-lazy-center"
+# on-focused-monitor-changed = ['move-mouse monitor-lazy-center'] # switchin dislays mouse re center
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -61,13 +61,14 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center'] # switchin disla
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 7 
-inner.vertical =   7 
-outer.left =       7
-outer.bottom =     7
-outer.top =        40
-outer.right =      7
-# outer.top = [{ monitor.main = 10 }, { monitor."some-pattern" = 25 }, 10]
+inner.horizontal = 15
+inner.vertical =   15
+outer.left =       30
+outer.bottom =     30
+# outer.top =        40
+outer.right =      30
+# --------------------- Benq default = 45
+outer.top = [{ monitor."BenQ EX2510S" = 30 }, { monitor."Built-in Retina Display" = 10 }, 40]
 
 
 # 'main' binding mode declaration
