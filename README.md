@@ -1,5 +1,5 @@
 
-NOTE:
+> [!NOTE] note to myself
 > This config is only for macwork worktree branch for mac work machine
 > **!! DO NOT MERGE THIS TO MAIN !!**
 
