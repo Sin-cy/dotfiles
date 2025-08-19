@@ -41,6 +41,7 @@ return {
                 "cssls",
                 "tailwindcss",
                 "gopls",
+                "angularls",
                 "emmet_ls",
                 "emmet_language_server",
                 -- "eslint",
