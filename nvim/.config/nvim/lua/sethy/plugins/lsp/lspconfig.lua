@@ -79,7 +79,7 @@ return {
         })
 
 
-        -- NOTE : 
+        -- NOTE :
         -- Moved back from mason_lspconfig.setup_handlers from mason.lua file
         -- as mason setup_handlers is deprecated & its causing issues with lsp settings
         --
@@ -159,8 +159,29 @@ return {
         })
 
         -- ts_ls (replaces tsserver)
+        -- lspconfig.ts_ls.setup({
+        --     capabilities = capabilities,
+        --     root_dir = function(fname)
+        --         local util = lspconfig.util
+        --         return not util.root_pattern("deno.json", "deno.jsonc")(fname)
+        --             and util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git")(fname)
+        --     end,
+        --     single_file_support = false,
+        --     init_options = {
+        --         preferences = {
+        --             includeCompletionsWithSnippetText = true,
+        --             includeCompletionsForImportStatements = true,
+        --         },
+        --     },
+        -- })
         lspconfig.ts_ls.setup({
             capabilities = capabilities,
+            filetypes = {
+                "javascript",
+                "javascriptreact",
+                "typescript",
+                "typescriptreact",
+            },
             root_dir = function(fname)
                 local util = lspconfig.util
                 return not util.root_pattern("deno.json", "deno.jsonc")(fname)
@@ -169,14 +190,25 @@ return {
             single_file_support = false,
             init_options = {
                 preferences = {
-                    includeCompletionsWithSnippetText = true,
+                    includeCompletionsForModuleExports = true,
                     includeCompletionsForImportStatements = true,
                 },
             },
         })
 
-
-
+        -- gopls
+        lspconfig.gopls.setup({
+            capabilities = capabilities,
+            settings = {
+                gopls = {
+                    analyses = {
+                        unusedparams = true,
+                    },
+                    staticcheck = true,
+                    gofumpt = true,
+                },
+            },
+        })
 
         -- HACK: If using Blink.cmp Configure all LSPs here
 
