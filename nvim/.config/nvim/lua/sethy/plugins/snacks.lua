@@ -29,9 +29,15 @@ return {
                     frecency = true,
                     cwd_bonus = false,
                 },
+                exclude = {
+                    ".git",
+                    "node_modules",
+                    "dist",
+                    "build",
+                },
                 formatters = {
                     file = {
-                        filename_first = false,
+                        filename_first = true,
                         filename_only = false,
                         icon_width = 2,
                     },
@@ -103,9 +109,11 @@ return {
                 }
             },
             image = {
-                enabled = true,
+                enabled = function()
+                    return vim.bo.filetype == "markdown"
+                end,
                 doc = {
-                    float = true, -- show image on cursor hover
+                    float = false, -- show image on cursor hover
                     inline = false, -- show image inline
                     max_width = 50,
                     max_height = 30,
@@ -164,8 +172,8 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         optional = true,
         keys = {
-            { "<leader>pt", function() require("snacks").picker.todo_comments() end, desc = "Todo" },
-            { "<leader>pT", function() require("snacks").picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "Todo/Fix/Fixme" },
+            { "<leader>pt", function() require("snacks").picker.todo_comments() end, desc = "All" },
+            { "<leader>pT", function() require("snacks").picker.todo_comments({ keywords = { "TODO","FORGETNOT","FIXME" } }) end, desc = "mains" },
         },
     }
 }
