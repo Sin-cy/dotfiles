@@ -1,3 +1,6 @@
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export LANG=en_US.UTF-8
@@ -13,10 +16,13 @@ export PATH="$HOME/scripts:$PATH"
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
 # Tmux
-export TMUX_CONF=~/.config/tmux/tmux.conf
+export TMUX_CONF="$HOME/.config/tmux/tmux.conf"
 
 # Starship PATH
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+
+# Tealdeer
+export TEALDEER_CONFIG_DIR="$HOME/.config/tealdeer/"
 
 # Path to your oh-my-zsh installation.
 # NOTE : Disabled Shell Prompt: Currently using Starship

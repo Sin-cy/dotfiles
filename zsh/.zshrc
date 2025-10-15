@@ -1,6 +1,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # echo source ~/.bash_profile
 
+# load env vars from .zprofile into the shells
+[[ -f ~/.zprofile ]] && source ~/.zprofile
+
 eval "$(brew shellenv)"
 # source .zprofile in all zsh shells (just in case)
 # [[ -f "$HOME/.zprofile" ]] && source "$HOME/.zprofile"
@@ -115,7 +118,7 @@ alias sethvault="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/set
 # ---------------------------------------
 
 # brew installations activation (new mac systems brew path: opt/homebrew , not usr/local )
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 . "/Users/personal/.deno/env"
