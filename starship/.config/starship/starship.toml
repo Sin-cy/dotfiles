@@ -2,7 +2,7 @@ command_timeout = 3600
 
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = false 
+add_newline = false
 
 format = """
  ➜\
@@ -116,9 +116,10 @@ format = "[ $path ]($style)"
 [directory.substitutions]
 "Documents" = "󰈙 "
 "Downloads" = " "
-"Music" = "󰝚 "
+"Music" = " "
 "Pictures" = " "
 "Developer" = "󰲋 "
+"Others" = " "
 
 [os]
 disabled = true
@@ -181,24 +182,19 @@ format = '[[ $symbol( $version) ]]($style)'
 
 [kotlin]
 symbol = ""
-
 format = '[[ $symbol( $version) ]]($style)'
 
 [haskell]
 symbol = ""
-
 format = '[[ $symbol( $version) ]]($style)'
 
 [python]
 symbol = ""
-
 format = '[[ $symbol( $version) ]]($style)'
-
 
 [docker_context]
 symbol = ""
 format = '[ $symbol( $context) ]($style)'
-
 
 [time]
 disabled = true
@@ -207,14 +203,15 @@ style = "bg:peach"
 format = '[[  $time ](fg:mantle bg:foam)]($style)'
 
 [line_break]
-disabled = true 
+disabled = true
 
 [character]
 disabled = false
-success_symbol = '[𝘹](bold fg:green)'
-error_symbol = '[𝘹](bold fg:red)'
-vimcmd_symbol = '[](bold fg:creen)'
-vimcmd_replace_one_symbol = '[](bold fg:purple)'
-vimcmd_replace_symbol = '[](bold fg:purple)'
-vimcmd_visual_symbol = '[](bold fg:lavender)'
+success_symbol = '[ ](bold fg:green)'
+error_symbol = '[✘ ](bold fg:red)'
+vimcmd_symbol = "[ :](bold yellow)"
+vimcmd_replace_one_symbol = "[󰝿 :](bold purple)"
+vimcmd_replace_symbol = "[  :](bold purple)"
+vimcmd_visual_symbol = "[  :](bold cyan)"
 
+# success_symbol = "[󰇙](bold cyan)"
