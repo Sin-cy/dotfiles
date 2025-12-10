@@ -2,8 +2,7 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-        "hrsh7th/cmp-nvim-lsp",
-        { "antosha417/nvim-lsp-file-operations", config = true },
+        "hrsh7th/cmp-nvim-lsp", { "antosha417/nvim-lsp-file-operations", config = true },
     },
     config = function()
         -- NOTE: LSP Keybinds
@@ -102,7 +101,6 @@ return {
                 },
             },
         })
-        vim.lsp.enable("lua_ls")
 
         -- emmet_language_server
         vim.lsp.config("emmet_language_server", {
@@ -130,7 +128,6 @@ return {
                 variables = {},
             },
         })
-        vim.lsp.enable("emmet_language_server")
 
         -- emmet_ls
         vim.lsp.config("emmet_ls", {
@@ -145,7 +142,6 @@ return {
                 "svelte",
             },
         })
-        vim.lsp.enable("emmet_ls")
 
         -- ts_ls (TypeScript/JavaScript)
         vim.lsp.config("ts_ls", {
@@ -163,7 +159,6 @@ return {
                 },
             },
         })
-        vim.lsp.enable("ts_ls")
 
         -- gopls
         vim.lsp.config("gopls", {
@@ -177,6 +172,33 @@ return {
                 },
             },
         })
+
+        -- tailwind
+        vim.lsp.config("tailwindcss", {
+            filetypes = {
+                "html",
+                "css",
+                "javascript",
+                "typescript",
+                "javascriptreact",
+                "typescriptreact",
+                "svelte",
+                "vue",
+                "astro",
+            },
+            init_options = {
+                userLanguages = {
+                    astro = "html",
+                },
+            },
+        })
+
+        vim.lsp.enable("lua_ls")
+        vim.lsp.enable("emmet_language_server")
+        vim.lsp.enable("emmet_ls")
+        vim.lsp.enable("ts_ls")
         vim.lsp.enable("gopls")
+        vim.lsp.enable("astro")
+        vim.lsp.enable("tailwindcss")
     end,
 }
