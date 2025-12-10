@@ -8,7 +8,7 @@ return {
         config = true,
     },
     --
-    -- HACK; The Key Commands -> for help run ;h nvim-surround.usage
+    -- HACK: The Key Commands -> for help run ;h nvim-surround.usage
     --
     --     Old text                    Command         New text
     -- --------------------------------------------------------------------------------
