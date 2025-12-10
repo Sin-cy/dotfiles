@@ -20,7 +20,7 @@ function ToggleNumberVisualSelection()
     end
 
     if has_numbers then
-        -- remove numbers 
+        -- remove numbers
         for i = 1, #lines do
             lines[i] = lines[i]:gsub("^%s*%d+%.%s*", "")
         end
@@ -304,13 +304,14 @@ function SmartListToggleCurrentLine()
     vim.fn.setline(line_num, line)
 end
 
--- user commands
+-- Setting commands
 vim.api.nvim_create_user_command("ToggleNumberVisual", ToggleNumberVisualSelection, {})
 vim.api.nvim_create_user_command("ToggleBulletVisual", ToggleBulletVisualSelection, {})
 vim.api.nvim_create_user_command("ToggleCheckboxVisual", ToggleCheckboxVisualSelection, {})
 vim.api.nvim_create_user_command("ToggleTaskStateVisual", ToggleTaskStateVisualSelection, {})
 vim.api.nvim_create_user_command("SmartListToggleVisual", SmartListToggleVisualSelection, {})
 
+-- Keymaps for Bullet, Checkbox, Number list
 -- visual mode keymaps (use commands to preserve selection)
 vim.keymap.set("v", "tn", ":<C-u>ToggleNumberVisual<CR>", {
     desc = "Toggle numbers on selected lines",
@@ -366,6 +367,7 @@ vim.keymap.set("n", "tl", SmartListToggleCurrentLine, {
 -- Task management keymaps (buffer-local)
 local opts = { buffer = 0, silent = true }
 
+-- Status message
 local function safe_markdown_cmd(cmd, success_msg)
     return function()
         -- undo point
@@ -391,6 +393,38 @@ vim.keymap.set("n", "<leader>tc",
 vim.keymap.set("n", "<leader>tu",
     safe_markdown_cmd("g/- \\[x\\]/s/\\[x\\]/[ ]/", "Marked all tasks as undone"),
     vim.tbl_extend("force", opts, { desc = "Mark all tasks undone" }))
+
+-- Toggle headings 
+local function toggle_heading(level)
+    local line = vim.api.nvim_get_current_line()
+    local cursor_pos = vim.api.nvim_win_get_cursor(0)
+
+    -- Remove existing heading
+    local content = line:gsub("^#+%s*", "")
+
+    -- Check if line already has this heading level
+    local current_level = line:match("^(#+)")
+    if current_level and #current_level == level then
+        -- Remove heading (toggle off)
+        vim.api.nvim_set_current_line(content)
+        -- Had to readjust cursor position
+        vim.api.nvim_win_set_cursor(0, {cursor_pos[1], math.max(0, cursor_pos[2] - level - 1)})
+    else
+        -- Add or change heading level
+        local new_line = string.rep("#", level) .. " " .. content
+        vim.api.nvim_set_current_line(new_line)
+        -- Adjust cursor position
+        vim.api.nvim_win_set_cursor(0, {cursor_pos[1], cursor_pos[2] + level + 1})
+    end
+end
+
+-- Heading keymaps 1-6
+vim.keymap.set("n", "<leader>h1", function() toggle_heading(1) end, { buffer = true, desc = "Toggle H1" })
+vim.keymap.set("n", "<leader>h2", function() toggle_heading(2) end, { buffer = true, desc = "Toggle H2" })
+vim.keymap.set("n", "<leader>h3", function() toggle_heading(3) end, { buffer = true, desc = "Toggle H3" })
+vim.keymap.set("n", "<leader>h4", function() toggle_heading(4) end, { buffer = true, desc = "Toggle H4" })
+vim.keymap.set("n", "<leader>h5", function() toggle_heading(5) end, { buffer = true, desc = "Toggle H5" })
+vim.keymap.set("n", "<leader>h6", function() toggle_heading(6) end, { buffer = true, desc = "Toggle H6" })
 
 -- ** Header Colors **
 -- highlights for markdown files to render highlights properly
