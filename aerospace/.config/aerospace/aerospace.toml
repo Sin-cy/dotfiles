@@ -68,7 +68,7 @@ outer.bottom =     30
 # outer.top =        40
 outer.right =      30
 # --------------------- Benq default = 45
-outer.top = [{ monitor."BenQ EX2510S" = 30 }, { monitor."Built-in Retina Display" = 10 }, 40]
+outer.top = [{ monitor."M27UP" = 20 }, { monitor."Built-in Retina Display" = 10 }, 40]
 
 
 # 'main' binding mode declaration
