@@ -1,16 +1,11 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # echo source ~/.bash_profile
 
-# load env vars from .zprofile into the shells
-[[ -f ~/.zprofile ]] && source ~/.zprofile
-
 eval "$(brew shellenv)"
-# source .zprofile in all zsh shells (just in case)
-# [[ -f "$HOME/.zprofile" ]] && source "$HOME/.zprofile"
 
 eval "$(gdircolors)"
 
-source $ZSH/oh-my-zsh.sh
+export ZSH="$HOME/.oh-my-zsh"
 
 # unbind ctrl g in terminal
 bindkey -r "^G"
@@ -26,12 +21,37 @@ eval "$(starship init zsh)"
 # Zoxide
 eval "$(zoxide init zsh)"
 
-# FZF
+# Starship PATH
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+
+# Tmux
+export TMUX_CONF="$HOME/.config/tmux/tmux.conf"
+
+# Tealdeer
+export TEALDEER_CONFIG_DIR="$HOME/.config/tealdeer/"
+
+# ------------FZF--------------
 eval "$(fzf --zsh)"
+
+# Set up fzf key bindings and fuzzy completion
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git "
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
+
+# Setup fzf previews
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200'"
+
+# fzf preview for tmux
+export FZF_TMUX_OPTS=" -p90%,70% "  
 
 # FZF with Git right in the shell by Junegunn : check out his github below
 # Keymaps for this is available at https://github.com/junegunn/fzf-git.sh
 source ~/scripts/fzf-git.sh
+
+# -----------------------------
 
 # Atuin Configs
 export ATUIN_NOBIND="true"
@@ -58,7 +78,6 @@ plugins=(
     ## with oh-my-zsh and not homebrew
     # zsh-autosuggestions ( git clone <find link in the repo> and uncomment  )
     # zsh-syntax-highlighting ( git clone <find link in the repo> and uncomment )
-    web-search
 )
 
 # -------------------ALIAS----------------------
