@@ -1,39 +1,32 @@
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-# echo source ~/.bash_profile
-
-eval "$(brew shellenv)"
-
-eval "$(gdircolors)"
-
+# oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 
-# unbind ctrl g in terminal
-bindkey -r "^G"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml" # starship
+export TMUX_CONF="$HOME/.config/tmux/tmux.conf" # tmux
+export TEALDEER_CONFIG_DIR="$HOME/.config/tealdeer/" # tldr
 
-# Starship 
-bindkey -v
-if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
-      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
-    zle -N zle-keymap-select "";
-fi
-eval "$(starship init zsh)"
+# zsh plugins
+plugins=(
+    git 
+    ## with oh-my-zsh and not homebrew
+    # zsh-autosuggestions ( git clone <find link in the repo> and uncomment  )
+    # zsh-syntax-highlighting ( git clone <find link in the repo> and uncomment )
+)
+source $ZSH/oh-my-zsh.sh
 
-# Zoxide
-eval "$(zoxide init zsh)"
+#----- Vim Editing modes & keymaps ------ 
+set -o vi
 
-# Starship PATH
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export EDITOR=nvim
+export VISUAL=nvim
 
-# Tmux
-export TMUX_CONF="$HOME/.config/tmux/tmux.conf"
+bindkey -M viins '^E' autosuggest-accept
+bindkey -M viins '^P' up-line-or-history
+bindkey -M viins '^N' down-line-or-history
+#----------------------------------------
 
-# Tealdeer
-export TEALDEER_CONFIG_DIR="$HOME/.config/tealdeer/"
-
-# ------------FZF--------------
-eval "$(fzf --zsh)"
-
-# Set up fzf key bindings and fuzzy completion
+# Set up FZF key bindings and fuzzy completion
+# Keymaps for this is available at https://github.com/junegunn/fzf-git.sh
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git "
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
@@ -47,42 +40,39 @@ export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | 
 # fzf preview for tmux
 export FZF_TMUX_OPTS=" -p90%,70% "  
 
-# FZF with Git right in the shell by Junegunn : check out his github below
-# Keymaps for this is available at https://github.com/junegunn/fzf-git.sh
-source ~/scripts/fzf-git.sh
 
-# -----------------------------
+# unbind ctrl g in terminal
+bindkey -r "^G"
 
-# Atuin Configs
+# -------------------------------
+# Initializers and sources
+# starship 
+bindkey -v
+if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
+      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
+    zle -N zle-keymap-select "";
+fi
+eval "$(starship init zsh)"
+
+eval "$(zoxide init zsh)" # zoxide
+
+eval "$(fzf --zsh)" # fzf
+source ~/scripts/fzf-git.sh # fzf git
+
+# Atuin configs
 export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
-# bindkey '^r' _atuin_search_widget
 bindkey '^r' atuin-up-search-viins
-#User configuration
+
+eval "$(gdircolors)"
+
+# User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
-#----- Vim Editing modes & keymaps ------ 
-set -o vi
-
-export EDITOR=nvim
-export VISUAL=nvim
-
-bindkey -M viins '^E' autosuggest-accept
-bindkey -M viins '^P' up-line-or-history
-bindkey -M viins '^N' down-line-or-history
-#----------------------------------------
-
-# zsh plugins
-plugins=(
-    git 
-    ## with oh-my-zsh and not homebrew
-    # zsh-autosuggestions ( git clone <find link in the repo> and uncomment  )
-    # zsh-syntax-highlighting ( git clone <find link in the repo> and uncomment )
-)
+# -------------------------------
 
 # -------------------ALIAS----------------------
-# These alias need to have the same exact space as written here
-# HACK: For Running Go Server using Air
+# For Running Go Server using Air
 alias air='$(go env GOPATH)/bin/air'
 
 # other Aliases shortcuts
@@ -105,8 +95,7 @@ alias fman="compgen -c | fzf | xargs man"
 # zoxide (called from ~/scripts/)
 alias nzo="~/scripts/zoxide_openfiles_nvim.sh"
 
-# Next level of an ls 
-# options :  --no-filesize --no-time --no-permissions 
+# Next level of an ls ,Options:  --no-filesize --no-time --no-permissions 
 alias ls="eza --no-filesize --long --color=always --icons=always --no-user" 
 
 # tree
@@ -136,8 +125,8 @@ alias mpds="mpd ~/.config/mpd/mpd.conf"
 alias sethvault="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/sethVault/"
 # ---------------------------------------
 
-# brew installations activation (new mac systems brew path: opt/homebrew , not usr/local )
+# brew installations (new mac systems brew path: opt/homebrew , not usr/local )
 # source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-. "/Users/personal/.deno/env"
+typeset -U PATH

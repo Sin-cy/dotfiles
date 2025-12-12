@@ -52,6 +52,9 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 export PATH=$PATH:$(go env GOPATH)/bin
 
+# Deno
+. "/Users/personal/.deno/env"
+
 # Python 3.11
 # The original version is saved in .zprofile.pysave
 export PATH="/Library/Frameworks/Python.framework/Versions/3.11/bin:${PATH}"
