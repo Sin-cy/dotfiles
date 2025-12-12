@@ -1,39 +1,39 @@
 return {
     {
-		"folke/noice.nvim",
+        "folke/noice.nvim",
         event = "VeryLazy",
         enabled = true,
-		dependencies = {
-			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-			"MunifTanjim/nui.nvim",
-		},
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+        },
         config = function ()
-           local noice = require("noice")
+            local noice = require("noice")
 
             noice.setup({
-				cmdline = {
-					enabled = false,
-					view = "cmdline_popup",
-					format = {
-						cmdline = { pattern = "", icon = "󱐌 :", lang = "vim" },
+                cmdline = {
+                    enabled = false,
+                    view = "cmdline_popup",
+                    format = {
+                        cmdline = { pattern = "", icon = "󱐌 :", lang = "vim" },
                         help = { pattern = "^:%s*he?l?p?%s+", icon = " 󰮦 :" },
                         search_down = { kind = "search", pattern = "^/", icon = "/", lang = "regex" },
                         search_up = { kind = "search", pattern = "^%?", icon = "/", lang = "regex" },
-						filter = { pattern = "^:%s*!", icon = " $ :", lang = "bash" },
-						lua = {
-							pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" },
-							icon = "  :",
-							lang = "lua",
-						},
-						input = { view = "cmdline_input", icon = " 󰥻 :" }, -- Used by input()
-					},
-				},
+                        filter = { pattern = "^:%s*!", icon = " $ :", lang = "bash" },
+                        lua = {
+                            pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" },
+                            icon = "  :",
+                            lang = "lua",
+                        },
+                        input = { view = "cmdline_input", icon = " 󰥻 :" }, -- Used by input()
+                    },
+                },
                 views = {
                     popupmenu = {
                         relative = "editor",
                         position = {
-                            row = 8,
-                            col = "50%",
+                                row = 8,
+                                col = "50%",
                         },
                         win_options = {
                             winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
@@ -88,6 +88,7 @@ return {
                 },
 				popupmenu = {
 					enabled = true,
+                    backend = "cmp",
 				},
 				signature = {
 					enabled = true,
