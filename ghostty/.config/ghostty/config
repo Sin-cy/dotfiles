@@ -25,7 +25,8 @@ auto-update-channel = stable
 
 # extras
 shell-integration-features = no-cursor 
-copy-on-select = clipboard # cmd or alt c copy (not vim yank)
+copy-on-select = clipboard 
+# cmd or alt c copy (not vim yank)
 
 # Custom Keybinds & Config (super represents cmd key on mac)
 # For Simple Keybinds
