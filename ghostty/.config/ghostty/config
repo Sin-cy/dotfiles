@@ -1,13 +1,14 @@
 # By default Reload config with shft + cmd + , 
 config-file = themes/rosepine
-# background-opacity = 0.88
-# background-blur-radius = 25
+background-opacity = 0.88
+background-blur-radius = 25
 
 font-family = JetBrainsMonoNL Nerd Font 
 font-size = 20
 cursor-style = block
 cursor-style-blink = false
-cursor-invert-fg-bg = true
+cursor-color = cell-foreground
+cursor-text = cell-background
 
 macos-titlebar-style = hidden
 macos-option-as-alt = true
@@ -24,7 +25,7 @@ auto-update-channel = stable
 
 # extras
 shell-integration-features = no-cursor 
-copy-on-select = clipboard
+copy-on-select = clipboard # cmd or alt c copy (not vim yank)
 
 # Custom Keybinds & Config (super represents cmd key on mac)
 # For Simple Keybinds
