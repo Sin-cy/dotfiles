@@ -29,7 +29,6 @@ copy-on-select = clipboard # cmd or alt c copy (not vim yank)
 
 # Custom Keybinds & Config (super represents cmd key on mac)
 # For Simple Keybinds
-# keybind = super+r=reload_config 
 keybind = super+i=inspector:toggle
 keybind = super+b>,=toggle_quick_terminal
 
