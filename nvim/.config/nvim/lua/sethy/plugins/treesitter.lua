@@ -5,7 +5,7 @@ return {
         build = ":TSUpdate",
         config = function()
             -- import nvim-treesitter plugin
-            local treesitter = require("nvim-treesitter.configs")
+            local treesitter = require("nvim-treesitter")
 
             -- configure treesitter
             treesitter.setup({ -- enable syntax highlighting
@@ -49,7 +49,8 @@ return {
                     keymaps = {
                         init_selection = "<C-space>",
                         node_incremental = "<C-space>",
-                        scope_incremental = false,
+                        -- scope_incremental = false,
+                        node_decremental = "<C-backspace>",
                     },
                 },
                 additional_vim_regex_highlighting = false,
