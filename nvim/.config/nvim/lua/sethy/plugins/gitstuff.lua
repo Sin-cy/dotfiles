@@ -3,7 +3,7 @@ return {
 	{
 		"tpope/vim-fugitive",
         config = function()
-            vim.keymap.set("n", "<leader>gg", vim.cmd.Git)
+            vim.keymap.set("n", "<leader>gg", "<cmd>tabnew | Git | only<cr>", { desc = "Fugitive fullscreen tab", })
 
             local myFugitive = vim.api.nvim_create_augroup("myFugitive", {})
 
@@ -94,5 +94,5 @@ return {
         keys = {
             { "<leader>lg", "<cmd>LazyGit<cr>", desc = "Open lazy git" },
         },
-    }
+    },
 }
