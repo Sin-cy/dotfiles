@@ -5,26 +5,6 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Caps Lock → ⌃⌥⇧⌘ (Hyper) when held, F12 when tapped",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "caps_lock",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_shift",
-                                        "modifiers": ["left_command", "left_control", "left_option"]
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "f12" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Hyper Key (⌃⌥⇧⌘)",
                         "manipulators": [
                             {
@@ -102,22 +82,9 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Hyper + b -> Zen Browser",
+                                "description": "Hyper + b -> Brave Browser",
                                 "from": { "key_code": "b" },
-                                "to": [{ "shell_command": "open -a 'Zen Browser'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "hyper",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "description": "Hyper + f -> Finder",
-                                "from": { "key_code": "f" },
-                                "to": [{ "shell_command": "open -a 'Finder'" }],
+                                "to": [{ "shell_command": "open -a 'Brave Browser'" }],
                                 "type": "basic"
                             },
                             {
@@ -289,6 +256,22 @@
                                         "value": 1
                                     }
                                 ],
+                                "description": "Open -a 'Finder.app'",
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Finder.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_o",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "description": "Open -a 'Music.app'",
                                 "from": {
                                     "key_code": "p",
@@ -321,12 +304,12 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open -a 'Google Chrome.app'",
+                                "description": "Open -a 'Zen Browser.app'",
                                 "from": {
                                     "key_code": "c",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open -a 'Google Chrome.app'" }],
+                                "to": [{ "shell_command": "open -a 'Zen Browser.app'" }],
                                 "type": "basic"
                             },
                             {

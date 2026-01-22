@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 
 -- appearance
 config.font_dirs = { '~/Library/Fonts/' }
-config.font = wezterm.font("JetBrainsMonoNerd-fonts")
+config.font = wezterm.font("JetBrainsMonoNL Nerd Font")
 config.font_size = 17
 config.color_scheme = "rose-pine"
 config.colors = {

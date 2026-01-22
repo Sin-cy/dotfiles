@@ -1,4 +1,4 @@
-command_timeout = 3600
+scan_timeout = 3600
 
 "$schema" = 'https://starship.rs/config-schema.json'
 
@@ -145,6 +145,9 @@ echo "$GIT_REMOTE_SYMBOL "
 """
 when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
 format = "at $output"
+ignore_timeout = true
+require_repo = true
+
 
 [git_branch]
 symbol = "[](black) "

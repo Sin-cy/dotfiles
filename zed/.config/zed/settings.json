@@ -26,6 +26,7 @@
 	"relative_line_numbers": true,
 	"ensure_final_newline_on_save": true,
 	"remove_trailing_whitespace_on_save": true,
+	"show_whitespaces": "none",
 	"tab_bar": {
 		"show": false
 	},
@@ -72,6 +73,7 @@
 		// "toolbar.background": "#121213",
 		// "tab.active_background": "#121213",
 		// "tab.inactive_background": "#121213",
+		"editor.document_highlight.bracket_background": "#ffffff00"
 	},
 	// LSP Config
 	"lsp": {
