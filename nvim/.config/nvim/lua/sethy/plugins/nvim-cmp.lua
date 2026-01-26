@@ -212,7 +212,7 @@ return {
                     name = 'buffer' ,
                     option = {
                         max_item_count = 30,
-                        keyword_length = 3,
+                        keyword_length = 1,
                     },
                 },
             }),
