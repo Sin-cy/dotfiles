@@ -18,9 +18,7 @@ return {
                 -- tsx, jsx, html , svelte comment support
                 options = {
                     custom_commentstring = function()
-                        return require('ts_context_commentstring.internal').calculate_commentstring({ key =
-                            'commentstring' })
-                            or vim.bo.commentstring
+                        return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
                     end,
                 },
             }
