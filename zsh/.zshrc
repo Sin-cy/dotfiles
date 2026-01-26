@@ -46,6 +46,11 @@ bindkey -r "^G"
 
 # -------------------------------
 # Initializers and sources
+eval "$(gdircolors)"
+
+# wtp (gitworktree plus)
+eval "$(wtp shell-init zsh)"
+
 # starship 
 bindkey -v
 if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
@@ -63,8 +68,6 @@ source ~/scripts/fzf-git.sh # fzf git
 export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
 bindkey '^r' atuin-up-search-viins
-
-eval "$(gdircolors)"
 
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -130,3 +133,5 @@ alias sethvault="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/set
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 typeset -U PATH
+
+fastfetch

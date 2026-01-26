@@ -29,6 +29,7 @@ brew analytics off
 echo "Tapping Brew..."
 brew tap homebrew/cask-fonts
 brew tap FelixKratz/formulae
+brew install satococoa/tap/wtp
 
 ## Formulae
 echo "Installing Brew Formulae..."
