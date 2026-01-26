@@ -42,7 +42,10 @@ return {
                 "tailwindcss",
                 "gopls",
                 "angularls",
+<<<<<<< HEAD
                 "astro",
+=======
+>>>>>>> f13e3c3 (update before rebase main)
                 "emmet_ls",
                 "emmet_language_server",
                 -- "eslint",

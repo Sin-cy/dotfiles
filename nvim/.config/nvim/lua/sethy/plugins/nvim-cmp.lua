@@ -405,7 +405,11 @@ return {
         -- vim.api.nvim_create_autocmd({ 'InsertEnter', 'CursorMovedI' }, {
         --     callback = toggle_ghost_text,
         -- })
+<<<<<<< HEAD
         -- ! Ghost text stuff ! --
+=======
+        -- ! Ghost text stuff ! -- 
+>>>>>>> f13e3c3 (update before rebase main)
 
     end,
 }

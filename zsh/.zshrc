@@ -128,7 +128,11 @@ alias mpds="mpd ~/.config/mpd/mpd.conf"
 alias sethvault="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/sethVault/"
 # ---------------------------------------
 
+<<<<<<< HEAD
 # brew installations (new mac systems brew path: opt/homebrew , not usr/local )
+=======
+# brew installations activation (new mac systems brew path: opt/homebrew , not usr/local )
+>>>>>>> f13e3c3 (update before rebase main)
 # source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

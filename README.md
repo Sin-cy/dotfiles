@@ -6,18 +6,6 @@ NOTE:
 # My dotfiles
 This directory contains the dotfiles for my mac system which probably won't work on yours.
 
-# Install with Script
-
-Run the following
-- optional: Install Xcode command line tools beforehand `xcode-select --install`
-    - Install brew  
-        - `sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-
-    - `brew install git`
-    - `git clone https://github.com/Sin-cy/dotfiles.git $HOME/dotfiles` this repo into $HOME
-    - `cd dotfiles` and make install.sh executable `chmod +x ~/dotfiles/install.sh`
-    which ever way possible
-    - run in shell `/bin/bash ~/dotfiles/install.sh` 
 
 # Manual Install
 ## Repository and Installations needed
@@ -27,11 +15,6 @@ Run the following
 
 ### Install Homebrew
 
-- Install Homebrew.
-
-- `sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-
-Enter your password and proceed yes to confirm the installation if it prompts you to
 
 #### Homebrew extras required
 - `brew install neovim eza fzf fd stow bat zoxide zsh-autosuggestions
@@ -39,13 +22,6 @@ zsh-syntax-highlighting git starship tmux nvm`
     - If Mason lsp starts shouting when opening neovim
     - do nvm install node v23.3.0 or v-xx-xx
 
-#### coreutils
-- `brew install coreutils`
-- add `PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"` to top of the rc
-  file (~/.zshrc or ~/.zshenv)
-
-#### fzf-git
-- `git clone https://github.com/junegunn/fzf-git.sh.git`
 
 ### Tmux
 Installation
@@ -60,13 +36,6 @@ Tmux plugins manager
 -   it will most likely prompt you to install it with Xcode Command Line tools.
     - (Skip this step if command line tools already installed)
 
-##### Install Git with Homebrew ( My Default ) 
-- Manually Install git with Homebrew `brew install git`
-- brew installs git on mac at `/opt/homebrew/bin/git`
-
-##### Install Git via Xcode
--   Install Xcode usign `xcode-select --install`
--   xcode installs git at `/usr/bin/git`
 
 
 ### GNU Stow
