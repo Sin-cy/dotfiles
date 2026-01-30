@@ -9,27 +9,52 @@ return {
                 variant = "main",      -- auto, main, moon, or dawn
                 dark_variant = "main", -- main, moon, or dawn
                 dim_inactive_windows = false,
-                -- disable_background = true,
-                -- 	disable_nc_background = false,
-                -- 	disable_float_background = false,
-                -- extend_background_behind_borders = false,
+                disable_float_background = false,
+                extend_background_behind_borders = true,
                 styles = {
                     bold = true,
                     italic = false,
-                    transparency = true,
+                    transparency = false,
+                },
+                enable = {
+                    terminal = true,
+                    legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
+                    migrations = true,         -- Handle deprecated options automatically
                 },
                 highlight_groups = {
                     ColorColumn = { bg = "#1C1C21" },
-                    Normal = { bg = "none" },                      -- Main background remains transparent
-                    Pmenu = { bg = "", fg = "#e0def4" },           -- Completion menu background
-                    PmenuSel = { bg = "#4a465d", fg = "#f8f5f2" }, -- Highlighted completion item
-                    PmenuSbar = { bg = "#191724" },                -- Scrollbar background
-                    PmenuThumb = { bg = "#9ccfd8" },               -- Scrollbar thumb
+                    -- Normal = { bg = "none" },                      -- Main background remains transparent
+                    -- Pmenu = { bg = "", fg = "#e0def4" },           -- Completion menu background
+                    -- PmenuSel = { bg = "#4a465d", fg = "#f8f5f2" }, -- Highlighted completion item
+                    -- PmenuSbar = { bg = "#191724" },                -- Scrollbar background
+                    -- PmenuThumb = { bg = "#9ccfd8" },               -- Scrollbar thumb
                 },
-                enable = {
-                    terminal = false,
-                    legacy_highlights = false, -- Improve compatibility for previous versions of Neovim
-                    migrations = true,         -- Handle deprecated options automatically
+                groups = {
+                    border = "muted",
+                    link = "iris",
+                    panel = "surface",
+                    error = "love",
+                    hint = "iris",
+                    info = "foam",
+                    note = "pine",
+                    todo = "rose",
+                    warn = "gold",
+                    git_add = "foam",
+                    git_change = "rose",
+                    git_delete = "love",
+                    git_dirty = "rose",
+                    git_ignore = "muted",
+                    git_merge = "iris",
+                    git_rename = "pine",
+                    git_stage = "iris",
+                    git_text = "rose",
+                    git_untracked = "subtle",
+                    h1 = "iris",
+                    h2 = "foam",
+                    h3 = "rose",
+                    h4 = "gold",
+                    h5 = "pine",
+                    h6 = "foam",
                 },
 
             })
@@ -45,7 +70,7 @@ return {
         -- priority = 1000 ,
         config = function()
             require("gruvbox").setup({
-                terminal_colors = true, -- add neovim terminal colors
+                terminal_colors = true,
                 undercurl = true,
                 underline = true,
                 bold = true,
@@ -65,10 +90,11 @@ return {
                 contrast = "",  -- can be "hard", "soft" or empty string
                 palette_overrides = {},
                 overrides = {
-                    Pmenu = { bg = "" }, -- Completion menu background
+                    NormalFloat = { bg = "#282828" },
+                    -- Pmenu = { bg = "" }, -- completion menu background
                 },
                 dim_inactive = false,
-                transparent_mode = true,
+                transparent_mode = true, -- transparency
             })
         end,
     },
@@ -103,21 +129,16 @@ return {
                 overrides = function(colors) -- add/modify highlights
                     local theme = colors.theme
                     return {
-                        NormalFloat = { bg = "none" },
-                        FloatBorder = { bg = "none" },
+                        -- NormalFloat = { bg = "none" },
+                        -- FloatBorder = { bg = "none" },
                         FloatTitle = { bg = "none" },
                         Pmenu = { fg = theme.ui.shade0, bg = "NONE", blend = vim.o.pumblend }, -- add `blend = vim.o.pumblend` to enable transparency
                         PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
                         PmenuSbar = { bg = theme.ui.bg_m1 },
                         PmenuThumb = { bg = theme.ui.bg_p2 },
 
-                        -- Save an hlgroup with dark background and dimmed foreground
-                        -- so that you can use it where your still want darker windows.
-                        -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
                         NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
 
-                        -- Popular plugins that open floats will link to NormalFloat by default;
-                        -- set their background accordingly if you wish to keep them dark and borderless
                         LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
                         MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
                         TelescopeTitle = { fg = theme.ui.special, bold = true },
@@ -141,7 +162,7 @@ return {
         config = function()
             require("solarized-osaka").setup({
                 transparent = true,
-                terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
+                terminal_colors = true,
                 styles = {
                     -- Style to be applied to different syntax groups
                     -- Value is any valid attr-list value for `:help nvim_set_hl`
@@ -221,7 +242,7 @@ return {
                 on_colors = function(colors)
                     colors.bg = transparent and colors.none or bg
                     colors.bg_dark = transparent and colors.none or bg_dark
-                    colors.bg_float = transparent and colors.none or bg_dark
+                    colors.bg_float = bg_dark
                     colors.bg_highlight = bg_highlight
                     colors.bg_popup = bg_dark
                     colors.bg_search = bg_search
@@ -251,6 +272,83 @@ return {
             --         end
             --     end,
             -- })
+        end,
+    },
+    {
+        "loctvl842/monokai-pro.nvim",
+        config = function()
+            require("monokai-pro").setup({
+                transparent_background = true,
+            })
+        end
+    },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        config = function()
+            require("catppuccin").setup({
+                flavour = "mocha",
+                background = {
+                    light = "latte",
+                    dark = "mocha",
+                },
+                transparent_background = false,
+                dim_inactive = {
+                    enabled = false,
+                    shade = "dark",
+                    percentage = 0.15,
+                },
+                styles = {
+                    comments = { "italic" },
+                    conditionals = { "italic" },
+                    loops = {},
+                    functions = {},
+                    keywords = { "bold" },
+                    strings = {},
+                    variables = {},
+                    numbers = {},
+                    booleans = {},
+                    properties = {},
+                    types = {},
+                    operators = {},
+                },
+                custom_highlights = function(colors)
+                    return {
+                        ColorColumn = { bg = "#1C1C21" },
+
+                        -- Pmenu styling (similar to your rose-pine)
+                        Pmenu = { bg = colors.surface0, fg = colors.text },
+                        PmenuSel = { bg = colors.surface2, fg = colors.text },
+                        PmenuSbar = { bg = colors.surface0 },
+                        PmenuThumb = { bg = colors.overlay2 },
+
+                        -- For fully transparent
+                        Normal = { bg = "none" },
+                        NormalFloat = { bg = "none" },
+                    }
+                end,
+                integrations = {
+                    treesitter = true,
+                    native_lsp = {
+                        enabled = true,
+                        virtual_text = { errors = { "italic" }, hints = { "italic" } },
+                    },
+                    lsp_trouble = true,
+                    lsp_saga = true,
+                    cmp = true,
+                    telescope = true,
+                    which_key = true,
+                    gitsigns = true,
+                    markdown = true,
+                    mini = true,
+                    dap = true,
+                    dap_ui = true,
+                    -- terminal = false, 
+                },
+            })
+
+            -- vim.cmd.colorscheme("catppuccin")
         end,
     },
 }
