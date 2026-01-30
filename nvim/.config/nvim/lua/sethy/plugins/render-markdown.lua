@@ -6,7 +6,7 @@ return {
         "nvim-tree/nvim-web-devicons"
     },
     ---@module 'render-markdown'
-    -- ft = { "markdown", "norg", "rmd", "org" },
+    ft = { "markdown", "norg", "rmd", "org" },
     init = function()
         -- Define colors
         local color1_bg = "#ff757f"
@@ -32,6 +32,14 @@ return {
         -- vim.cmd(string.format([[highlight Headline4Fg guifg=%s gui=bold]], colors.color4_bg))
         -- vim.cmd(string.format([[highlight Headline5Fg guifg=%s gui=bold]], colors.color5_bg))
         -- vim.cmd(string.format([[highlight Headline6Fg guifg=%s gui=bold]], colors.color6_bg))
+
+        -- force treesitter highlighting for markdown buffers
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = "markdown",
+            callback = function()
+                vim.treesitter.start()
+            end,
+        })
     end,
     opts = {
         restart_highlighter = true,
