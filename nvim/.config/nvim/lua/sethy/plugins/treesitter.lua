@@ -55,6 +55,13 @@ return {
                     },
                 },
             })
+            -- force start treesitter for all filetypes
+            vim.api.nvim_create_autocmd('FileType', {
+                pattern = '*',
+                callback = function()
+                    pcall(vim.treesitter.start)
+                end,
+            })
         end,
     },
     -- NOTE: js,ts,jsx,tsx Auto Close Tags
