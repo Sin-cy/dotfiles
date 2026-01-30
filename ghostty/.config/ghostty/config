@@ -1,7 +1,7 @@
 # By default Reload config with shft + cmd + , 
 config-file = themes/rosepine
-# background-opacity = 0.88
-# background-blur-radius = 25
+background-opacity = 0.88
+background-blur-radius = 25
 
 font-family = JetBrainsMonoNL Nerd Font 
 font-size = 20
@@ -16,10 +16,10 @@ macos-option-as-alt = true
 mouse-hide-while-typing = true
 
 confirm-close-surface = false
-window-decoration = true
+window-decoration = auto
 window-padding-x = 10
 window-padding-y = 10
-window-padding-balance = false
+window-padding-balance = true
 
 auto-update = check
 auto-update-channel = stable
