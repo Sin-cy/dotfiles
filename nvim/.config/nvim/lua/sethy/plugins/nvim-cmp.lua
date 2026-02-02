@@ -205,7 +205,14 @@ return {
         require("luasnip.loaders.from_vscode").lazy_load()
 
         cmp.setup.cmdline(":", {
-            mapping = cmp.mapping.preset.cmdline(),
+            mapping = cmp.mapping.preset.cmdline({
+                ['<CR>'] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.close()
+                    end
+                    fallback()
+                end, { 'c' }),
+            }),
             sources = cmp.config.sources({
                 { name = "path" },
                 { name = "cmdline" },
