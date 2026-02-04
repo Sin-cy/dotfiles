@@ -18,10 +18,6 @@ export PATH="$PATH:/Applications/010 Editor.app/Contents/CmdLine" #ADDED BY 010 
 # Console Ninja
 export PATH=~/.console-ninja/.bin:$PATH
 
-# NOTE : Disabled Shell Prompt: Currently using Starship
-# NOTE: using oh-my-zsh only for zsh plugins management
-# export ZSH="$HOME/.oh-my-zsh"
-
 # NVM
 export NVM_DIR="$HOME/.nvm"
 nvm() {
