@@ -15,7 +15,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 #----- Vim Editing modes & keymaps ------ 
-set -o vi
+set -o vi 
 
 export EDITOR=nvim
 export VISUAL=nvim
@@ -52,7 +52,6 @@ eval "$(gdircolors)"
 eval "$(wtp shell-init zsh)"
 
 # starship 
-bindkey -v
 if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
       "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
     zle -N zle-keymap-select "";
@@ -87,7 +86,7 @@ alias vim="nvim"
 alias tmux="tmux -f $TMUX_CONF"
 alias a="attach"
 # calls the tmux new session script
-alias tns="~/scripts/tmux-sessionizer"
+alias tns="~/scripts/tmux-sessionizer.sh"
 
 # fzf 
 # called from ~/scripts/
