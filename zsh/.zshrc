@@ -20,9 +20,11 @@ set -o vi
 export EDITOR=nvim
 export VISUAL=nvim
 
-bindkey -M viins '^E' autosuggest-accept
-bindkey -M viins '^P' up-line-or-history
-bindkey -M viins '^N' down-line-or-history
+# ctrl y accept requires zsh-autosuggestions to be active
+bindkey -M viins '^Y' autosuggest-accept 
+
+bindkey -M viins '^P' up-line-or-beginning-search
+bindkey -M viins '^N' down-line-or-beginning-search
 #----------------------------------------
 
 # Set up FZF key bindings and fuzzy completion
