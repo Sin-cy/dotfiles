@@ -1,9 +1,9 @@
-# By default Reload config with shft + cmd + , 
+# By default Reload config with shft + cmd + ,
 config-file = themes/rosepine
 background-opacity = 0.88
 background-blur-radius = 25
 
-font-family = JetBrainsMonoNL Nerd Font 
+font-family = JetBrainsMonoNL Nerd Font
 font-size = 20
 font-feature = -liga,-calt,-dlig
 cursor-style = block
@@ -25,23 +25,23 @@ auto-update = check
 auto-update-channel = stable
 
 # extras
-shell-integration-features = no-cursor 
-copy-on-select = clipboard 
+shell-integration-features = no-cursor
+copy-on-select = clipboard
 # cmd or alt c copy (not vim yank)
 
-# Custom Keybinds & Config (super represents cmd key on mac)
+# Custom Keybinds & Config (super = cmd key on mac)
 # For Simple Keybinds
 keybind = super+i=inspector:toggle
 keybind = super+b>,=toggle_quick_terminal
-
-# Similar Tmux but with Ghostty
-# (ctrl b for tmux -> cmb b for ghostty)
 keybind = super+b>r=reload_config
-keybind = super+b>x=close_surface
-# this only works if you have `macos-titlebar-style = tabs or native or transparent`
-# else it behaves like new window
-keybind = super+b>c=new_tab 
+
+#-------------------------------------------
+
+# Similar to Tmux Panes (no sessions)
+# this only works if you have `macos-titlebar-style = tabs or native or transparent` else it behaves like new window
+keybind = super+b>c=new_tab
 keybind = super+b>n=new_window
+keybind = super+b>x=close_surface
 
 # tab nav
 keybind = super+b>1=goto_tab:1
