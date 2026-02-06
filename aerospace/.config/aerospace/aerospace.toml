@@ -1,3 +1,5 @@
+config-version = 2
+after-login-command = []
 # Place a copy of this config to ~/.aerospace.toml
 # After that, you can edit ~/.aerospace.toml to your liking
 
@@ -7,7 +9,6 @@
 # You can use it to add commands that run after login to macOS user session.
 # 'start-at-login' needs to be 'true' for 'after-login-command' to work
 # Available commands: https://nikitabobko.github.io/AeroSpace/commands
-after-login-command = []
 
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
@@ -52,6 +53,21 @@ key-mapping.preset = 'qwerty'
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 # on-focus-changed = "move-mouse window-lazy-center"
 # on-focused-monitor-changed = ['move-mouse monitor-lazy-center'] # switchin dislays mouse re center
+
+persistent-workspaces = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "8",
+    "9",
+    "B",
+    "F",
+    "M",
+    "N",
+    "T"
+]
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -117,13 +133,13 @@ alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
-# alt-5 = 'workspace 5'
+alt-5 = 'workspace 5'
 # alt-6 = 'workspace 6'
 # alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-b = 'workspace B' # for browser
-# alt-e = 'workspace E' # 
+# alt-e = 'workspace E' 
 alt-f = 'workspace F' # for finder
 alt-m = 'workspace M' #
 alt-n = 'workspace N' # for notes
@@ -136,7 +152,7 @@ alt-shift-1 = 'move-node-to-workspace 1'
 alt-shift-2 = 'move-node-to-workspace 2'
 alt-shift-3 = 'move-node-to-workspace 3'
 alt-shift-4 = 'move-node-to-workspace 4'
-# alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-5 = 'move-node-to-workspace 5'
 # alt-shift-6 = 'move-node-to-workspace 6'
 # alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
@@ -190,9 +206,9 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
-[[on-window-detected]]
-if.app-name-regex-substring = 'finder'
-run = 'layout floating'
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'finder'
+# run = 'layout floating'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Shottr'
@@ -203,7 +219,7 @@ if.app-id = 'com.mitchellh.ghostty'
 run = "move-node-to-workspace T"
 
 [[on-window-detected]]
-if.app-id = 'com.google.Chrome'
+if.app-id = 'com.brave.Browser'
 run = "move-node-to-workspace B"
 
 [[on-window-detected]]
@@ -212,7 +228,7 @@ run = "move-node-to-workspace B"
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
-run = "move-node-to-workspace F"
+run = ['layout floating', 'move-node-to-workspace F']
 
 [[on-window-detected]]
 if.app-id = 'notion.id'
