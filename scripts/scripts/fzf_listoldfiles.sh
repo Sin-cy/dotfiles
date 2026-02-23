@@ -21,8 +21,13 @@ list_oldfiles() {
         --height=70% \
         --layout=default))
 
-  # Open selected files in Neovim
-  [[ ${#files[@]} -gt 0 ]] && nvim "${files[@]}"
+    # Open selected files in Neovim
+    if [[ ${#files[@]} -gt 0 ]]; then
+        # make neovim recognize path of the file opened
+        local first_dir=$(dirname "${files[0]}")
+        cd "$first_dir" || { echo "Failed to cd to $first_dir"; return 1; }
+        nvim "${files[@]}"
+    fi
 }
 
 # Call the function
