@@ -7,132 +7,208 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-	"features": {
-		"edit_prediction_provider": "none"
-	},
-	"vim_mode": true,
-	"ui_font_size": 18,
-	"buffer_font_size": 20,
-	"buffer_font_family": "JetBrainsMono Nerd Font",
-	"current_line_highlight": "none",
-	"cursor_shape": "block",
-	"tab_size": 4,
-	"hard_tabs": true,
-	"format_on_save": "off",
-	"formatter": "language_server",
-	"enable_language_server": true,
-	"vertical_scroll_margin": 8,
-	"cursor_blink": false,
-	"relative_line_numbers": true,
-	"ensure_final_newline_on_save": true,
-	"remove_trailing_whitespace_on_save": true,
-	"show_whitespaces": "none",
-	"tab_bar": {
-		"show": false
-	},
-	"tabs": {
-		"git_status": true
-	},
-	"inlay_hints": {
-		// to enable you define it to true in LSP config down below
-		"enabled": false
-	},
-	"scrollbar": {
-		"show": "never"
-	},
-	"toolbar": {
-		"breadcrumbs": false,
-		"quick_actions": true
-	},
-	// Move all panel to the right
-	"project_panel": {
-		"button": true,
-		"dock": "right",
-		"git_status": true
-	},
-	"outline_panel": {
-		"dock": "right"
-	},
-	"collaboration_panel": {
-		"dock": "left"
-	},
-	// Move some unnecessary panels to the left
-	"notification_panel": {
-		"dock": "left"
-	},
-	// Themes
-	"theme": "Rosé Pine",
-	"experimental.theme_overrides": {
-		// "editor.background": "#121213",
-		// "background.appearance": "blurred",
-		// "editor.line_number": "#fff",
-		// "editor.active_line_number": "#eebebe",
-		// "editor.gutter.background": "#121213",
-		// "tab_bar.background": "#000",
-		// "terminal.background": "#121213",
-		// "toolbar.background": "#121213",
-		// "tab.active_background": "#121213",
-		// "tab.inactive_background": "#121213",
-		"editor.document_highlight.bracket_background": "#ffffff00"
-	},
-	// LSP Config
-	"lsp": {
-		"tailwindcss-language-server": {
-			"settings": {
-				"classAttributes": [
-					"class",
-					"className",
-					"ngClass",
-					"styles"
-				]
-			}
-		},
-		"gppls": {},
-		"rust-analyzer": {}
-	},
-	"languages": {
-		// Refer https://zed.dev/docs/languages/javascript and https://zed.dev/docs/languages/typescript for more info
-		"JavaScript": {
-			"hard_tabs": true,
-			"tab_size": 4,
-			"format_on_save": "off",
-			// "formatter": "language_server"
-			"inlay_hints": {
-				"enabled": false
-			}
-		},
-		"TypeScript": {
-			// Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
-			"inlay_hints": {
-				"enabled": false,
-				"show_parameter_hints": false,
-				"show_other_hints": true,
-				"show_type_hints": true //shows type hints right in the line
-			},
-			"tab_size": 4,
-			"hard_tabs": true,
-			"format_on_save": "off"
-		},
-		"JSON": {
-			"tab_size": 4,
-			"hard_tabs": true,
-			"format_on_save": "off"
-		},
-		"Python": {
-			"format_on_save": {
-				"language_server": {
-					"name": "ruff"
-				}
-			},
-			"formatter": {
-				"language_server": {
-					"name": "ruff"
-				}
-			},
-			"language_servers": [
-				"pyright",
-				"ruff"
-			]
-		}
-	}
+  "git": {
+    "inline_blame": {
+      "enabled": false,
+    },
+  },
+  "edit_predictions": {
+    "provider": "none",
+  },
+  "vim_mode": true,
+  "ui_font_size": 18,
+  "buffer_font_size": 20,
+  "tab_size": 4,
+  "cursor_shape": "block",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "current_line_highlight": "none",
+  "hard_tabs": true,
+  "format_on_save": "off",
+  "formatter": "language_server",
+  "enable_language_server": true,
+  "vertical_scroll_margin": 8,
+  "cursor_blink": false,
+  "relative_line_numbers": "enabled",
+  "ensure_final_newline_on_save": true,
+  "remove_trailing_whitespace_on_save": true,
+  "show_whitespaces": "none",
+  "tab_bar": {
+    "show": false,
+  },
+  "tabs": {
+    "git_status": true,
+  },
+  "inlay_hints": {
+    // to enable you define it to true in LSP config down below
+    "enabled": false,
+  },
+  "scrollbar": {
+    "show": "never",
+  },
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": true,
+  },
+  // Move all panel to the right
+  "project_panel": {
+    "button": true,
+    "dock": "right",
+    "git_status": true,
+  },
+  "outline_panel": {
+    "dock": "right",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  // Move some unnecessary panels to the left
+  "notification_panel": {
+    "dock": "left",
+  },
+  // Themes
+  "theme": "Rosé Pine",
+  "theme_overrides": {
+    // "editor.background": "#121213",
+    // "background.appearance": "blurred",
+    // "editor.line_number": "#fff",
+    // "editor.active_line_number": "#eebebe",
+    // "editor.gutter.background": "#121213",
+    // "tab_bar.background": "#000",
+    // "terminal.background": "#121213",
+    // "toolbar.background": "#121213",
+    // "tab.active_background": "#121213",
+    // "tab.inactive_background": "#121213",
+    // "editor.document_highlight.bracket_background": "#ffffff",
+  },
+  // LSP Config
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "inlayHints": {
+            "parameterNames": {
+              "enabled": "none",
+            },
+            "parameterTypes": {
+              "enabled": false,
+            },
+            "variableTypes": {
+              "enabled": true,
+              "suppressWhenTypeMatchesName": false,
+            },
+            "propertyDeclarationTypes": {
+              "enabled": true,
+            },
+            "functionLikeReturnTypes": {
+              "enabled": true,
+            },
+            "enumMemberValues": {
+              "enabled": true,
+            },
+          },
+        },
+        "javascript": {
+          "inlayHints": {
+            "parameterNames": {
+              "enabled": "none",
+            },
+            "parameterTypes": {
+              "enabled": false,
+            },
+            "variableTypes": {
+              "enabled": false,
+            },
+            "propertyDeclarationTypes": {
+              "enabled": false,
+            },
+            "functionLikeReturnTypes": {
+              "enabled": false,
+            },
+            "enumMemberValues": {
+              "enabled": false,
+            },
+          },
+        },
+      },
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "classAttributes": ["class", "className", "ngClass", "styles"],
+      },
+    },
+    "gopls": {
+      "initialization_options": {
+        "hints": {
+          "assignVariableTypes": false,
+          "parameterNames": true,
+        },
+      },
+    },
+    "rust-analyzer": {},
+    "basedpyright": {
+      "settings": {
+        "basedpyright.analysis": {
+          "inlayHints": {
+            "callArgumentNames": false, // Example: Disable arg name hints
+            "functionReturnTypes": true,
+          },
+        },
+      },
+    },
+    "json-language-server": {
+      "settings": {
+        "json": {
+          "schemas": [
+            {
+              "fileMatch": ["*/*.custom.json"],
+              "url": "https://example.com/schema.json",
+            },
+          ],
+        },
+      },
+    },
+  },
+  "languages": {
+    // Refer https://zed.dev/docs/languages/javascript and https://zed.dev/docs/languages/typescript for more info
+    "JavaScript": {
+      "hard_tabs": true,
+      "tab_size": 4,
+      "format_on_save": "off",
+      // "formatter": "language_server"
+      // "inlay_hints": {
+      // 	"enabled": false
+      // }
+    },
+    "TypeScript": {
+      // Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
+      // "inlay_hints": {
+      // 	"enabled": false,
+      // 	"show_parameter_hints": false,
+      // 	"show_other_hints": true,
+      // 	"show_type_hints": true //shows type hints right in the line
+      // },
+      "tab_size": 4,
+      "hard_tabs": true,
+      "format_on_save": "off",
+    },
+    "JSON": {
+      "tab_size": 2,
+      "hard_tabs": true,
+      "format_on_save": "off",
+    },
+    "Lua": {
+      "tab_size": 2,
+      "hard_tabs": true,
+      "format_on_save": "off",
+    },
+    "Python": {
+      "format_on_save": "on", // Set to "on" to enable auto-formatting
+      "formatter": {
+        "language_server": {
+          "name": "ruff",
+        },
+      },
+      "language_servers": ["basedpyright", "ruff"],
+    },
+  },
 }
