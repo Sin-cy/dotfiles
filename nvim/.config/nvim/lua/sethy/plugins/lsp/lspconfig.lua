@@ -178,14 +178,10 @@ return {
         vim.lsp.config("emmet_language_server", {
             filetypes = {
                 "css",
-                "eruby",
                 "html",
                 "javascript",
                 "javascriptreact",
                 "less",
-                "sass",
-                "scss",
-                "pug",
                 "typescriptreact",
             },
             init_options = {
@@ -230,6 +226,13 @@ return {
                     includeCompletionsForImportStatements = true,
                 },
             },
+            settings = {
+              javascript = {
+                validate = {
+                  enable = false,
+                },
+              },
+            },
         })
 
         -- gopls
@@ -247,7 +250,7 @@ return {
 
         -- css
         vim.lsp.config("cssls", {
-          filetypes = { "css", "scss", "less" },  -- Adjust as needed
+          filetypes = { "css", "scss", "less" },
           settings = {
             css = { validate = true },
             scss = { validate = true },
