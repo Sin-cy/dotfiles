@@ -25,11 +25,12 @@ return {
             -- UI dimensions and appearance
             prompt = '🛸 ',       -- Input prompt symbol
             layout = {
-                width = 0.85,          -- Window width as fraction of screen
+                width = 0.75,          -- Window width as fraction of screen
                 height = 0.85,         -- Window height as fraction of screen
                 prompt_position = 'bottom', -- or 'top'
                 preview_position = 'right', -- or 'left', 'right', 'top', 'bottom'
                 preview_size = 0.5,
+                flex = false,
             },
             preview = {
                 enabled = true,
