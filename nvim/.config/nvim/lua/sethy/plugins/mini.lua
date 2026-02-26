@@ -2,28 +2,29 @@ return {
     -- Mini Nvim
     {"echasnovski/mini.nvim", version = false },
     -- Comments
-    {
-        'echasnovski/mini.comment',
-        version = false,
-        dependencies = {
-            "JoosepAlviste/nvim-ts-context-commentstring",
-        },
-        config = function()
-            -- disable the autocommand from ts-context-commentstring
-            require('ts_context_commentstring').setup {
-                enable_autocmd = false,
-            }
-
-            require("mini.comment").setup {
-                -- tsx, jsx, html , svelte comment support
-                options = {
-                    custom_commentstring = function()
-                        return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
-                    end,
-                },
-            }
-        end
-    },
+    -- {
+    --     'echasnovski/mini.comment',
+    --     enabled = false,
+    --     version = false,
+    --     dependencies = {
+    --         "JoosepAlviste/nvim-ts-context-commentstring",
+    --     },
+    --     config = function()
+    --         -- disable the autocommand from ts-context-commentstring
+    --         require('ts_context_commentstring').setup {
+    --             enable_autocmd = false,
+    --         }
+    --
+    --         require("mini.comment").setup {
+    --             -- tsx, jsx, html , svelte comment support
+    --             options = {
+    --                 custom_commentstring = function()
+    --                     return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
+    --                 end,
+    --             },
+    --         }
+    --     end
+    -- },
     -- File explorer (this works properly with oil unlike nvim-tree)
     {
         'echasnovski/mini.files',
@@ -66,7 +67,7 @@ return {
                 find = 'sf',           -- Find surrounding (to the right)
                 find_left = 'sF',      -- Find surrounding (to the left)
                 highlight = 'sh',      -- Highlight surrounding
-                replace = 'sr',        -- Replace surrounding
+                replace = 'ca',        -- Replace surrounding
                 update_n_lines = 'sn', -- Update `n_lines`
 
                 suffix_last = 'l',     -- Suffix to search with "prev" method
