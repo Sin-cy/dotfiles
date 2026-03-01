@@ -31,6 +31,7 @@ copy-on-select = clipboard
 
 # Custom Keybinds & Config (super = cmd key on mac)
 # For Simple Keybinds
+keybind = ctrl+bracket_left=text:\x1b
 keybind = super+i=inspector:toggle
 keybind = super+b>,=toggle_quick_terminal
 keybind = super+b>r=reload_config
