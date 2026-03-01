@@ -251,6 +251,8 @@ return {
         -- css
         vim.lsp.config("cssls", {
           filetypes = { "css", "scss", "less" },
+          init_options = { provideFormatter = true },
+          single_file_support = true,
           settings = {
             css = {
               lint = {
