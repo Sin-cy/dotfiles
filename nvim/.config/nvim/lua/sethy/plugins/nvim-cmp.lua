@@ -352,7 +352,7 @@ return {
                         latex_symbols = "[LaTeX]",
                     })[entry.source.name]
 
-                    -- use lspkind and tailwindcss-colorizer-cmp for additional formatting
+                    -- use lspkind for additional formatting
                     vim_item = lspkind.cmp_format({
                         maxwidth = 25,
                         ellipsis_char = "...",
