@@ -10,7 +10,7 @@ plugins=(
     git 
     ## with oh-my-zsh and not homebrew
     # zsh-autosuggestions ( git clone <find link in the repo> and uncomment  )
-    # zsh-syntax-highlighting ( git clone <find link in the repo> and uncomment )
+    zsh-syntax-highlighting
 )
 source $ZSH/oh-my-zsh.sh
 
@@ -70,6 +70,29 @@ export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
 bindkey '^r' atuin-up-search-viins
 
+# Sesh tmux config
+fpath=(~/.zsh/completions $fpath)
+autoload -U compinit && compinit
+
+function sesh-sessions() {
+    {
+        exec </dev/tty
+        exec <&1
+        local session
+        session=$(
+            sesh list -t -c | fzf --height 50% --border-label ' sesh ' --border --prompt '🛸  '
+        )
+        zle reset-prompt > /dev/null 2>&1 || true
+        [[ -z "$session" ]] && return
+        sesh connect $session
+    }
+}
+
+zle     -N             sesh-sessions
+bindkey -M emacs '\es' sesh-sessions
+bindkey -M vicmd '\es' sesh-sessions
+bindkey -M viins '\es' sesh-sessions
+
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -99,7 +122,7 @@ alias fman="compgen -c | fzf | xargs man"
 # zoxide (called from ~/scripts/)
 alias nzo="~/scripts/zoxide_openfiles_nvim.sh"
 
-# Next level of an ls ,Options:  --no-filesize --no-time --no-permissions 
+# Next level ls (options:  --no-filesize --no-time --no-permissions)
 alias ls="eza --no-filesize --long --color=always --icons=always --no-user" 
 
 # tree
@@ -131,8 +154,11 @@ alias sethvault="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/set
 
 # brew installations (new mac systems brew path: opt/homebrew , not usr/local )
 # source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 typeset -U PATH
 
-fastfetch
+export PATH="/Users/personal/.local/bin:$PATH"
+
+# bun completions
+[ -s "/Users/personal/.bun/_bun" ] && source "/Users/personal/.bun/_bun"
