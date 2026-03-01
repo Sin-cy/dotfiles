@@ -252,9 +252,24 @@ return {
         vim.lsp.config("cssls", {
           filetypes = { "css", "scss", "less" },
           settings = {
-            css = { validate = true },
-            scss = { validate = true },
-            less = { validate = true },
+            css = {
+              lint = {
+                unknownAtRules = "ignore",
+              },
+              validate = true
+            },
+            scss = {
+              lint = {
+                unknownAtRules = "ignore"
+              },
+              validate = true
+            },
+            less = {
+              lint = {
+                unknownAtRules = "ignore"
+              },
+              validate = true
+            },
           },
         })
 
