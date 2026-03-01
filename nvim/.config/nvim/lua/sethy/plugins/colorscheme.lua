@@ -25,7 +25,7 @@ return {
                     ColorColumn = { bg = "#1C1C21" },
                     -- Normal = { bg = "none" },                      -- Main background remains transparent
                     -- Pmenu = { bg = "", fg = "#e0def4" },           -- Completion menu background
-                    -- PmenuSel = { bg = "#4a465d", fg = "#f8f5f2" }, -- Highlighted completion item
+                    PmenuSel = { bg = "#4a465d", fg = "NONE" }, -- Highlighted completion item
                     -- PmenuSbar = { bg = "#191724" },                -- Scrollbar background
                     -- PmenuThumb = { bg = "#9ccfd8" },               -- Scrollbar thumb
                 },
@@ -91,7 +91,8 @@ return {
                 palette_overrides = {},
                 overrides = {
                     NormalFloat = { bg = "#282828" },
-                    -- Pmenu = { bg = "" }, -- completion menu background
+                    PmenuSel = { bg="#504945", fg = "NONE" }, -- Highlighted completion item
+                    Pmenu = { bg = "#1d2021" }, -- completion menu background
                 },
                 dim_inactive = false,
                 transparent_mode = true, -- transparency
@@ -257,21 +258,6 @@ return {
                     colors.fg_sidebar = fg_dark
                 end,
             })
-            -- vim.cmd("colorscheme tokyonight")
-            -- NOTE: Auto switch to tokyonight for markdown files only
-            -- vim.api.nvim_create_autocmd("FileType", {
-            --     pattern = { "markdown" },
-            --     callback = function()
-            --         -- Ensure the theme switch only happens once for a buffer
-            --         local buffer = vim.api.nvim_get_current_buf()
-            --         if not vim.b[buffer].tokyonight_applied then
-            --             if vim.fn.expand("%:t") ~= "" and vim.api.nvim_buf_get_option(0, "buftype") ~= "nofile" then
-            --                 vim.cmd("colorscheme tokyonight")
-            --             end
-            --             vim.b[buffer].tokyonight_applied = true
-            --         end
-            --     end,
-            -- })
         end,
     },
     {
@@ -293,7 +279,7 @@ return {
                     light = "latte",
                     dark = "mocha",
                 },
-                transparent_background = false,
+                transparent_background = true,
                 dim_inactive = {
                     enabled = false,
                     shade = "dark",
@@ -318,13 +304,13 @@ return {
                         ColorColumn = { bg = "#1C1C21" },
 
                         -- Pmenu styling (similar to your rose-pine)
-                        Pmenu = { bg = colors.surface0, fg = colors.text },
-                        PmenuSel = { bg = colors.surface2, fg = colors.text },
+                        Pmenu = { bg = colors.transparent_background, fg = colors.text },
+                        PmenuSel = { bg = colors.surface2, fg = "NONE" },
                         PmenuSbar = { bg = colors.surface0 },
                         PmenuThumb = { bg = colors.overlay2 },
 
                         -- For fully transparent
-                        Normal = { bg = "none" },
+                        -- Normal = { bg = "none" },
                         NormalFloat = { bg = "none" },
                     }
                 end,

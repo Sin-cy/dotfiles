@@ -18,14 +18,12 @@ return {
         "rafamadriz/friendly-snippets", -- snippets
         "nvim-treesitter/nvim-treesitter",
         "onsails/lspkind.nvim", -- vs-code pictograms
-        "roobert/tailwindcss-colorizer-cmp.nvim",
     },
     config = function()
         local cmp = require("cmp")
         -- local luasnip = require("luasnip")
         local has_luasnip, luasnip = pcall(require, 'luasnip')
         local lspkind = require("lspkind")
-        local colorizer = require("tailwindcss-colorizer-cmp").formatter
 
         local rhs = function(keys)
             return vim.api.nvim_replace_termcodes(keys, true, true, true)
@@ -250,7 +248,6 @@ return {
                 { name = "nvim_lsp"},
                 { name = "buffer" }, -- text within current buffer
                 { name = "path" }, -- file system paths
-                { name = "tailwindcss-colorizer-cmp" },
                 { name = "spell", -- for markdown spellchecks completions
                     option = {
                         enable_in_context = function()
@@ -346,7 +343,6 @@ return {
                     -- Add custom lsp_kinds icons
                     vim_item.kind = string.format('%s %s', lsp_kinds[vim_item.kind] or '', vim_item.kind)
 
-
                     -- add menu tags (e.g., [Buffer], [LSP])
                     vim_item.menu = ({
                         buffer = "[Buffer]",
@@ -362,18 +358,24 @@ return {
                         ellipsis_char = "...",
                     })(entry, vim_item)
 
+                    -- Tailwind color handling using native (menu hl for fg-only square)
                     if entry.source.name == "nvim_lsp" then
-                        vim_item = colorizer(entry, vim_item)
-                    end
+                        local entryItem = entry:get_completion_item()
+                        local color = entryItem.documentation
 
+                        if color and type(color) == "string" and color:match "^#%x%x%x%x%x%x$" then
+                            local hl = "tailwind_hex_" .. color:sub(2)  -- hl per color
+
+                            if not vim.api.nvim_get_hl(0, { name = hl }).fg then
+                              vim.api.nvim_set_hl(0, hl, { fg = color })
+                            end
+
+                            vim_item.menu = " " .. (vim_item.menu or "")  -- prepend colored square to source tag
+                            vim_item.menu_hl_group = hl
+                        end
+                    end
                     return vim_item
                 end,
-                -- format = lspkind.cmp_format({
-                --         maxwidth = 30,
-                --         ellipsis_char = "...",
-                --         before = require("tailwindcss-colorizer-cmp").formatter
-                -- }),
-                -- format = require("tailwindcss-colorizer-cmp").formatter
             },
         })
 
