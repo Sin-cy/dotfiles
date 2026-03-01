@@ -6,7 +6,7 @@ return {
         -- priority = 1000,
         config = function()
             require("rose-pine").setup({
-                variant = "main",      -- auto, main, moon, or dawn
+                variant = "main", -- auto, main, moon, or dawn
                 dark_variant = "main", -- main, moon, or dawn
                 dim_inactive_windows = false,
                 disable_float_background = false,
@@ -18,16 +18,16 @@ return {
                 },
                 enable = {
                     terminal = true,
-                    legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
-                    migrations = true,         -- Handle deprecated options automatically
+                    legacy_highlights = true,
+                    migrations = true,  -- Handle deprecated options automatically
                 },
                 highlight_groups = {
                     ColorColumn = { bg = "#1C1C21" },
-                    -- Normal = { bg = "none" },                      -- Main background remains transparent
-                    -- Pmenu = { bg = "", fg = "#e0def4" },           -- Completion menu background
+                    -- Normal = { bg = "none" }, -- Main background remains transparent
+                    -- Pmenu = { bg = "", fg = "#e0def4" }, -- Completion menu background
                     PmenuSel = { bg = "#4a465d", fg = "NONE" }, -- Highlighted completion item
-                    -- PmenuSbar = { bg = "#191724" },                -- Scrollbar background
-                    -- PmenuThumb = { bg = "#9ccfd8" },               -- Scrollbar thumb
+                    -- PmenuSbar = { bg = "#191724" }, -- Scrollbar background
+                    -- PmenuThumb = { bg = "#9ccfd8" }, -- Scrollbar thumb
                 },
                 groups = {
                     border = "muted",
@@ -91,11 +91,11 @@ return {
                 palette_overrides = {},
                 overrides = {
                     NormalFloat = { bg = "#282828" },
-                    PmenuSel = { bg="#504945", fg = "NONE" }, -- Highlighted completion item
+                    PmenuSel = { bg="#504945", fg = "NONE" }, -- highlighted completion item
                     Pmenu = { bg = "#1d2021" }, -- completion menu background
                 },
                 dim_inactive = false,
-                transparent_mode = true, -- transparency
+                transparent_mode = true,
             })
         end,
     },
@@ -104,17 +104,17 @@ return {
         "rebelot/kanagawa.nvim",
         config = function()
             require('kanagawa').setup({
-                compile = false,  -- enable compiling the colorscheme
-                undercurl = true, -- enable undercurls
+                compile = false,
+                undercurl = true,
                 commentStyle = { italic = true },
                 functionStyle = {},
                 keywordStyle = { italic = false },
                 statementStyle = { bold = true },
                 typeStyle = {},
-                transparent = true,    -- do not set background color
-                dimInactive = false,   -- dim inactive window `:h hl-NormalNC`
-                terminalColors = true, -- define vim.g.terminal_color_{0,17}
-                colors = {             -- add/modify theme and palette colors
+                transparent = true,
+                dimInactive = false,
+                terminalColors = true,
+                colors = { -- modify theme and palette colors
                     palette = {},
                     theme = {
                         wave = {},
@@ -127,7 +127,7 @@ return {
                         }
                     },
                 },
-                overrides = function(colors) -- add/modify highlights
+                overrides = function(colors) -- modify highlights
                     local theme = colors.theme
                     return {
                         -- NormalFloat = { bg = "none" },
@@ -149,14 +149,14 @@ return {
                         TelescopePreviewBorder = { fg = theme.ui.special },
                     }
                 end,
-                theme = "wave",    -- Load "wave" theme when 'background' option is not set
-                background = {     -- map the value of 'background' option to a theme
-                    dark = "wave", -- try "dragon" !
+                theme = "wave",    -- load "wave" theme when 'background' option is not set
+                background = {     -- map the value of background option to a theme
+                    dark = "wave",
                 },
             })
         end
     },
-    -- NOTE: neosolarized 
+    -- NOTE: neosolarized
     {
         "craftzdog/solarized-osaka.nvim",
         lazy = false,
@@ -175,8 +175,8 @@ return {
                     sidebars = "dark",            -- style for sidebars, see below
                     floats = "dark",              -- style for floating windows
                 },
-                sidebars = { "qf", "help" },      -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-                day_brightness = 0.3,             -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+                sidebars = { "qf", "help" },      -- Set a darker background on sidebar-like windows
+                day_brightness = 0.3,
                 hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
                 dim_inactive = false,             -- dims inactive windows
                 lualine_bold = false,             -- When `true`, section headers in the lualine theme will be bold
@@ -330,7 +330,7 @@ return {
                     mini = true,
                     dap = true,
                     dap_ui = true,
-                    -- terminal = false, 
+                    -- terminal = false,
                 },
             })
 
