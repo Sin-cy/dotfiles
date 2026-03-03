@@ -6,6 +6,7 @@ wifi=(
     icon=$WIFI_CONNECTED
     label.drawing=off
     background.color="$PURE_BLACK"
+    icon.font.size="$FONT:Regular:17.0"
     icon.align=center
     icon.padding_left=8
     icon.padding_right=8

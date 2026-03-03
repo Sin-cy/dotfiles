@@ -3,9 +3,9 @@
 battery=(
   script="$PLUGIN_DIR/battery.sh"
   click_script="$PLUGIN_DIR/close_popups.sh"
-  icon.font="$FONT:Regular:19.0"
+  icon.font="$FONT:Regular:15.0"
   background.color="$PURE_BLACK"
-  icon.font.size=19
+  # icon.font.size=14
   padding_right=0
   padding_left=0
   update_freq=120
