@@ -5,8 +5,7 @@ SPACE_ICONS=("1" "2" "3" "4" "8" "9" "B" "F" "M" "N" "T")
 # background.color=0x44ffffff \
 
 for i in "${!SPACE_ICONS[@]}"; do
-  id="${SPACE_ICONS[i]}"
-
+    id="${SPACE_ICONS[i]}"
   space_item=(
     icon="$id"
     icon.padding_left=7
@@ -18,6 +17,7 @@ for i in "${!SPACE_ICONS[@]}"; do
     background.padding_left=5
     background.padding_right=5
     background.height=20
+    icon.font="$FONT:Regular:14.0"
     drawing=on
     script="$CONFIG_DIR/plugins/aerospace.sh $id"
     click_script="$PLUGIN_DIR/close_popups.sh; aerospace workspace $id"
