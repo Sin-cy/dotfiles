@@ -5,12 +5,15 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml" # starship
 export TMUX_CONF="$HOME/.config/tmux/tmux.conf" # tmux
 export TEALDEER_CONFIG_DIR="$HOME/.config/tealdeer/" # tldr
 
-# zsh plugins
+# zsh plugins via omz
+# path on mac : ~/.oh-my-zsh/custom/plugins/
+# then run git clone <link in the to plugin repo>
 plugins=(
     git 
     ## with oh-my-zsh and not homebrew
     # zsh-autosuggestions ( git clone <find link in the repo> and uncomment  )
     zsh-syntax-highlighting
+    zsh-system-clipboard
 )
 source $ZSH/oh-my-zsh.sh
 
@@ -68,7 +71,7 @@ source ~/scripts/fzf-git.sh # fzf git
 # Atuin configs
 export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
-bindkey '^r' atuin-up-search-viins
+bindkey '^r' atuin-search-viins
 
 # Sesh tmux config
 fpath=(~/.zsh/completions $fpath)
