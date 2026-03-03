@@ -2,6 +2,7 @@
 
 wifi=(
     script="$PLUGIN_DIR/wifi.sh"
+    click_script="$PLUGIN_DIR/close_popups.sh"
     icon=$WIFI_CONNECTED
     label.drawing=off
     background.color="$PURE_BLACK"

@@ -20,7 +20,7 @@ for i in "${!SPACE_ICONS[@]}"; do
     background.height=20
     drawing=on
     script="$CONFIG_DIR/plugins/aerospace.sh $id"
-    click_script="aerospace workspace $id"
+    click_script="$PLUGIN_DIR/close_popups.sh; aerospace workspace $id"
   )
 
   sketchybar --add item space.$id left \

@@ -5,6 +5,7 @@ front_app=(
      icon.drawing=off
      label.padding_left=10
      label.padding=10
+     click_script="$PLUGIN_DIR/close_popups.sh"
      script="$PLUGIN_DIR/front_app.sh"
     )
 

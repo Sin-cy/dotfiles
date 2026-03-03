@@ -13,5 +13,5 @@ media_block=(
     blur_radius=0
 )
 
-sketchybar --add bracket media_block battery wifi volume mic \
+sketchybar --add bracket media_block battery wifi volume_icon mic \
            --set media_block "${media_block[@]}" \

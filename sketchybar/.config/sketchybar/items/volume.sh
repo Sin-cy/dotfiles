@@ -3,18 +3,19 @@
 volume_slider=(
   script="$PLUGIN_DIR/volume.sh"
   updates=on
+  width=200
+  slider.width=180
   label.drawing=off
   icon.drawing=off
   slider.highlight_color=$BLUE
   slider.background.height=5
-  slider.background.corner_radius=0
-  slider.background.color=$BACKGROUND_2
+  slider.background.corner_radius=2
+  slider.background.color=0x80939ab7
   background.color="$PURE_BLACK"
-  padding_left=0
-  padding_right=5
-  slider.knob=
-  icon.padding_left=8
-  icon.padding_right=8 
+  padding_left=10
+  padding_right=10
+  slider.knob=⬤
+  slider.knob.font="$FONT:Regular:14.0"
   slider.knob.drawing=on
 )
 
@@ -31,20 +32,18 @@ volume_icon=(
   icon.font="$FONT:Regular:14.0"
   label.width=20
   label.font="$FONT:Regular:14.0"
+  popup.align=right
+  popup.y_offset=6
+  popup.height=28
+  popup.background.color=$PURE_BLACK
+  popup.background.border_color=$BACKGROUND_2
+  popup.background.border_width=1
+  popup.background.corner_radius=8
+  popup.background.drawing=on
 )
 
-status_bracket=(
-  # background.color=$BACKGROUND_1
-  background.color="$PURE_BLACK"
-  background.border_color=$BACKGROUND_2
-)
-
-sketchybar --add slider volume right            \
-           --set volume "${volume_slider[@]}"   \
-           --subscribe volume volume_change     \
-                              mouse.clicked     \
-           --add item volume_icon right         \
-           --set volume_icon "${volume_icon[@]}"
-
-sketchybar --add bracket status brew github.bell wifi volume_icon \
-           --set status "${status_bracket[@]}"
+sketchybar --add item volume_icon right              \
+           --set volume_icon "${volume_icon[@]}"     \
+           --add slider volume popup.volume_icon     \
+           --set volume "${volume_slider[@]}"        \
+           --subscribe volume volume_change mouse.clicked

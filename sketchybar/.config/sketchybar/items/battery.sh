@@ -2,6 +2,7 @@
 
 battery=(
   script="$PLUGIN_DIR/battery.sh"
+  click_script="$PLUGIN_DIR/close_popups.sh"
   icon.font="$FONT:Regular:19.0"
   background.color="$PURE_BLACK"
   icon.font.size=19
