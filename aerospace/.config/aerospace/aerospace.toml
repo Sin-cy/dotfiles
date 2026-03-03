@@ -52,7 +52,7 @@ key-mapping.preset = 'qwerty'
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 # on-focus-changed = "move-mouse window-lazy-center"
-# on-focused-monitor-changed = ['move-mouse monitor-lazy-center'] # switchin dislays mouse re center
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center'] # switchin dislays mouse re center
 
 persistent-workspaces = [
     "1",
@@ -178,10 +178,10 @@ alt-shift-semicolon = 'mode service'
 alt-shift-r = 'mode resize'
 
 [mode.resize.binding]
-h = 'resize width -50'
+h = 'resize width +50'
 j = 'resize height +50'
 k = 'resize height -50'
-l = 'resize width +50'
+l = 'resize width -50'
 b = 'balance-sizes'
 
 
