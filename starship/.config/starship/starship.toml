@@ -98,7 +98,7 @@ format =  '  [$symbol$branch]($style)[](base)'
 # diverged = "⇕⇡${ahead_count}⇣${behind_count} "
 
 [git_status]
-format = '[ $staged$modified$renamed$deleted$untracked$conflicted$ahead_behind ]($style)'
+format = '[$staged$modified$renamed$deleted$untracked$conflicted$ahead_behind]($style)'
 
 staged     = '[+${count} ](green)'
 modified   = '[!${count} ](yellow)'
