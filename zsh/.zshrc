@@ -11,7 +11,7 @@ export TEALDEER_CONFIG_DIR="$HOME/.config/tealdeer/" # tldr
 plugins=(
     git 
     ## with oh-my-zsh and not homebrew
-    # zsh-autosuggestions ( git clone <find link in the repo> and uncomment  )
+    # zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-system-clipboard
 )
@@ -24,7 +24,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 
 # ctrl y accept requires zsh-autosuggestions to be active
-bindkey -M viins '^Y' autosuggest-accept 
+# bindkey -M viins '^Y' autosuggest-accept 
 
 bindkey -M viins '^P' up-line-or-beginning-search
 bindkey -M viins '^N' down-line-or-beginning-search
@@ -55,6 +55,9 @@ eval "$(gdircolors)"
 
 # wtp (gitworktree plus)
 eval "$(wtp shell-init zsh)"
+
+# gitbutler
+eval "$(but completions zsh)"
 
 # starship 
 if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
