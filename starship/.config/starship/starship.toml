@@ -116,8 +116,8 @@ diverged   = '[⇕⇡${ahead_count}⇣${behind_count} ](mauve)'
 description = "Show indicator when inside a git worktree"
 command = '''
 if git rev-parse --git-dir >/dev/null 2>&1; then
-      common_dir=$(git rev-parse --git-common-dir 2>/dev/null)
-      git_dir=$(git rev-parse --git-dir 2>/dev/null)
+      common_dir=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null)
+      git_dir=$(git rev-parse --path-format=absolute --git-dir 2>/dev/null)
       if [ "$common_dir" != "$git_dir" ]; then
             echo "⛓ "
       fi
