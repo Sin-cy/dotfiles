@@ -1,12 +1,11 @@
-follow_symlinks = false
-
-
 scan_timeout = 100
 command_timeout = 500
 
 "$schema" = "https://starship.rs/config-schema.json"
 
+follow_symlinks = false
 add_newline = false
+
 format = """
 ➜\
 $directory\
