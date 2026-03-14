@@ -1,3 +1,5 @@
+follow_symlinks = false
+
 
 scan_timeout = 100
 command_timeout = 500
@@ -5,8 +7,6 @@ command_timeout = 500
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = false
-follow_symlinks = false
-
 format = """
 ➜\
 $directory\
@@ -115,7 +115,7 @@ diverged   = '[⇕⇡${ahead_count}⇣${behind_count} ](mauve)'
 
 [custom.git_worktree]
 description = "Show indicator when inside a git worktree"
-command = '''
+command = """
 if git rev-parse --git-dir >/dev/null 2>&1; then
       common_dir=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null)
       git_dir=$(git rev-parse --path-format=absolute --git-dir 2>/dev/null)
@@ -123,9 +123,9 @@ if git rev-parse --git-dir >/dev/null 2>&1; then
             echo "⛓ "
       fi
 fi
-'''
+"""
 when = 'git rev-parse --is-inside-work-tree >/dev/null 2>&1'
-format = ' [$output]($style) '
+format = ' ([$output ]($style))'
 style = "bold green"
 require_repo = true
 ignore_timeout = true
