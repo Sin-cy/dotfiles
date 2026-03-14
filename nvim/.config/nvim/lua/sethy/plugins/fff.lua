@@ -106,6 +106,15 @@ return {
             desc = "Open file picker",
         },
         {
+            "<leader>ps",
+            function() require('fff').live_grep({
+                grep = {
+                  modes = { 'fuzzy', 'plain' }
+                }
+            }) end,
+            desc = 'Live fffuzy grep word',
+        },
+        {
             "<leader>pgf",
             function()
                 require("fff").find_in_git_root()
