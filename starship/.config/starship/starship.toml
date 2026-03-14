@@ -92,6 +92,7 @@ style = "fg:lavender bg:base"
 format =  '  [$symbol$branch]($style)[](base)'
 
 # [git_status] 
+# MINIMAL git status 
 # format = ' [($all_status$ahead_behind )]($style)'
 # ahead    = "⇡${count} "
 # behind   = "⇣${count} "
@@ -99,7 +100,7 @@ format =  '  [$symbol$branch]($style)[](base)'
 
 [git_status]
 format = '[$staged$modified$renamed$deleted$untracked$conflicted$ahead_behind]($style)'
-
+# options available for format
 staged     = '[+${count} ](green)'
 modified   = '[!${count} ](yellow)'
 renamed    = '[»${count} ](blue)'
