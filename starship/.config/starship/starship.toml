@@ -4,7 +4,7 @@ follow_symlinks = false
 scan_timeout = 100
 command_timeout = 500
 
-"$schema" = 'https://starship.rs/config-schema.json'
+"$schema" = "https://starship.rs/config-schema.json"
 
 add_newline = false
 format = """
@@ -45,15 +45,15 @@ disabled = true
 show_always = true
 style_user = "bg:surface0 fg:text"
 style_root = "bg:surface0 fg:text"
-format = ' $user '
+format = " $user "
 
 [line_break] 
 disabled = true
 
 [character] 
 disabled = false
-success_symbol = '[ ](bold fg:green)'
-error_symbol = '[✘ ](bold fg:red)'
+success_symbol = "[ ](bold fg:green)"
+error_symbol = "[✘ ](bold fg:red)"
 vimcmd_symbol = "[: ](bold fg:yellow)"
 
 [package]
@@ -62,7 +62,7 @@ disabled = false
 [time]
 disabled = true
 time_format = "%R"
-format = '[[  $time ](fg:yellow bg:foam)]($style)'
+format = "[[  $time ](fg:yellow bg:foam)]($style)"
 
 [custom.giturl]
 description = "Display symbol for remote Git server"
@@ -81,7 +81,7 @@ else
 fi
 echo "$GIT_REMOTE_SYMBOL "
 """
-when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
+when = "git rev-parse --is-inside-work-tree 2> /dev/null"
 format = "$output"
 require_repo = true
 ignore_timeout = true
@@ -89,29 +89,29 @@ ignore_timeout = true
 [git_branch] 
 symbol = "[](base) "
 style = "fg:lavender bg:base"
-format =  '  [$symbol$branch]($style)[](base)'
+format =  "  [$symbol$branch]($style)[](base)"
 
 # [git_status] 
 # MINIMAL git status 
-# format = ' [($all_status$ahead_behind )]($style)'
+# format = " [($all_status$ahead_behind )]($style)"
 # ahead    = "⇡${count} "
 # behind   = "⇣${count} "
 # diverged = "⇕⇡${ahead_count}⇣${behind_count} "
 
 [git_status]
-format = '[$staged$modified$renamed$conflicted$ahead_behind]($style)'
+format = "[$staged$modified$renamed$conflicted$ahead_behind]($style)"
 # options available for format
-staged     = '[+${count} ](green)'
-modified   = '[!${count} ](yellow)'
-renamed    = '[»${count} ](blue)'
-deleted    = '[-${count} ](red)'
-untracked  = '[?${count} ](sapphire)'
-stashed    = '[≡${count} ](lavender)'
-conflicted = '[✖${count} ](red bold)'
+staged     = "[+${count} ](green)"
+modified   = "[!${count} ](yellow)"
+renamed    = "[»${count} ](blue)"
+deleted    = "[-${count} ](red)"
+untracked  = "[?${count} ](sapphire)"
+stashed    = "[≡${count} ](lavender)"
+conflicted = "[✖${count} ](red bold)"
 
-ahead      = '[⇡${count} ](teal)'
-behind     = '[⇣${count} ](peach)'
-diverged   = '[⇕⇡${ahead_count}⇣${behind_count} ](mauve)'
+ahead      = "[⇡${count} ](teal)"
+behind     = "[⇣${count} ](peach)"
+diverged   = "[⇕⇡${ahead_count}⇣${behind_count} ](mauve)"
 
 [custom.git_worktree]
 description = "Show indicator when inside a git worktree"
@@ -124,8 +124,8 @@ if git rev-parse --git-dir >/dev/null 2>&1; then
       fi
 fi
 """
-when = 'git rev-parse --is-inside-work-tree >/dev/null 2>&1'
-format = ' ([$output ]($style))'
+when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
+format = " ([$output ]($style))"
 style = "bold green"
 require_repo = true
 ignore_timeout = true
@@ -157,44 +157,44 @@ RedHatEnterprise = "󱄛"
 
 [nodejs]
 symbol = ""
-format = '[ $symbol( $version) ]($style)'
+format = "[ $symbol( $version) ]($style)"
 
 [c]
 symbol = " "
-format = '[ $symbol( $version) ]($style)'
+format = "[ $symbol( $version) ]($style)"
 
 [rust]
 symbol = ""
-format = '[ $symbol( $version) ]($style)'
+format = "[ $symbol( $version) ]($style)"
 
 [golang]
 symbol = ""
-format = '[ $symbol( $version) ]($style)'
+format = "[ $symbol( $version) ]($style)"
 detect_files = ["go.mod"]
 
 [php]
 symbol = ""
-format = '[ $symbol( $version) ]($style)'
+format = "[ $symbol( $version) ]($style)"
 
 [java]
 symbol = " "
-format = '[ $symbol( $version) ]($style)'
+format = "[ $symbol( $version) ]($style)"
 
 [kotlin]
 symbol = ""
-format = '[ $symbol( $version) ]($style)'
+format = "[ $symbol( $version) ]($style)"
 
 [haskell]
 symbol = ""
-format = '[ $symbol( $version) ]($style)'
+format = "[ $symbol( $version) ]($style)"
 
 [python]
 symbol = ""
-format = '[ $symbol( $version) ]($style)' 
+format = "[ $symbol( $version) ]($style)" 
 
 [docker_context]
 symbol = ""
-format = '[ $symbol( $context) ]($style)'
+format = "[ $symbol( $context) ]($style)"
 
 [palettes.catppuccin_mocha]
 # --- background ---
