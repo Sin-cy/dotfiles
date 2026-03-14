@@ -5,6 +5,8 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml" # starship
 export TMUX_CONF="$HOME/.config/tmux/tmux.conf" # tmux
 export TEALDEER_CONFIG_DIR="$HOME/.config/tealdeer/" # tldr
 
+fpath=(~/.zsh/completions $fpath)
+
 # zsh plugins via omz
 # path on mac : ~/.oh-my-zsh/custom/plugins/
 # then run git clone <link in the to plugin repo>
@@ -14,8 +16,13 @@ plugins=(
     # zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-system-clipboard
+    # zsh-vi-mode
 )
+
 source $ZSH/oh-my-zsh.sh
+# bindkey -r '^['
+# if using ZVM: some shell keybinds may need to be added to zsh_after_init_commands()
+# source ~/.zsh/zvm-config.zsh 
 
 #----- Vim Editing modes & keymaps ------ 
 set -o vi 
