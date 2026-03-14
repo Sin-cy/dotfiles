@@ -77,8 +77,6 @@ eval "$(atuin init zsh)"
 bindkey '^r' atuin-search-viins
 
 # Sesh tmux config
-fpath=(~/.zsh/completions $fpath)
-autoload -U compinit && compinit
 
 function sesh-sessions() {
     {
