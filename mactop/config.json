@@ -1,0 +1,18 @@
+{
+  "default_layout": "alternative",
+  "sort_reverse": false,
+  "custom_theme": {
+    "foreground": "#e0def4",
+    "cpu": "#eb6f92",
+    "gpu": "#c4a7e7",
+    "memory": "#9ccfd8",
+    "ane": "#f6c177",
+    "network": "#31748f",
+    "power": "#ebbcba",
+    "thunderbolt": "#eb6f92",
+    "processList": "#f6c177",
+    "processListDim": "#6e6a86",
+    "processListSelected": "#ffffff",
+    "systemInfo": "#9ccfd8"
+  }
+}
