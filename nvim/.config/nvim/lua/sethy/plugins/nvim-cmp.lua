@@ -220,7 +220,7 @@ return {
         cmp.setup({
             experimental = {
                 -- HACK: experimenting with ghost text
-                -- look at `toggle_ghost_text()` function below.
+                -- `toggle_ghost_text()` function (no longer needed)
                 ghost_text = false,
             },
             completion = {
@@ -257,15 +257,6 @@ return {
                     },
                 },
             }),
-            -- mapping = cmp.mapping.preset.insert({
-            --     ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-            --     ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
-            --     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-            --     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-            --     ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-            --     ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-            --     ["<CR>"] = cmp.mapping.confirm({ select = false }),
-            -- }),
 
             -- NOTE: ! Experimenting with Customized Mappings ! --
             mapping = cmp.mapping.preset.insert({
@@ -371,34 +362,24 @@ return {
             },
         })
 
-        -- NOTE: Added Ghost text stuff
+        -- NOTE: Ghost text stuff
         -- Only show ghost text at word boundaries, not inside keywords. Based on idea
         -- from: https://github.com/hrsh7th/nvim-cmp/issues/2035#issuecomment-2347186210
 
-        -- local config = require('cmp.config')
-        -- local toggle_ghost_text = function()
-        --     if vim.api.nvim_get_mode().mode ~= 'i' then
-        --         return
-        --     end
-        --
-        --     local cursor_column = vim.fn.col('.')
-        --     local current_line_contents = vim.fn.getline('.')
-        --     local character_after_cursor = current_line_contents:sub(cursor_column, cursor_column)
-        --
-        --     local should_enable_ghost_text = character_after_cursor == '' or vim.fn.match(character_after_cursor, [[\k]]) == -1
-        --
-        --     local current = config.get().experimental.ghost_text
-        --     if current ~= should_enable_ghost_text then
-        --         config.set_global({
-        --             experimental = {
-        --                 ghost_text = should_enable_ghost_text,
-        --             },
-        --         })
-        --     end
-        -- end
-        --
         -- vim.api.nvim_create_autocmd({ 'InsertEnter', 'CursorMovedI' }, {
-        --     callback = toggle_ghost_text,
+        --     callback = function()
+        --         if vim.api.nvim_get_mode().mode ~= 'i' then return end
+
+        --         local cursor_col = vim.fn.col('.')
+        --         local line = vim.fn.getline('.')
+        --         local char_after = line:sub(cursor_col, cursor_col)
+
+        --         local should_show = char_after == '' or vim.fn.match(char_after, [[\k]]) == -1
+
+        --         require('cmp.config').set_global({
+        --             experimental = { ghost_text = should_show }
+        --         })
+        --     end,
         -- })
         -- ! Ghost text stuff ! --
 
