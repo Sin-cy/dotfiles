@@ -1,7 +1,7 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        event = { "BufReadPre", "BufNewFile" },
+        lazy = false,
         build = ":TSUpdate",
         config = function()
             -- import nvim-treesitter plugin
@@ -14,7 +14,12 @@ return {
                     additional_vim_regex_highlighting = false,
                 },
                 -- enable indentation
-                indent = { enable = true },
+                indent = {
+                    enable = true,
+                    disable = { "yaml", "markdown" },
+                },
+                -- auto install parsers for new filetype
+                auto_install = true,
 
                 -- ensure these languages parsers are installed
                 ensure_installed = {
@@ -46,22 +51,23 @@ return {
                     "ron",
                 },
                 incremental_selection = {
-                    enable = true,
-                    keymaps = {
-                        init_selection = "<C-space>",
-                        node_incremental = "<C-space>",
-                        -- scope_incremental = false,
-                        node_decremental = "<C-backspace>",
-                    },
+                    enable = false,
                 },
             })
-            -- force start treesitter for all filetypes
-            vim.api.nvim_create_autocmd('FileType', {
-                pattern = '*',
+
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = "*",
                 callback = function()
-                    pcall(vim.treesitter.start)
+                    local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
+                    if lang and vim.treesitter.get_parser(0, lang, { error = false }) then
+                        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                        -- prevents any possible conflicting indent options
+                        vim.bo.smartindent = false
+                        vim.bo.cindent = false
+                    end
                 end,
             })
+
         end,
     },
     -- NOTE: js,ts,jsx,tsx Auto Close Tags
