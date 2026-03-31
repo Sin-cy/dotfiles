@@ -295,6 +295,20 @@ return {
             },
         })
 
+        -- astro
+        vim.lsp.config("astro", {
+            filetypes = { "astro" },
+
+            init_options = {
+                typescript = {
+                    tsdk = vim.fn.stdpath("data") .. "/mason/packages/typescript-language-server/node_modules/typescript/lib"
+                }
+            },
+        })
+
+        -- Instead of using mason enable all configured LSP via `automatic_enable=true`
+        -- Prefer more control by enable manual server call below via vim.lsp.enable("")
+        -- mason config: lua/sethy/plugins/lsp/mason.lua:22
         vim.lsp.enable("lua_ls")
         vim.lsp.enable("cssls")
         vim.lsp.enable("emmet_language_server")

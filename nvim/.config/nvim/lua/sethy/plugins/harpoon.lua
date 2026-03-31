@@ -8,7 +8,7 @@ return {
 	},
 	config = function()
 		local harpoon = require("harpoon")
-		local conf = require("telescope.config").values
+		-- local conf = require("telescope.config").values
 
 		harpoon:setup({
 			global_settings = {
@@ -19,7 +19,6 @@ return {
 
 		-- NOTE: Experimenting
 		-- Telescope into Harpoon function
-		-- comment this function if you don't like it
 		-- local function toggle_telescope(harpoon_files)
 		-- 	local file_paths = {}
 		-- 	for _, item in ipairs(harpoon_files.items) do
