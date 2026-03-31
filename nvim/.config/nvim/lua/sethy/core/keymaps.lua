@@ -84,3 +84,11 @@ vim.keymap.set("n", "<leader>fp", function()
   vim.fn.setreg("+", filePath) -- Copy the file path to the clipboard register
   print("File path copied to clipboard: " .. filePath)
 end, { desc = "Copy file path to clipboard" })
+
+-- restart 
+vim.keymap.set("n", "<leader>re", "<cmd>restart<cr>", {
+    desc = "Restart Neovim (:restart)",
+    silent = true,
+})
+
+
