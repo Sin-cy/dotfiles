@@ -48,6 +48,8 @@ vim.pack.add({
     -- git
     { src = "https://github.com/ThePrimeagen/git-worktree.nvim" }, --enabled
     { src = "https://github.com/lewis6991/gitsigns.nvim" }, --enabled
+    { src = "https://github.com/tpope/vim-fugitive" }, --enabled
+    { src = "https://github.com/kdheepak/lazygit.nvim" }, --enabled
 
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" }, --enabled
     { src = "https://github.com/windwp/nvim-ts-autotag" }, --enabled
