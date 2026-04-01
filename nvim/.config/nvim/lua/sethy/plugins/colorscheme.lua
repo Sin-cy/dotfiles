@@ -9,8 +9,6 @@ return {
                 variant = "main", -- auto, main, moon, or dawn
                 dark_variant = "main", -- main, moon, or dawn
                 dim_inactive_windows = false,
-                disable_float_background = false,
-                extend_background_behind_borders = true,
                 styles = {
                     bold = true,
                     italic = false,
@@ -23,9 +21,12 @@ return {
                 },
                 highlight_groups = {
                     ColorColumn = { bg = "#1C1C21" },
-                    -- Normal = { bg = "none" }, -- Main background remains transparent
-                    -- Pmenu = { bg = "", fg = "#e0def4" }, -- Completion menu background
+                    -- Normal = { bg = "#000000" }, -- Main background remains transparent
+                    NormalFloat = { bg = "#1C1C21" },
+                    Pmenu = { bg = "#191724" }, -- Completion menu background
                     PmenuSel = { bg = "#4a465d", fg = "NONE" }, -- Highlighted completion item
+                    FloatBorder = { bg = "base" },
+                    FloatTitle = { bg = "base" },
                     -- PmenuSbar = { bg = "#191724" }, -- Scrollbar background
                     -- PmenuThumb = { bg = "#9ccfd8" }, -- Scrollbar thumb
                 },
