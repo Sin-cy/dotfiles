@@ -40,6 +40,7 @@ return {
                         },
                     },
                     mini = {
+                        timeout = 4500,
                         size = {
                             width = "auto",
                             height = "auto",
@@ -63,6 +64,10 @@ return {
 					},
                     signature = {
                         auto_open = { enabled = false }, -- disable auto signature help on insert mode
+                    },
+                    hover = {
+                        enabled = true,
+                        silent = true,
                     },
 				},
                 routes = {
