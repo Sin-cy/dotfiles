@@ -58,6 +58,14 @@ vim.opt.colorcolumn = "0"
 vim.opt.clipboard:append("unnamedplus")
 vim.opt.mouse = "a"
 
+-- Hightlight yanking
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight when yanking (copying) text",
+    callback = function()
+        vim.hl.on_yank()
+    end,
+})
+
 -- vim ui2
 require('vim._core.ui2').enable({
     enable = true,
