@@ -68,14 +68,10 @@ vim.pack.add({
     { src = "https://github.com/onsails/lspkind.nvim" },
 
     -- LSP stack
-    { src = "https://github.com/rose-pine/neovim", name = "rose-pine" },
-    { src = "https://github.com/mason-org/mason.nvim"},
-    {
-        src = "https://github.com/mason-org/mason-lspconfig.nvim", -- this one should depend on mason.nvim and nvim-lspconfig
-        dependencies = { "mason-org/mason.nvim" },
-    },
-    { src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
+    { src = "https://github.com/mason-org/mason.nvim" },
+    { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
+    { src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
 
     { src = "https://github.com/NvChad/nvim-colorizer.lua" }, --enabled
 
@@ -83,6 +79,7 @@ vim.pack.add({
     { src = "https://github.com/nvim-tree/nvim-web-devicons" }, --enabled
 
     -- colorschemes
+    { src = "https://github.com/rose-pine/neovim", name = "rose-pine" },
     { src = "https://github.com/ellisonleao/gruvbox.nvim" },
     { src = "https://github.com/rebelot/kanagawa.nvim" },
     { src = "https://github.com/craftzdog/solarized-osaka.nvim" },
