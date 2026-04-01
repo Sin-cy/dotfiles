@@ -1,12 +1,3 @@
--- vim.notify(
--- 	"=== ✅ LSP CONFIG LOADED SUCCESSFULLY ===",
--- 	vim.log.levels.INFO
--- )
--- vim.notify(
---     "This is a very long error message\nLine 2\nLine 3\nLine 4\nLine 5\nLine 6\nLine 7\nLine 8\nLine 9\nLine 10\n...and it keeps going for a while to force the spill indicator",
---     vim.log.levels.ERROR
--- )
-
 -- NOTE: LSP Keybinds
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
