@@ -61,19 +61,11 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc =
 -- Undotree toggle
 vim.keymap.set("n", "<leader>u", function() vim.cmd.UndotreeToggle() end, { desc = "Toggle Undo Tree" })
 
+-- built in undotree 
 -- vim.keymap.set("n", "<leader>u", function()
 --     vim.cmd.packadd("nvim.undotree")  -- loads the builtin plugin on first use
 --     require("undotree").open()
 -- end, { desc = "Toggle Undo Tree" })
-
--- Hightlight yanking
-vim.api.nvim_create_autocmd("TextYankPost", {
-    desc = "Highlight when yanking (copying) text",
-    group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-    callback = function()
-        vim.hl.on_yank()
-    end,
-})
 
 -- tab stuff
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>")   --open new tab
