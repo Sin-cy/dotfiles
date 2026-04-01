@@ -17,7 +17,6 @@ vim.pack.add({
     { src = "https://github.com/windwp/nvim-autopairs" }, --enabled
     { src = "https://github.com/nvim-lualine/lualine.nvim" }, --enabled
 
-    { src = "https://github.com/nvim-tree/nvim-tree.lua" },
     { src = "https://github.com/stevearc/oil.nvim" }, --enabled
 
     -- { src = "https://github.com/rmagatti/auto-session" }, -- configured but disabled
@@ -36,8 +35,9 @@ vim.pack.add({
     { src = "https://github.com/folke/trouble.nvim" }, --enabled
 
     { src = "https://github.com/mbbill/undotree" },--enabled
-    { src = "https://github.com/folke/noice.nvim" }, --enabled
-    { src = "https://github.com/MunifTanjim/nui.nvim" }, --noice dependency
+
+    { src = "https://github.com/folke/noice.nvim", },--enabled
+    { src = "https://github.com/MunifTanjim/nui.nvim" },
 
     { src = "https://github.com/folke/snacks.nvim" }, --enabled
     { src = "https://github.com/echasnovski/mini.nvim" }, --enabled
