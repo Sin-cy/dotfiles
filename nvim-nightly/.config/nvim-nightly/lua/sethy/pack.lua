@@ -1,6 +1,10 @@
 -- lua/sethy/pack.lua
 -- native 0.12 vimpack plugin manager
 
+-- early pack hooks
+require("sethy.plugins.pack-hooks")
+
+-- Plugins
 vim.pack.add({
     -- Core
     { src = "https://github.com/nvim-lua/plenary.nvim" }, --enabled
@@ -144,7 +148,7 @@ end, { desc = "List non active plugins and select to delete"})
 
 
 -- NOTE: Call plugins
-
+-- This can be moved to init.lua @ sethy/plugins/
 -- Core & Foundations
 require("sethy.plugins.lazydev")
 
