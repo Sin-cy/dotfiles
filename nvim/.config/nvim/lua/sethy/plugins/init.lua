@@ -4,7 +4,8 @@ return {
     -- fixes the well know nvim bug
     {
         "folke/lazydev.nvim",
-        lazy = false,
+        lazy = "VeryLazy",
+        priority = 1000,
         opts = {
             library = {
                 {
