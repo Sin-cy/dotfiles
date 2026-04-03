@@ -6,9 +6,6 @@ return {
         config = function()
             local treesitter = require("nvim-treesitter")
 
-            -- configure treesitter
-            treesitter.setup({})
-
             -- ensure these languages parsers are installed
             local ensure_installed = {
                 "json", "javascript", "typescript", "tsx", "go", "yaml", "html", "css", "python",
@@ -34,7 +31,7 @@ return {
                     pcall(vim.treesitter.language.add, lang)
                     pcall(vim.treesitter.start, buf, lang)
 
-                    -- enable indentation (skip yaml/markdown like before)
+                    -- enable indentation (skip yaml/markdown)
                     if ft ~= "yaml" and ft ~= "markdown" then
                         vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
                         vim.bo[buf].smartindent = false
@@ -60,10 +57,10 @@ return {
                 },
                 per_filetype = {
                     ["html"] = {
-                        enable_close = true, -- Disable auto-closing for HTML
+                        enable_close = true,
                     },
                     ["typescriptreact"] = {
-                        enable_close = true, -- Explicitly enable auto-closing (optional, defaults to `true`)
+                        enable_close = true,
                     },
                 },
             })
