@@ -4,66 +4,41 @@ return {
         lazy = false,
         build = ":TSUpdate",
         config = function()
-            -- import nvim-treesitter plugin
             local treesitter = require("nvim-treesitter")
 
             -- configure treesitter
-            treesitter.setup({ -- enable syntax highlighting
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false,
-                },
-                -- enable indentation
-                indent = {
-                    enable = true,
-                    disable = { "yaml", "markdown" },
-                },
-                -- auto install parsers for new filetype
-                auto_install = true,
+            treesitter.setup({})
 
-                -- ensure these languages parsers are installed
-                ensure_installed = {
-                    "json",
-                    "javascript",
-                    "typescript",
-                    "tsx",
-                    "go",
-                    "yaml",
-                    "html",
-                    "css",
-                    "python",
-                    "http",
-                    "prisma",
-                    "markdown",
-                    "markdown_inline",
-                    "svelte",
-                    "graphql",
-                    "bash",
-                    "lua",
-                    "vim",
-                    "dockerfile",
-                    "gitignore",
-                    "query",
-                    "vimdoc",
-                    "c",
-                    "java",
-                    "rust",
-                    "ron",
-                },
-                incremental_selection = {
-                    enable = false,
-                },
-            })
+            -- ensure these languages parsers are installed
+            local ensure_installed = {
+                "json", "javascript", "typescript", "tsx", "go", "yaml", "html", "css", "python",
+                "http", "prisma", "markdown", "markdown_inline", "svelte", "graphql", "bash", "lua", "vim", "dockerfile",
+                "gitignore", "query", "vimdoc", "c", "java", "rust", "ron",
+            }
 
+            treesitter.install(ensure_installed)
+
+            -- Safe FileType autocmd for highlighting + indentation
             vim.api.nvim_create_autocmd("FileType", {
                 pattern = "*",
-                callback = function()
-                    local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
-                    if lang and vim.treesitter.get_parser(0, lang, { error = false }) then
-                        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-                        -- prevents any possible conflicting indent options
-                        vim.bo.smartindent = false
-                        vim.bo.cindent = false
+                callback = function(args)
+                    local buf = args.buf
+                    local ft = vim.bo[buf].filetype
+                    local lang = vim.treesitter.language.get_lang(ft)
+
+                    if not lang then
+                        return
+                    end
+
+                    -- load parser and start treesitter safely
+                    pcall(vim.treesitter.language.add, lang)
+                    pcall(vim.treesitter.start, buf, lang)
+
+                    -- enable indentation (skip yaml/markdown like before)
+                    if ft ~= "yaml" and ft ~= "markdown" then
+                        vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                        vim.bo[buf].smartindent = false
+                        vim.bo[buf].cindent = false
                     end
                 end,
             })
