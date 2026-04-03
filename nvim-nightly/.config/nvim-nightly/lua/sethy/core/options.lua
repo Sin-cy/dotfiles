@@ -4,7 +4,8 @@
 vim.cmd("let g:netrw_banner = 0")
 
 vim.opt.termguicolors = true
--- line numbers vim.opt.nu = true
+-- line numbers 
+vim.opt.nu = true
 vim.opt.relativenumber = true
 
 -- indentation
