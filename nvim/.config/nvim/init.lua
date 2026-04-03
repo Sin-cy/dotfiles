@@ -1,6 +1,6 @@
 -- vim ui2
 require('vim._core.ui2').enable({
-    enable = false,
+    enable = true,
     msg = {
         target = "cmd", -- options: cmd(classic), msg(similar to noice)
         pager = { height = 1 },
