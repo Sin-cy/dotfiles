@@ -124,28 +124,23 @@ vim.api.nvim_create_user_command("PackNonActive", function()
     end
 
     print(" ")
-    print("→ Use :PackDel plugin1 plugin2 or :lua vim.pack.del({'plugin1','plugin2'}) to delete them")
-end, {})
 
+    local choice = vim.fn.confirm(
+        "Delete ALL non-active plugins from disk?",
+        "&Yes\n&No",
+        2   -- default = No
+    )
 
--- NOTE: Others
-
--- build step for fff.nvim
-vim.api.nvim_create_autocmd("PackChanged", {
-    callback = function(event)
-        if event.data.updated or vim.fn.isdirectory(vim.fn.stdpath("data") .. "/site/pack/core/opt/fff.nvim/target") == 0 then
-            require("fff.download").download_or_build_binary()
-        end
-    end,
-})
-
--- auto run :TSUpdate on first install or when parsers change
-vim.api.nvim_create_autocmd("PackChanged", {
-    callback = function()
-        vim.cmd("TSUpdate")
-    end,
-})
-
+    if choice == 1 then
+        vim.pack.del(non_active)
+        vim.notify("🗑️  Deleted " .. #non_active .. " non-active plugin(s)", vim.log.levels.INFO)
+        print("Non-active plugins deleted!")
+        -- Trigger your PackChanged autocmds (for fff.nvim, TSUpdate, etc.)
+        vim.api.nvim_exec_autocmds("User", { pattern = "PackChanged" })
+    else
+        vim.notify("Cancelled. No plugins were deleted!", vim.log.levels.INFO)
+    end
+end, { desc = "List non active plugins and select to delete"})
 
 
 -- NOTE: Call plugins
