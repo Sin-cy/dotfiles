@@ -1,4 +1,5 @@
 return {
+    -- NOTE: treesitter CLI installation needed
     {
         "nvim-treesitter/nvim-treesitter",
         branch = "main",
