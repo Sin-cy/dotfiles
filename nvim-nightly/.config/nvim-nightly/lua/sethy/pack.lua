@@ -30,6 +30,7 @@ vim.pack.add({
     { src = "https://github.com/kevinhwang91/nvim-ufo" }, --enabled
     { src = "https://github.com/kevinhwang91/promise-async" }, --nvim-ufo dependency
 
+    { src = "https://github.com/stevearc/conform.nvim" },
     -- { src = "https://github.com/kylechui/nvim-surround", branch = "main" }, --disabled
 
     -- { src = "https://github.com/ThePrimeagen/harpoon", branch = "harpoon2" }, -- disabled: currently broken with builtin vimpack
@@ -170,6 +171,7 @@ require("sethy.plugins.fff")
 
 -- Editing Helpers
 -- require("sethy.plugins.harpoon")
+require("sethy.plugins.formatting")
 require("sethy.plugins.nvim-ufo")
 require("sethy.plugins.auto-pairs")
 require("sethy.plugins.comment")
