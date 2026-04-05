@@ -51,14 +51,10 @@ lualine.setup({
         lualine_b = { branch },
         lualine_c = { diff, filename },
         lualine_x = {
-            -- === Option B: Native vim.pack updates badge (clickable) ===
             {
-                -- function()
-                --     return (vim.bo.busy or 0) > 0 and '◐' or ''
-                -- end,
                 function() return "󰏗" end,
                 color = { fg = "#ff9e64" },
-                cond = function() return true end, -- always visible (updates are rare anyway)
+                cond = function() return true end,
                 on_click = function() vim.cmd("PackUpdate") end,
             },
             -- { "encoding" },
