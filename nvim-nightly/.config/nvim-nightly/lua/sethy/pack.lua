@@ -149,13 +149,14 @@ end, { desc = "List non active plugins and select to delete"})
 
 -- NOTE: Call plugins
 -- This can be moved to init.lua @ sethy/plugins/
--- Core & Foundations
+
+-- Core
 require("sethy.plugins.lazydev")
 
 -- Syntax & Highlighting
 require("sethy.plugins.treesitter")
 
--- Theme & Colors
+-- Themes
 require("sethy.plugins.colorscheme")
 
 -- UI & Others
@@ -167,6 +168,7 @@ require("sethy.plugins.noice")
 -- File Management
 require("sethy.plugins.oil")
 require("sethy.plugins.fff")
+require("sethy.plugins.telescope")
 
 -- Editing Helpers
 -- require("sethy.plugins.harpoon")
@@ -184,13 +186,9 @@ require("sethy.plugins.gitstuff")
 -- Completion
 require("sethy.plugins.nvim-cmp")
 
--- LSP Stack
+-- LSP 
 require("sethy.plugins.lsp.mason") -- mason has to load before lspconfig
 require("sethy.plugins.lsp.lspconfig")
 
--- Pickers & Navigation
-require("sethy.plugins.telescope")
-
--- Diagnostics & Notes
 require("sethy.plugins.trouble")
 require("sethy.plugins.todo-comments")
