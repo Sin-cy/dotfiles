@@ -130,7 +130,6 @@ echo "Stowing dotfiles..."
 cd $HOME/dotfiles || exit
 
 # Stow dotfiles packages
-echo "Stowing dotfiles..."
 stow -R -t ~ aerospace karabiner nvim starship ghostty wezterm tmux zsh fastfetch atuin mpd sketchybar scripts
 
 echo "Dotfiles setup complete!"
