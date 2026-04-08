@@ -19,7 +19,7 @@ return {
                 timeout = 1200, -- 20 minutes - should be plenty
             },
             title = 'Find Files',  -- Window title
-            max_results = 60,     -- Maximum search results to display
+            max_results = 100,     -- Maximum search results to display
             max_threads = 4,      -- Maximum threads for fuzzy search
             lazy_sync = true,
             -- UI dimensions and appearance
