@@ -56,7 +56,7 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
     { desc = "Replace word cursor is on globally" })
 
 -- Executes shell command from in here making file executable
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "makes file executable" })
+vim.keymap.set("n", "<leader>X", "<cmd>!chmod +x %<CR>", { silent = true, desc = "makes file executable" })
 
 -- Undotree toggle
 vim.keymap.set("n", "<leader>u", function() vim.cmd.UndotreeToggle() end, { desc = "Toggle Undo Tree" })
