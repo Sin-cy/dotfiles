@@ -227,11 +227,22 @@ return {
                 },
             },
             settings = {
-              javascript = {
-                validate = {
-                  enable = false,
+                typescript = {
+                    inlayHints = {
+                        includeInlayParameterNameHints = "all",
+                        includeInlayVariableTypeHints = true,
+                        includeInlayFunctionParameterTypeHints = true,
+                    },
                 },
-              },
+                javascript = {
+                    validate = {
+                        enable = true,
+                    },
+                    inlayHints = {
+                        includeInlayParameterNameHints = "all",
+                        includeInlayVariableTypeHints = true,
+                    },
+                },
             },
         })
 

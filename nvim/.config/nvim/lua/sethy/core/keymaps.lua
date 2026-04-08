@@ -49,7 +49,7 @@ vim.keymap.set("n", "x", '"_x', opts)
 -- Replace the word cursor is on globally
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace word cursor is on globally" })
 -- Executes shell command from in here making file executable
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "makes file executable" })
+vim.keymap.set("n", "<leader>X", "<cmd>!chmod +x %<CR>", { silent = true, desc = "makes file executable" })
 
 -- tab stuff
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>")   --open new tab
