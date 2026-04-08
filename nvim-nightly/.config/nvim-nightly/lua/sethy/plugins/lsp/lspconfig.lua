@@ -219,9 +219,19 @@ vim.lsp.config("ts_ls", {
             includeCompletionsForImportStatements = true,
         },
     },
-    settings = { javascript = {
-            validate = {
-                enable = true,
+    settings = {
+        typescript = {
+            inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayVariableTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+            },
+        },
+        javascript = {
+            inlayHints = {
+                includeInlayParameterNameHints = "none",
+                includeInlayVariableTypeHints = false,
+                includeInlayFunctionParameterTypeHints = false,
             },
         },
     },
