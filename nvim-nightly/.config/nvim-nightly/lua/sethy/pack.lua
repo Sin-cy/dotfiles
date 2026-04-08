@@ -100,9 +100,17 @@ vim.api.nvim_create_user_command("PackAdd", function(opts)
 end, { nargs = "+", desc = "Add plugins (PackAdd user/repo)", })
 
 -- NOTE: pack update
-vim.api.nvim_create_user_command("PackUpdate", function()
-    vim.pack.update()
-end, { desc = "Update all plugins" })
+vim.api.nvim_create_user_command("PackUpdate", function(opts)
+    if opts.args ~= "" then
+        -- update specific plugins
+        local plugins = vim.split(opts.args, "%s+", { trimempty = true })
+        vim.pack.update(plugins)
+    else
+        -- update all
+        vim.pack.update()
+    end
+end, { desc = "Update all plugins or specific ones", nargs = "*", }
+)
 
 -- NOTE: pack del
 vim.api.nvim_create_user_command("PackDel", function(opts)
