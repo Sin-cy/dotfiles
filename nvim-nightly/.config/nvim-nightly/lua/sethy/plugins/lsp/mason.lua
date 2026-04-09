@@ -3,7 +3,6 @@ local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
 local mason_tool_installer = require("mason-tool-installer")
 
--- local capabilities = cmp_nvim_lsp.default_capabilities() -- used to enable autocompletion (assign to every lsp server config) enable mason and configure icons
 mason.setup({
     ui = {
         icons = {
@@ -34,9 +33,10 @@ mason_lspconfig.setup({
 
 mason_tool_installer.setup({
     ensure_installed = {
-        "prettier", -- prettier formatter
-        "stylua",   -- lua formatter
-        "isort",    -- python formatter
+        "biome",
+        "prettier",
+        "stylua",
+        "isort",
         "pylint",
         "clangd",
         "denols",
