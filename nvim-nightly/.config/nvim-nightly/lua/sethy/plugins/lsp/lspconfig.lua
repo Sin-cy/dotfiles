@@ -139,6 +139,9 @@ end, { desc = "Toggle LSP diagnostics virtual text or precise hover" })
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
+-- Native LSP capabilities (if dropping cmp_nvim_lsp)
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+
 -- Global LSP settings (applied to all servers)
 vim.lsp.config('*', {
     capabilities = capabilities
