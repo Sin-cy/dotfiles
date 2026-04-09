@@ -309,13 +309,14 @@ vim.lsp.config("astro", {
 -- Instead of using mason enable all configured LSP via `automatic_enable=true`
 -- Prefer more control, enable manual server call below via vim.lsp.enable("")
 -- mason config: lua/sethy/plugins/lsp/mason.lua:22
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("ts_ls")
-vim.lsp.enable("cssls")
-vim.lsp.enable("emmet_language_server")
-vim.lsp.enable("emmet_ls")
-vim.lsp.enable("gopls")
-vim.lsp.enable("astro")
-vim.lsp.enable("tailwindcss")
-
-
+vim.lsp.enable({
+    "lua_ls",
+    "cssls",
+    "emmet_language_server",
+    "emmet_ls",
+    "ts_ls",
+    "gopls",
+    "astro",
+    "tailwindcss",
+    "marksman",
+})
