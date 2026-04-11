@@ -7,7 +7,7 @@ require("sethy.plugins.pack-hooks")
 -- Plugins
 vim.pack.add({
     -- Core
-    { src = "https://github.com/nvim-lua/plenary.nvim" }, --enabled
+    { src = "https://github.com/nvim-lua/plenary.nvim" }, --enabled (used by telescope & git_worktree.nvim)
     { src = "https://github.com/christoomey/vim-tmux-navigator" }, --enabled
     { src = "https://github.com/folke/lazydev.nvim" }, --enabled
 
