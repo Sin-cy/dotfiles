@@ -19,13 +19,13 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 
--- the how it be paste
+-- paste over selection without loosing yanked
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
--- remember yanked
+-- better paste when in visual mode
 vim.keymap.set("v", "p", '"_dp', opts)
 
--- Copies or Yank to system clipboard
+-- yank to system clipboard
 vim.keymap.set("n", "<leader>Y", [["+Y]], opts)
 
 -- leader d delete wont remember as yanked/clipboard when delete pasting
