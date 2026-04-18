@@ -63,61 +63,24 @@ return {
             [vim.diagnostic.severity.INFO] = " ",
         }
 
-        -- curosr hover hold
-        local augroup = vim.api.nvim_create_augroup("LspDiagnosticsHold", { clear = true })
-        local virtual_text_enabled = true
-        vim.o.updatetime = 350
-
-        -- helper functon check if cursor over diagnostic
-        local function cursor_over_diagnostic()
-            local bufnr = vim.api.nvim_get_current_buf()
-            local cursor_pos = vim.api.nvim_win_get_cursor(0)
-            local lnum = cursor_pos[1] - 1
-            local col = cursor_pos[2]
-            local diags = vim.diagnostic.get(bufnr, { lnum = lnum })
-            for _, diag in ipairs(diags) do
-                if diag.end_lnum == lnum and col >= diag.col and col < diag.end_col then
-                    return true
-                end
-            end
-            return false
-        end
-
-        -- helper check for any open float (to avoid overlaps with float doc)
-        local function has_floating_win()
-            for _, winid in ipairs(vim.api.nvim_list_wins()) do
-                local cfg = vim.api.nvim_win_get_config(winid)
-                if cfg.relative ~= '' then
-                    return true
-                end
-            end
-            return false
-        end
-
         -- update diagnostic config function
-        local function update_diagnostic_config()
-            vim.diagnostic.config({
-                signs = { text = signs },
-                virtual_text = virtual_text_enabled,
-                underline = true,  -- Always on
-                update_in_insert = true,
-                float = {
-                    focusable = false,
-                    style = "minimal",
-                    border = "rounded",
-                    source = true,
-                },
-            })
-        end
+        vim.diagnostic.config({
+            signs = { text = signs },
+            virtual_text = true,
+            underline = true,  -- Always on
+            update_in_insert = true,
+            float = {
+                focusable = false,
+                style = "minimal",
+                border = "rounded",
+                source = true,
+            },
+        })
 
-        -- call initial diagnostic setup
-        update_diagnostic_config()
-
-        -- LSP Toggle Keymaps
         -- <leader>lx toggle for virtual text (no hover changes)
-        vim.keymap.set('n', '<leader>lx', function()
-            virtual_text_enabled = not virtual_text_enabled
-            update_diagnostic_config()
+        vim.keymap.set("n", "<leader>lx", function()
+            local current = vim.diagnostic.config().virtual_text
+            vim.diagnostic.config({ virtual_text = not current })
         end, { desc = "Toggle LSP virtual text" })
 
         -- <leader>ll toggle between virtual text mode and precise hover mode
