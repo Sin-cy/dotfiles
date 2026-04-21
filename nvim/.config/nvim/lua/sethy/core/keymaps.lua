@@ -1,7 +1,6 @@
 local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
@@ -69,20 +68,13 @@ vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current spli
 
 -- Copy filepath to the clipboard
 vim.keymap.set("n", "<leader>fp", function()
-  local filePath = vim.fn.expand("%:~") -- Gets the file path relative to the home directory
-  vim.fn.setreg("+", filePath) -- Copy the file path to the clipboard register
-  print("File path copied to clipboard: " .. filePath)
+    local filePath = vim.fn.expand("%:~")
+    vim.fn.setreg("+", filePath)
+    print("File path copied to clipboard: " .. filePath)
 end, { desc = "Copy file path to clipboard" })
-
--- built in undotree 
--- vim.keymap.set("n", "<leader>un", function()
---     vim.cmd.packadd("nvim.undotree")  -- loads the builtin plugin on first use
---     require("undotree").open()
--- end, { desc = "Toggle Undo Tree" })
 
 -- restart 
 vim.keymap.set("n", "<leader>re", "<cmd>restart<cr>", {
     desc = "Restart Neovim (:restart)",
-    silent = true,
 })
 
