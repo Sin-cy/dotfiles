@@ -92,5 +92,10 @@ return {
                 scope_highlight = nil,
             },
         },
+        html = {
+            comment = {
+                conceal = false,
+            },
+        },
     },
 }
