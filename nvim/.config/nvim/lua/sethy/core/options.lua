@@ -17,15 +17,6 @@ vim.opt.expandtab = true
 vim.opt.smartindent = false
 vim.opt.wrap = false
 
--- Always hard wrap at 80 characters in every file
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-    callback = function()
-        vim.opt_local.textwidth = 80
-        vim.opt_local.formatoptions:append("t") -- wrap text
-        vim.opt_local.smartindent = false
-    end,
-})
-
 -- backup and undo
 vim.opt.swapfile = false
 vim.opt.backup = false
