@@ -19,10 +19,7 @@ vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 
 -- paste over selection without loosing yanked
-vim.keymap.set("x", "<leader>p", [["_dP]])
-
--- better paste when in visual mode
-vim.keymap.set("v", "p", '"_dp', opts)
+vim.keymap.set("x", "p", [["_dP]])
 
 -- yank to system clipboard
 vim.keymap.set("n", "<leader>Y", [["+Y]], opts)
