@@ -54,18 +54,10 @@ vim.pack.add({
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" }, --enabled
     { src = "https://github.com/windwp/nvim-ts-autotag" }, --enabled
 
-    -- completions cmp
-    { src = "https://github.com/hrsh7th/nvim-cmp" }, --enabled
-    -- completions dependency
-    { src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
-    { src = "https://github.com/hrsh7th/cmp-buffer" },
-    { src = "https://github.com/hrsh7th/cmp-path" },
-    { src = "https://github.com/hrsh7th/cmp-cmdline" },
-    { src = "https://github.com/f3fora/cmp-spell" },
+    -- blink
+    { src = "https://github.com/saghen/blink.cmp", version = "v1.10.2" },
     { src = "https://github.com/L3MON4D3/LuaSnip", version = "v2.4.1" },
-    { src = "https://github.com/saadparwaiz1/cmp_luasnip" },
     { src = "https://github.com/rafamadriz/friendly-snippets" },
-    { src = "https://github.com/onsails/lspkind.nvim" },
 
     -- LSP stack
     { src = "https://github.com/neovim/nvim-lspconfig" },
@@ -187,7 +179,8 @@ require("sethy.plugins.emmet")
 require("sethy.plugins.gitstuff")
 
 -- Completion
-require("sethy.plugins.nvim-cmp")
+-- require("sethy.plugins.nvim-cmp")
+require("sethy.plugins.blink")
 
 -- LSP 
 require("sethy.plugins.lsp.mason") -- mason has to load before lspconfig

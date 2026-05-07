@@ -1,10 +1,3 @@
--- vim.notify(
--- 	"=== ✅ LSP CONFIG LOADED SUCCESSFULLY ===",
--- 	vim.log.levels.INFO
--- ) vim.notify( "This is a very long error message\nLine 2\nLine 3\nLine 4\nLine 5\nLine 6\nLine 7\nLine 8\nLine 9\nLine 10\n...and it keeps going for a while to force the spill indicator",
---     vim.log.levels.ERROR
--- )
-
 -- NOTE: LSP Keybinds
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -66,7 +59,7 @@ vim.diagnostic.config({
     signs = { text = signs },
     virtual_text = true,
     underline = true,  -- Always on
-    update_in_insert = true,
+    update_in_insert = false,
     float = {
         focusable = false,
         style = "minimal",
@@ -82,16 +75,23 @@ vim.keymap.set("n", "<leader>lx", function()
 end, { desc = "Toggle LSP virtual text" })
 
 -- NOTE: Setup servers
-local cmp_nvim_lsp = require("cmp_nvim_lsp")
-local capabilities = cmp_nvim_lsp.default_capabilities()
+-- local cmp_nvim_lsp = require("cmp_nvim_lsp")
+-- local capabilities = cmp_nvim_lsp.default_capabilities()
 
--- Native LSP capabilities (if dropping cmp_nvim_lsp)
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- Native LSP capabilities (if dropping cmp_nvim_lsp, works with blink too)
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 -- local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 -- if ok then
 --     capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 -- end
+
+-- blink cmp
+local ok, blink = pcall(require, "blink.cmp")
+if ok then
+    capabilities = blink.get_lsp_capabilities(capabilities)
+end
+
 
 -- Global LSP settings (applied to all servers)
 vim.lsp.config('*', {
