@@ -5,7 +5,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- Buffer local mappings
         local opts = { buffer = ev.buf, silent = true }
         -- Keymaps
-        opts.desc = "Show LSP references" vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
+        opts.desc = "Show LSP references"
+        vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
 
         opts.desc = "Go to declaration"
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -20,9 +21,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
         opts.desc = "See available code actions"
-        vim.keymap.set({ "n", "v" }, "<leader>vca", function()
-            vim.lsp.buf.code_action()
-        end, opts)
+        vim.keymap.set({ "n", "v" }, "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
 
         opts.desc = "Smart rename"
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
@@ -39,9 +38,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         opts.desc = "Restart LSP"
         vim.keymap.set("n", "<leader>rs", ":lsp restart<CR>", opts)
 
-        vim.keymap.set("i", "<C-h>", function()
-            vim.lsp.buf.signature_help()
-        end, opts)
+        vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
     end,
 })
 
@@ -75,23 +72,15 @@ vim.keymap.set("n", "<leader>lx", function()
 end, { desc = "Toggle LSP virtual text" })
 
 -- NOTE: Setup servers
--- local cmp_nvim_lsp = require("cmp_nvim_lsp")
--- local capabilities = cmp_nvim_lsp.default_capabilities()
 
--- Native LSP capabilities (if dropping cmp_nvim_lsp, works with blink too)
+-- Native LSP capabilities 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-
--- local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
--- if ok then
---     capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
--- end
 
 -- blink cmp
 local ok, blink = pcall(require, "blink.cmp")
 if ok then
     capabilities = blink.get_lsp_capabilities(capabilities)
 end
-
 
 -- Global LSP settings (applied to all servers)
 vim.lsp.config('*', {

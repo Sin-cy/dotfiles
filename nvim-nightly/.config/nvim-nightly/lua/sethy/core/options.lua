@@ -35,13 +35,11 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- misc
-vim.opt.completeopt = "menuone,noselect,fuzzy,nosort"
 vim.opt.guicursor = ""
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "0"
 vim.opt.clipboard:append("unnamedplus")
 vim.opt.isfname:append("@-@")
-vim.opt.shortmess:append("c")
 vim.opt.mouse = "a"
 vim.o.cmdheight = 1
 
