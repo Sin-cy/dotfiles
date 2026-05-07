@@ -19,6 +19,11 @@ require("blink.cmp").setup({
             enabled = false,
             show_with_menu = false,
         },
+        accept = {
+            auto_brackets = {
+                enabled = true,
+            },
+        },
     },
 
     -- cmdline completions

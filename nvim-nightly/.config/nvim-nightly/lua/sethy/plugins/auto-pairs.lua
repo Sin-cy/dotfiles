@@ -9,11 +9,3 @@ autopairs.setup({
         java = false, -- dont check treesitter on java
     },
 })
-
--- blink integration (if not using cmp) 
-vim.api.nvim_create_autocmd("User", {
-    pattern = "BlinkCmpAccept",
-    callback = function()
-        require("nvim-autopairs").autopairs_cr()
-    end,
-})
