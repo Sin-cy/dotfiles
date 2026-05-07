@@ -1,5 +1,5 @@
 scan_timeout = 100
-command_timeout = 500
+command_timeout = 2000
 
 "$schema" = "https://starship.rs/config-schema.json"
 
@@ -27,7 +27,7 @@ palette = "catppuccin_mocha"
 # symbol = "'"
 
 [directory]
-style = "sapphire"
+style = "teal"
 format = "[ $path ]($style)"
 truncation_length = 4
 
@@ -98,15 +98,15 @@ format =  "  [$symbol$branch]($style)[](base)"
 # diverged = "⇕⇡${ahead_count}⇣${behind_count} "
 
 [git_status]
-format = "[$untracked$staged$modified$renamed$conflicted$ahead_behind]($style)"
+format = "[$untracked$staged$modified$renamed$conflicted$ahead_behind ]($style)"
 # options available for format
-staged     = "[+${count} ](green)"
-modified   = "[!${count} ](yellow)"
-renamed    = "[»${count} ](blue)"
-deleted    = "[-${count} ](red)"
-untracked  = "[?${count} ](sapphire)"
-stashed    = "[≡${count} ](lavender)"
-conflicted = "[✖${count} ](red bold)"
+staged     = "[+](green)"
+modified   = "[!](yellow)"
+renamed    = "[»](blue)"
+deleted    = "[-](red)"
+untracked  = "[?](red)"
+stashed    = "[≡](lavender)"
+conflicted = "[✖](red bold)"
 
 ahead      = "[⇡${count} ](teal)"
 behind     = "[⇣${count} ](peach)"
