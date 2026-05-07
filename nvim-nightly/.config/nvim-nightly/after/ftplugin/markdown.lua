@@ -2,6 +2,7 @@ local set = vim.opt_local
 
 set.textwidth = 80   -- move text to new line at 80 characters set.spell = true
 set.spell = true     -- enable spell checking
+set.spelllang = { "en_us" }
 set.linebreak = true
 set.formatoptions:append("t")
 set.smartindent = false
