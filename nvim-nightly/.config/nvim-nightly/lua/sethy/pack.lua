@@ -51,7 +51,7 @@ vim.pack.add({
     { src = "https://github.com/tpope/vim-fugitive" }, --enabled
     { src = "https://github.com/kdheepak/lazygit.nvim" }, --enabled
 
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" }, --enabled
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter", branch = "main" }, --enabled
     { src = "https://github.com/windwp/nvim-ts-autotag" }, --enabled
 
     -- blink
