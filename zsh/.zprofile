@@ -20,15 +20,6 @@ export PATH=~/.console-ninja/.bin:$PATH
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
-nvm() {
-    unset -f nvm node npm npx
-    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-    [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-    nvm "$@"
-}
-node() { nvm; node "$@"; }
-npm() { nvm; npm "$@"; }
-npx() { nvm; npx "$@"; }
 
 # export ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -36,10 +27,9 @@ npx() { nvm; npx "$@"; }
 # bun completions
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-bun() {
-  [ -s "/Users/personal/.bun/_bun" ] && source "/Users/personal/.bun/_bun"
-  bun "$@"
-}
+
+# ripgrep
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
 
 #------------Langs------------
 
@@ -57,5 +47,4 @@ export PATH="/Library/Frameworks/Python.framework/Versions/3.11/bin:${PATH}"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-
 
