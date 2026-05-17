@@ -19,23 +19,14 @@ vim.keymap.set("v", ">", ">gv", opts)
 -- paste over selection without loosing yanked
 vim.keymap.set("x", "p", [["_dP]])
 
--- yank to system clipboard
-vim.keymap.set("n", "<leader>Y", [["+Y]], opts)
-
 -- leader d delete wont remember as yanked/clipboard when delete pasting
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
--- ctrl c as escape cuz Im lazy to reach up to the esc key
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<C-c>", ":nohl<CR>", { desc = "Clear search hl", silent = true })
--- format without prettier using the built in
+
+-- format built in
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-
--- Unmaps Q in normal mode
-vim.keymap.set("n", "Q", "<nop>")
-
---Stars new tmux session from in here
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- prevent x delete from registering when next paste
 vim.keymap.set("n", "x", '"_x', opts)
@@ -73,3 +64,7 @@ vim.keymap.set("n", "<leader>re", "<cmd>restart<cr>", {
     desc = "Restart Neovim (:restart)",
 })
 
+vim.keymap.set("n", "<leader>lr", function()
+    vim.cmd("lsp restart")
+    vim.notify("LSP restarted", vim.log.levels.INFO)
+end, { desc = "Restart LSP" })
