@@ -1,11 +1,6 @@
--- vim.g.loaded_netrw = 0
--- vim.g.loaded_netrwPlugin = 0
--- vim.cmd("let g:netrw_liststyle = 3")
--- Disable netrw banner
-vim.cmd("let g:netrw_banner = 0")
+vim.g.netrw_banner = 0
 
 vim.opt.termguicolors = true
--- line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -27,7 +22,6 @@ vim.opt.undofile = true
 vim.opt.inccommand = "split"
 
 -- UI
-vim.opt.background = "dark"
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 
@@ -56,4 +50,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.hl.on_yank()
     end,
 })
-
