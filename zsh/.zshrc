@@ -1,42 +1,53 @@
+# ====================== Environment & PATH ======================
+typeset -U PATH
+export PATH="/Users/personal/.local/bin:$PATH"
+
 # oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
-
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml" # starship
 export TMUX_CONF="$HOME/.config/tmux/tmux.conf" # tmux
 export TEALDEER_CONFIG_DIR="$HOME/.config/tealdeer/" # tldr
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml" # starship
+export MANPATH="/usr/local/man:$MANPATH"
 
+# ====================== Completions ======================
 fpath=(~/.zsh/completions $fpath)
 
-# zsh plugins via omz
+# ====================== Oh My Zsh ======================
 # path on mac : ~/.oh-my-zsh/custom/plugins/
 # then run git clone <link in the to plugin repo>
 plugins=(
     git 
-    ## with oh-my-zsh and not homebrew
-    # zsh-autosuggestions
+    ## with oh-my-zsh (not homebrew)
     zsh-syntax-highlighting
-    zsh-system-clipboard
-    # zsh-vi-mode
+    zsh-vi-mode
+    # zsh-autosuggestions
+    # zsh-system-clipboard
 )
 
 source $ZSH/oh-my-zsh.sh
 # bindkey -r '^['
-# if using ZVM: some shell keybinds may need to be added to zsh_after_init_commands()
-# source ~/.zsh/zvm-config.zsh 
 
-#----- Vim Editing modes & keymaps ------ 
-set -o vi 
+# ====================== Extra Completions ======================
+[ -s "/Users/personal/.bun/_bun" ] && source "/Users/personal/.bun/_bun"
 
+# ====================== Custom Configs ======================
+# If Using ZVM: some shell keybinds may need to be added to zsh_after_init_commands()
+source ~/.zsh/zvm-config.zsh 
+
+#============ Default zsh vi mode ===========
+# set -o vi 
+
+#============ Editors ===========
 export EDITOR=nvim
 export VISUAL=nvim
 
 # ctrl y accept requires zsh-autosuggestions to be active
 # bindkey -M viins '^Y' autosuggest-accept 
 
-bindkey -M viins '^P' up-line-or-beginning-search
-bindkey -M viins '^N' down-line-or-beginning-search
-#----------------------------------------
+# bindkey -M viins '^P' up-line-or-beginning-search
+# bindkey -M viins '^N' down-line-or-beginning-search
 
+# ====================== FZF conf ======================
 # Set up FZF key bindings and fuzzy completion
 # Keymaps for this is available at https://github.com/junegunn/fzf-git.sh
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git "
@@ -52,12 +63,7 @@ export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | 
 # fzf preview for tmux
 export FZF_TMUX_OPTS=" -p90%,70% "  
 
-
-# unbind ctrl g in terminal
-bindkey -r "^G"
-
-# -------------------------------
-# Initializers and sources
+# ================ Initializers and Sources ==============
 eval "$(gdircolors)"
 
 # wtp (gitworktree plus)
@@ -67,10 +73,6 @@ eval "$(wtp shell-init zsh)"
 eval "$(but completions zsh)"
 
 # starship 
-if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
-      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
-    zle -N zle-keymap-select "";
-fi
 eval "$(starship init zsh)"
 
 eval "$(zoxide init zsh)" # zoxide
@@ -83,8 +85,7 @@ export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
 bindkey '^r' atuin-search-viins
 
-# Sesh tmux config
-
+# ============= Sesh Tmux conf ==============
 function sesh-sessions() {
     {
         exec </dev/tty
@@ -104,12 +105,7 @@ bindkey -M emacs '\es' sesh-sessions
 bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
 
-# User configuration
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# -------------------------------
-
-# -------------------ALIAS----------------------
+# ================= ALIAS ===================
 # For Running Go Server using Air
 alias air='$(go env GOPATH)/bin/air'
 
@@ -152,6 +148,9 @@ alias glog='git log --oneline --graph --all'
 alias gh-create='gh repo create --private --source=. --remote=origin && git push -u --all && gh browse'
 
 alias nvim-scratch="NVIM_APPNAME=nvim-scratch nvim"
+alias nvimn="NVIM_APPNAME=nvim-nightly $HOME/.local/nvim-nightly/bin/nvim"
+alias nvimmin="NVIM_APPNAME=nvim-min nvim"
+alias nvimpack="NVIM_APPNAME=nvim-pack nvim"
 
 # lazygit
 alias lg="lazygit"
@@ -161,15 +160,16 @@ alias mpds="mpd ~/.config/mpd/mpd.conf"
 
 # obsidian icloud path
 alias sethvault="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/sethVault/"
-# ---------------------------------------
+
+# rsync
+alias rsynct="rsync -avh --progress --partial"
+
 
 # brew installations (new mac systems brew path: opt/homebrew , not usr/local )
 # source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-typeset -U PATH
-
-export PATH="/Users/personal/.local/bin:$PATH"
-
-# bun completions
-[ -s "/Users/personal/.bun/_bun" ] && source "/Users/personal/.bun/_bun"
+# NVM 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
