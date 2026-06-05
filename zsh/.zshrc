@@ -19,7 +19,6 @@ plugins=(
     git 
     ## with oh-my-zsh (not homebrew)
     zsh-syntax-highlighting
-    zsh-vi-mode
     # zsh-autosuggestions
     # zsh-system-clipboard
 )
@@ -32,7 +31,9 @@ source $ZSH/oh-my-zsh.sh
 
 # ====================== Custom Configs ======================
 # If Using ZVM: some shell keybinds may need to be added to zsh_after_init_commands()
-source ~/.zsh/zvm-config.zsh 
+source ~/zsh/zvm-config.zsh 
+# must have zsh-vi-mode installed with brew
+source "/opt/homebrew/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 
 #============ Default zsh vi mode ===========
 # set -o vi 
@@ -164,10 +165,11 @@ alias sethvault="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/set
 # rsync
 alias rsynct="rsync -avh --progress --partial"
 
-
 # brew installations (new mac systems brew path: opt/homebrew , not usr/local )
 # source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ========= FNM =========
 eval "$(fnm env --use-on-cd --shell zsh)"
+
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
