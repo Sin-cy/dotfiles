@@ -10,7 +10,7 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml" # starship
 export MANPATH="/usr/local/man:$MANPATH"
 
 # ====================== Completions ======================
-fpath=(~/.zsh/completions $fpath)
+fpath=(~/zsh/completions $fpath)
 
 # ====================== Oh My Zsh ======================
 # path on mac : ~/.oh-my-zsh/custom/plugins/
