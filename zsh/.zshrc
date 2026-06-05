@@ -171,5 +171,3 @@ alias rsynct="rsync -avh --progress --partial"
 
 # ========= FNM =========
 eval "$(fnm env --use-on-cd --shell zsh)"
-
-[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
