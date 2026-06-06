@@ -2,12 +2,13 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-        "hrsh7th/cmp-nvim-lsp", { "antosha417/nvim-lsp-file-operations", config = true },
+        "saghen/blink.cmp",
+        { "antosha417/nvim-lsp-file-operations", config = true },
     },
     config = function()
-        -- NOTE: LSP Keybinds
+        -- NOTE: LSP Custom Keybinds
         vim.api.nvim_create_autocmd("LspAttach", {
-            group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+            group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
             callback = function(ev)
                 -- Buffer local mappings
                 local opts = { buffer = ev.buf, silent = true }
@@ -29,28 +30,23 @@ return {
                 vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
                 opts.desc = "See available code actions"
-                vim.keymap.set({ "n", "v" }, "<leader>vca", function()
-                    vim.lsp.buf.code_action()
-                end, opts)
+                vim.keymap.set({ "n", "v" }, "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
 
                 opts.desc = "Smart rename"
                 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
                 opts.desc = "Show buffer diagnostics"
-                vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+                -- vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+                vim.keymap.set("n", "<leader>D", function() require("snacks").picker.diagnostics_buffer() end, opts)
 
                 opts.desc = "Show line diagnostics"
-                vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+                vim.keymap.set("n", "df", function() vim.diagnostic.open_float() end, opts)
 
                 opts.desc = "Show documentation for what is under cursor"
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
-                opts.desc = "Restart LSP"
-                vim.keymap.set("n", "<leader>rs", ":lsp restart<CR>", opts)
-
-                vim.keymap.set("i", "<C-h>", function()
-                    vim.lsp.buf.signature_help()
-                end, opts)
+                opts.desc = "Show signature help"
+                vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
             end,
         })
 
@@ -62,13 +58,12 @@ return {
             [vim.diagnostic.severity.HINT] = "󰠠 ",
             [vim.diagnostic.severity.INFO] = " ",
         }
-
         -- update diagnostic config function
         vim.diagnostic.config({
             signs = { text = signs },
             virtual_text = true,
-            underline = true,  -- Always on
-            update_in_insert = true,
+            underline = true,
+            update_in_insert = false,
             float = {
                 focusable = false,
                 style = "minimal",
@@ -77,39 +72,16 @@ return {
             },
         })
 
-        -- <leader>lx toggle for virtual text (no hover changes)
+        -- toggle for virtual text
         vim.keymap.set("n", "<leader>lx", function()
             local current = vim.diagnostic.config().virtual_text
             vim.diagnostic.config({ virtual_text = not current })
         end, { desc = "Toggle LSP virtual text" })
 
-        -- <leader>ll toggle between virtual text mode and precise hover mode
-        vim.keymap.set('n', '<leader>ll', function()
-            virtual_text_enabled = not virtual_text_enabled
-            update_diagnostic_config()
-
-            -- Clear autocmds first
-            vim.api.nvim_clear_autocmds({ group = augroup })
-
-            -- Enable hover only when virtual text is off
-            if not virtual_text_enabled then
-                vim.api.nvim_create_autocmd("CursorHold", {
-                    group = augroup,
-                    callback = function()
-                        if cursor_over_diagnostic() and not has_floating_win() then
-                            vim.diagnostic.open_float(nil, {
-                                focusable = false,
-                                close_events = { "CursorMoved", "CursorMovedI", "BufHidden", "InsertCharPre", "WinLeave" },
-                            })
-                        end
-                    end,
-                })
-            end
-        end, { desc = "Toggle LSP diagnostics virtual text or precise hover" })
-
         -- NOTE: Setup servers
-        local cmp_nvim_lsp = require("cmp_nvim_lsp")
-        local capabilities = cmp_nvim_lsp.default_capabilities()
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        -- blink cmp
+        capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
         -- Global LSP settings (applied to all servers)
         vim.lsp.config('*', {
@@ -290,6 +262,7 @@ return {
             "emmet_ls",
             "ts_ls",
             "gopls",
+            "rust_analyzer",
             "astro",
             "tailwindcss",
             "marksman",

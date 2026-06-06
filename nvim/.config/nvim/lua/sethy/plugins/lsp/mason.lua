@@ -4,7 +4,6 @@ return {
     dependencies = {
         "mason-org/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
-        "hrsh7th/cmp-nvim-lsp",
         "neovim/nvim-lspconfig",
     },
     config = function()

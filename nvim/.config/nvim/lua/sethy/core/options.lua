@@ -25,7 +25,7 @@ vim.opt.inccommand = "split"
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 
--- folding (for nvim-ufo)
+-- folding
 vim.o.foldenable = true
 vim.o.foldmethod = "manual"
 vim.o.foldlevel = 99

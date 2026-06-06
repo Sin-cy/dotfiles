@@ -8,10 +8,9 @@ return {
         config = function()
             local treesitter = require("nvim-treesitter")
 
-            -- ensure these languages parsers are installed
             local ensure_installed = {
                 "json", "javascript", "typescript", "tsx", "go", "yaml", "html", "css", "python",
-                "http", "prisma", "markdown", "markdown_inline", "svelte", "graphql", "bash", "lua", "vim", "dockerfile",
+                "http", "prisma", "svelte", "graphql", "bash", "vim", "dockerfile",
                 "gitignore", "query", "vimdoc", "c", "java", "rust", "ron",
             }
 
@@ -23,14 +22,13 @@ return {
                 callback = function(args)
                     local buf = args.buf
                     local ft = vim.bo[buf].filetype
-                    local lang = vim.treesitter.language.get_lang(ft)
 
+                    local lang = vim.treesitter.language.get_lang(ft)
                     if not lang then
                         return
                     end
 
-                    -- load parser and start treesitter safely
-                    pcall(vim.treesitter.language.add, lang)
+                    -- start treesitter safely
                     pcall(vim.treesitter.start, buf, lang)
 
                     -- enable indentation (skip yaml/markdown)
@@ -50,7 +48,6 @@ return {
         enabled = true,
         ft = { "html", "xml", "javascript", "typescript", "javascriptreact", "typescriptreact", "svelte" },
         config = function()
-            -- Independent nvim-ts-autotag setup
             require("nvim-ts-autotag").setup({
                 opts = {
                     enable_close = true,           -- Auto-close tags

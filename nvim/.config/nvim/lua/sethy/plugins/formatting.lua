@@ -37,15 +37,14 @@ return {
                 graphql = { "prettier" },
                 liquid = { "prettier" },
                 lua = { "stylua" },
+                markdown = { "mdformat","markdownlint-cli2","markdown-toc" },
                 -- python = { "black" },
-                markdown = { "mdformat" , "markdown-toc" },
-                -- ["markdown.mdx"] = { "prettier", "markdownlint", "markdown-toc" },
             },
-        -- format_on_save = {
-        -- 	lsp_fallback = true,
-        -- 	async = false,
-        -- 	timeout_ms = 1000,
-        -- },
+            -- format_on_save = {
+            --     lsp_fallback = true,
+            --     async = false,
+            --     timeout_ms = 1000,
+            -- },
 		})
 
 		-- Configure individual formatters
@@ -69,6 +68,6 @@ return {
 				async = false,
 				timeout_ms = 1000,
 			})
-		end, { desc = "Format whole file or range (in visual mode) with" })
+		end, { desc = "Format whole file or range in visual mode" })
 	end,
 }

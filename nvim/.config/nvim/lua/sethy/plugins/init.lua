@@ -1,7 +1,7 @@
 return {
-    "nvim-lua/plenary.nvim", -- functions multiple plugins need
+    "nvim-lua/plenary.nvim", --  multiple plugins need
     "christoomey/vim-tmux-navigator", -- tmux & split window nav
-    -- fixes the well know nvim bug
+    -- fixes undefined globals
     {
         "folke/lazydev.nvim",
         lazy = "VeryLazy",
