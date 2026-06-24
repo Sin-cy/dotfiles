@@ -1,0 +1,12 @@
+name = "RC file"
+description = "Open RC Files (New Workspace)"
+working_dir = "~"
+# tab 1
+[[tabs]]
+name = ".zshrc"
+command = "nvim .zshrc"
+
+# tab 2
+[[tabs]]
+name = ".zprofile"
+command = "nvim .zprofile"

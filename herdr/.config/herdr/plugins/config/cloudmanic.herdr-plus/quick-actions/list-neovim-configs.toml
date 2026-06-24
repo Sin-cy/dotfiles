@@ -1,0 +1,20 @@
+name = "Edit Neovim Configs"
+description = "Select which nvim config to edit"
+type = "select"
+command = "nvim ~/.{{.Value}}"
+
+[[options]]
+label = "nvimpack"
+value = "config/nvim-pack/"
+
+[[options]]
+label = "nvim-min"
+value = "config/nvim-min/"
+
+[[options]]
+label = "nvim main"
+value = "config/nvim/"
+
+[[options]]
+label = "nvim nightly"
+value = "config/nvim-nightly/"

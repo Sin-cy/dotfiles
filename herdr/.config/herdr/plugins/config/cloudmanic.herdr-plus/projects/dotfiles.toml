@@ -1,0 +1,7 @@
+name = "Dotfiles"
+description = "Go to dotfiles (New Workspace)"
+working_dir = "~/dotfiles"
+
+[[tabs]]
+name = "dots"
+command = "nvim ."

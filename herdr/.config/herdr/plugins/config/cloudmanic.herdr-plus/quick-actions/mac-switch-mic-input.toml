@@ -1,0 +1,3 @@
+name = "📜 mic input switch" 
+description = "Switch mic input device" 
+command = "~/scripts/macSys/fzf-switch-mic.sh"

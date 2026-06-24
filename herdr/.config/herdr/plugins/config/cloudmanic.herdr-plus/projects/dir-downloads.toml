@@ -1,0 +1,7 @@
+name = "Downloads"
+description = "Go to downloads (New Workspace)"
+working_dir = "~/Downloads"
+
+[[tabs]]
+name = "downloads"
+command = "yazi"

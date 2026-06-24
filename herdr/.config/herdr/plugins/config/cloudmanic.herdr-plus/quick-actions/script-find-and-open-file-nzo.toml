@@ -1,0 +1,3 @@
+name = "📜 nzo"
+description = "Find and open all files"
+command = "~/scripts/zoxide_openfiles_nvim.sh"

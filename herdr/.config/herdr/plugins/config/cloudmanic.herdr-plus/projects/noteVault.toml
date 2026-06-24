@@ -1,0 +1,10 @@
+name = "Note"
+description = "Obsidian sethVault (New Workspace)"
+working_dir = "/Users/personal/Library/Mobile Documents/iCloud~md~obsidian/Documents/sethVault"
+
+[[tabs]]
+name = "1"
+command = "nvim ."
+
+[[tabs]]
+name = "2"
