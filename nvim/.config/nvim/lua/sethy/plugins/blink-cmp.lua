@@ -5,6 +5,10 @@ return {
         dependencies = {
             "L3MON4D3/LuaSnip",
             "rafamadriz/friendly-snippets",
+            -- provide cmp_nvim_lsp so lsp client capabilities helpers are available
+            "hrsh7th/cmp-nvim-lsp",
+            -- signature help source for showing parameter signatures in completion
+            "hrsh7th/cmp-nvim-lsp-signature-help",
         },
         config = function()
             require("blink.cmp").setup({
@@ -22,8 +26,8 @@ return {
                         auto_show = true,
                     },
                     ghost_text = {
-                        enabled = false,
-                        show_with_menu = false,
+                        enabled = true,
+                        show_with_menu = true,
                     },
                     accept = {
                         auto_brackets = {
