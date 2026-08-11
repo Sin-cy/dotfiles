@@ -80,8 +80,27 @@ return {
 
         -- NOTE: Setup servers
         local capabilities = vim.lsp.protocol.make_client_capabilities()
-        -- blink cmp
-        capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+
+        -- prefer nvim-cmp's default capabilities when available
+        local ok_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+        if ok_cmp and cmp_nvim_lsp and cmp_nvim_lsp.default_capabilities then
+            capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+        end
+
+        -- blink.cmp LSP capability helpers (backwards compatible)
+        local ok_blink, blink_cmp = pcall(require, "blink.cmp")
+        if ok_blink and blink_cmp.get_lsp_capabilities then
+            capabilities = blink_cmp.get_lsp_capabilities(capabilities)
+        end
+
+        -- Ensure snippet and resolve support so servers can return parameter/type details
+        capabilities.textDocument = capabilities.textDocument or {}
+        capabilities.textDocument.completion = capabilities.textDocument.completion or {}
+        capabilities.textDocument.completion.completionItem = capabilities.textDocument.completion.completionItem or {}
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
+        capabilities.textDocument.completion.completionItem.resolveSupport = {
+            properties = { 'documentation', 'detail', 'additionalTextEdits' }
+        }
 
         -- Global LSP settings (applied to all servers)
         vim.lsp.config('*', {
