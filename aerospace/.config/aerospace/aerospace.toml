@@ -206,6 +206,18 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
+[workspace-to-monitor-force-assignment]
+0 = ['M27UP', 'Built-in Retina Display']
+1 = ['M27UP', 'Built-in Retina Display']
+2 = ['M27UP', 'Built-in Retina Display']
+3 = ['M27UP', 'Built-in Retina Display']
+4 = ['M27UP', 'Built-in Retina Display']
+5 = ['M27UP', 'Built-in Retina Display']
+6 = ['M27UP', 'Built-in Retina Display']
+7 = ['M27UP', 'Built-in Retina Display']
+8 = ['M27UP', 'Built-in Retina Display']
+9 = ['M27UP', 'Built-in Retina Display']
+
 # [[on-window-detected]]
 # if.app-name-regex-substring = 'finder'
 # run = 'layout floating'
