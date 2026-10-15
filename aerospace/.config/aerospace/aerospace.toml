@@ -1,7 +1,8 @@
-config-version = 2
-after-login-command = []
 # Place a copy of this config to ~/.aerospace.toml
 # After that, you can edit ~/.aerospace.toml to your liking
+
+config-version = 2
+after-login-command = []
 
 # It's not necessary to copy all keys to your config.
 # If the key is missing in your config, "default-config.toml" will serve as a fallback
@@ -13,10 +14,10 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = [
+# after-startup-command = [
     # 'exec-and-forget sketchybar',
     # 'exec-and-forget borders active_color=Oxffele3e4 inactive_color=0xff494d64 width=3.0'
-]
+# ]
 
 # Notify Sketchybar about workspace change
 # exec-on-workspace-change = ['/bin/bash', '-c',
@@ -25,6 +26,7 @@ after-startup-command = [
 
 # Start AeroSpace at login
 start-at-login = true
+auto-reload-config = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -81,9 +83,8 @@ inner.horizontal = 15
 inner.vertical =   15
 outer.left =       30
 outer.bottom =     30
-# outer.top =        40
 outer.right =      30
-# --------------------- Benq default = 45
+# outer.top =        40
 outer.top = [{ monitor."M27UP" = 20 }, { monitor."Built-in Retina Display" = 10 }, 40]
 
 
@@ -126,46 +127,42 @@ alt-shift-h = 'move left'
 alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
-
+alt-enter = 'fullscreen on --no-outer-gaps'
+alt-shift-enter = 'fullscreen off'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+alt-0 = 'workspace 0'
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
-# alt-6 = 'workspace 6'
-# alt-7 = 'workspace 7'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-b = 'workspace B' # for browser
-# alt-e = 'workspace E' 
 alt-f = 'workspace F' # for finder
 alt-m = 'workspace M' #
 alt-n = 'workspace N' # for notes
-# alt-p = 'workspace P'
-alt-t = 'workspace T' # for terminal shell
-# alt-v = 'workspace V'
+alt-t = 'workspace T' # for shell
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+alt-shift-0 = 'move-node-to-workspace 0'
 alt-shift-1 = 'move-node-to-workspace 1'
 alt-shift-2 = 'move-node-to-workspace 2'
 alt-shift-3 = 'move-node-to-workspace 3'
 alt-shift-4 = 'move-node-to-workspace 4'
 alt-shift-5 = 'move-node-to-workspace 5'
-# alt-shift-6 = 'move-node-to-workspace 6'
-# alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 alt-shift-b = 'move-node-to-workspace B'
-# alt-shift-e = 'move-node-to-workspace E'
 alt-shift-f = 'move-node-to-workspace F'
 alt-shift-m = 'move-node-to-workspace M'
 alt-shift-n = 'move-node-to-workspace N'
-# alt-shift-p = 'move-node-to-workspace P'
 alt-shift-t = 'move-node-to-workspace T'
-# alt-shift-v = 'move-node-to-workspace V'
-
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -184,7 +181,6 @@ k = 'resize height -50'
 l = 'resize width -50'
 b = 'balance-sizes'
 
-
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
@@ -199,6 +195,7 @@ esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 #s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+shift-r = ['run-callback --for-every-window on-window-detected', 'mode main'] # reset window back to original workspace
 backspace = ['close-all-windows-but-current', 'mode main']
 
 alt-shift-h = ['join-with left', 'mode main']
@@ -206,36 +203,18 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
-[workspace-to-monitor-force-assignment]
-0 = ['M27UP', 'Built-in Retina Display']
-1 = ['M27UP', 'Built-in Retina Display']
-2 = ['M27UP', 'Built-in Retina Display']
-3 = ['M27UP', 'Built-in Retina Display']
-4 = ['M27UP', 'Built-in Retina Display']
-5 = ['M27UP', 'Built-in Retina Display']
-6 = ['M27UP', 'Built-in Retina Display']
-7 = ['M27UP', 'Built-in Retina Display']
-8 = ['M27UP', 'Built-in Retina Display']
-9 = ['M27UP', 'Built-in Retina Display']
-
-# [[on-window-detected]]
-# if.app-name-regex-substring = 'finder'
-# run = 'layout floating'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Shottr'
-run = 'layout floating'
-
+# ghostty
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
 run = "move-node-to-workspace T"
 
 [[on-window-detected]]
-if.app-id = 'com.brave.Browser'
+if.app-id = 'net.imput.helium'
 run = "move-node-to-workspace B"
 
+# brave
 [[on-window-detected]]
-if.app-id = 'app.zen-browser.zen'
+if.app-name-regex-substring = 'Brave Browser'
 run = "move-node-to-workspace B"
 
 [[on-window-detected]]
