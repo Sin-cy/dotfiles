@@ -1,0 +1,36 @@
+nerdfont: true
+worktree_dir: .worktrees 
+mode: session # window/session
+window_prefix: "{project}-"
+agent: "pi"
+default_session: main
+window_placement: after_current
+merge_strategy: rebase
+merge_keep: true
+
+dashboard:
+  close_on_jump: false
+
+# session mode: opens into a new session
+windows:
+  - name: dashboard
+    panes:
+      - command: "workmux dashboard -t worktrees"
+  - name: zsh
+    panes:
+      - focus: true
+      # command: "" 
+      # - split: horizontal
+      # - size: 20
+  - name: shell
+    panes:
+      - focus: false
+        command: "ls -a" 
+      - split: horizontal
+        command: "grok"
+        # size: 50
+  - name: agent
+    panes:
+      - focus: false
+        command: <agent>
+        # size: 50
