@@ -1,25 +1,39 @@
+onboarding = false
 # herdr configuration
 # Place this file at ~/.config/herdr/config.toml
 
 # Show first-run notification setup on startup.
-# Missing also shows onboarding; set false after you've chosen.
-onboarding = false
+# Missing also shows onboarding; set false after you've chosen. onboarding = false
 
 [theme]
-# Built-in themes: catppuccin, terminal, tokyo-night, dracula, nord,
-#                  gruvbox, one-dark, solarized, kanagawa, rose-pine,
-#                  vesper
-name = "tokyo-night"
+# name = "tokyo-night"
 
 # Override individual color tokens on top of the base theme.
 # Accepts: hex (#rrggbb), named colors, rgb(r,g,b), or panel_bg = "reset"
-# [theme.custom]
-# panel_bg = "reset"
-# accent = "#f5c2e7"
-# red = "#ff6188"
-# green = "#a6e3a1"
+name = "catppuccin"
+auto_switch = false
+[theme.custom]
+panel_bg = "transparent" # overall panel / chrome background
+selection_bg = "#1e1e2a"
+surface0     = "#11111B"     # lowest elevated surface
+surface1     = "#181825"     # higher surface
+surface_dim  = "#040404"     # dimmed surface
+# overlay0     = "#FF9D65"
+overlay1     = "#A5D4DF"
+
+accent = "#828698" # main hl, borders, focus
+
+red = "#ff6188"
+green = "#a6e3a1"
+yellow = "#FFC009"
+blue = ""
+mauve = ""
+teal = ""
+peach = ""
 
 [terminal]
+kitty_graphics = true
+# auto_switch = false
 # Executable used for new interactive panes.
 # Empty means $SHELL, then /bin/sh.
 # default_shell = ""
@@ -90,6 +104,10 @@ split_vertical = "prefix+|"
 # close_pane = "prefix+x"
 zoom = "prefix+m"       
 resize_mode = "prefix+R"
+# resize_pane_left  = "ctrl+shift+alt+left"
+# resize_pane_down  = "ctrl+shift+alt+down"
+# resize_pane_up    = "ctrl+shift+alt+up"
+# resize_pane_right = "ctrl+shift+alt+right"
 # toggle_sidebar = "prefix+b"
 
 # Navigate-mode movement. These local shortcuts win while navigate mode is open.
@@ -143,6 +161,25 @@ type = "plugin_action"
 command = "cloudmanic.herdr-plus.projects"
 description = "herdr-plus: projects"
 
+## Worktrunk Plugin Action
+[[keys.command]]
+key = "prefix+shift+g"
+type = "plugin_action"
+command = "worktrunk.open"
+description = "Worktree: switch / create from default branch"
+
+[[keys.command]]
+key = "prefix+shift+c"
+type = "plugin_action"
+command = "worktrunk.open-current"
+description = "Worktree: switch / create from current branch"
+
+[[keys.command]]
+key = "prefix+shift+d"
+type = "plugin_action"
+command = "worktrunk.remove"
+description = "Worktree: remove"
+
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
 # [keys.indexed]
@@ -155,7 +192,24 @@ description = "herdr-plus: projects"
 
 [ui]
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
-# sidebar_width = 26
+sidebar_width = 17
+
+window_title = "{hostname}: {workspace}" 
+pane_gaps = false
+pane_outer_borders = false
+status_indicators = "symbols"
+
+hide_tab_bar_when_single_tab = true
+pane_scrollbars = false
+tab_bar_position = "bottom"
+tab_bar_right_separator = "|"
+tab_bar_right = [
+  { type = "zoom" }, # shows "ZOOM" when zoomed
+  # { type = "hostname" },
+  # { type = "datetime", format = "%H:%M" },
+  # { type = "text", text = "🐦‍🔥" },
+  { type = "command", command = "~/.config/herdr/status.sh", interval_seconds = 5 },
+]
 
 # Minimum sidebar width when expanded (columns)
 # sidebar_min_width = 18
@@ -197,10 +251,6 @@ show_agent_labels_on_pane_borders = true
 # Agent panel scope: "current" or "all". Toggling it in the sidebar saves this setting.
 # agent_panel_scope = "all"
 
-# Accent color for highlights, borders, and navigation UI.
-# Accepts: hex (#89b4fa), named colors (cyan, blue, magenta), or rgb(r,g,b)
-# accent = "cyan"
-
 # Background notification popup delivery
 [ui.toast]
 # off = disable pop-up notifications
@@ -222,6 +272,7 @@ show_agent_labels_on_pane_borders = true
 # [ui.sound.agents]
 # droid = "off"
 
+enabled = false
 [session]
 # Resume supported AI-agent panes into their native conversation sessions after
 # a Herdr server restart. Requires official integrations that report session refs.

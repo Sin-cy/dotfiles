@@ -4,4 +4,4 @@ working_dir = "~/Downloads"
 
 [[tabs]]
 name = "downloads"
-command = "yazi"
+command = "spf"

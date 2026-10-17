@@ -1,12 +1,12 @@
 "$schema" = "https://starship.rs/config-schema.json"
-scan_timeout = 100
-command_timeout = 500
+# scan_timeout = 100
+# command_timeout = 300
 follow_symlinks = false
 add_newline = false
-palette = "custom1"
+palette = "solarized_osaka"
 
 format = """
-$directory\
+${directory}\
 ${custom.giturl}\
 $git_branch\
 ${custom.git_worktree}\
@@ -17,9 +17,32 @@ $character\
 right_format = """$all"""
 
 [directory]
+disabled = false
 style = "teal"
 format = "[ $path ]($style)"
-truncation_length = 4
+truncation_length = 2
+
+[custom.directory]
+disabled = true
+style = "teal"
+format = "[ $output ]($style)"
+when = "true"
+ignore_timeout = true
+command = """
+    c=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null) || {
+      if [ "$PWD" = "$HOME" ]; then echo '~'; else echo "${PWD##*/}"; fi
+      exit
+    }
+    b=$(basename "${c%/}")
+    if [ "$b" = .git ] || [ "$b" = .bare ]; then
+      name=$(basename "$(dirname "$c")")
+    else
+      name=${b%.git}
+    fi
+    rel=$(git rev-parse --show-prefix 2>/dev/null)
+    rel=${rel%/}
+    if [ -n "$rel" ]; then echo "$name/$rel"; else echo "$name"; fi
+"""
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -41,12 +64,13 @@ disabled = true
 
 [character]
 disabled = false
-success_symbol = "[ ](bold fg:green)"
+# success_symbol = "[ ](bold fg:green)"
+success_symbol = "[→](bold fg:green)"
 error_symbol = "[✘ ](bold fg:red)"
 vimcmd_symbol = "[: ](bold fg:yellow)"
 
 [package]
-disabled = false
+disabled = true
 
 [time]
 disabled = true
@@ -59,6 +83,8 @@ command = """
 GIT_REMOTE=$(command git ls-remote --get-url 2> /dev/null)
 if [[ "$GIT_REMOTE" =~ "github" ]]; then
     GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "codeberg" ]]; then
+    GIT_REMOTE_SYMBOL="󰲋 "
 elif [[ "$GIT_REMOTE" =~ "gitlab" ]]; then
     GIT_REMOTE_SYMBOL=" "
 elif [[ "$GIT_REMOTE" =~ "bitbucket" ]]; then
@@ -146,7 +172,7 @@ RedHatEnterprise = "󱄛"
 
 [nodejs]
 symbol = ""
-format = "[ $symbol( $version) ]($style)"
+format = "[ $symbol( $version) ](#A5E3A1)"
 
 [bun]
 detect_files = ["bun.lock", "bun.lockb"]
@@ -207,6 +233,8 @@ text = "#cdd6f4"
 subtext1 = "#bac2de"
 subtext0 = "#a6adc8"
 
+# NOTE: Custom Palettes 
+#
 # --- accents (catppuccin_mocha) ---
 rosewater = "#f5e0dc"
 flamingo = "#f2cdcd"
@@ -321,8 +349,10 @@ red = "#dc322f"
 maroon = "#cb4b16"
 peach = "#cb4b16"
 yellow = "#b58900"
-green = "#859900"
-teal = "#2aa198"
+# green = "#859900"
+green = "#61AFEF"
+# teal = "#2aa198"
+teal = "#94e2d5"
 sky = "#2aa198"
 sapphire = "#268bd2" # dir fg
 blue = "#268bd2"
